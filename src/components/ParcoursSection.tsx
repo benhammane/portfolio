@@ -1,25 +1,27 @@
 import { GraduationCap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
-
-const parcours = [
-    { degree: "L1 Informatique Mathématique", school: "Université Picardie Jules Verne, Amiens" },
-    { degree: "L2 Informatique", school: "Université de Lille" },
-    { degree: "L3 Informatique", school: "Université de Lille" },
-    { degree: "M1 MIAGE", school: "Université de Lille" },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ParcoursSection = () => {
+    const { t } = useLanguage();
+
+    const parcours = [
+        { degree: t('parcours.items.l1.degree'), school: t('parcours.items.l1.school') },
+        { degree: t('parcours.items.l2.degree'), school: t('parcours.items.l2.school') },
+        { degree: t('parcours.items.l3.degree'), school: t('parcours.items.l3.school') },
+        { degree: t('parcours.items.m1.degree'), school: t('parcours.items.m1.school') },
+    ];
     return (
         <section id="parcours" className="section-padding relative">
             <div className="container mx-auto px-6 relative z-10">
                 <AnimatedSection>
                     <div className="text-center mb-12">
                         <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-                            Mon <span className="text-gradient">Parcours</span>
+                            {t('parcours.title')} <span className="text-gradient">{t('parcours.titleHighlight')}</span>
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Parcours universitaire et formations suivies.
+                            {t('parcours.subtitle')}
                         </p>
                     </div>
                 </AnimatedSection>

@@ -2,22 +2,25 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useClickSound } from '@/hooks/useClickSound';
+import { useLanguage } from '@/contexts/LanguageContext';
+import LanguageSelector from './LanguageSelector';
 
 const navItems = [
-  { label: 'Accueil', href: '#hero' },
-  { label: 'À propos', href: '#about' },
-  { label: 'Compétences', href: '#skills' },
-  { label: 'Projets', href: '#projects' },
-  { label: 'Expériences', href: '#experience' },
-  { label: 'Parcours', href: '#parcours' },
-  { label: 'Intérêts', href: '#interests' },
-  { label: 'Contact', href: '#contact' },
+  { key: 'home', href: '#hero' },
+  { key: 'about', href: '#about' },
+  { key: 'skills', href: '#skills' },
+  { key: 'projects', href: '#projects' },
+  { key: 'experience', href: '#experience' },
+  { key: 'parcours', href: '#parcours' },
+  { key: 'interests', href: '#interests' },
+  { key: 'contact', href: '#contact' },
 ];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { playClick } = useClickSound();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +51,7 @@ const Navbar = () => {
           whileTap={{ scale: 0.95 }}
           className="font-display font-bold text-xl text-gradient"
         >
-          Portfolio
+          {t('nav.portfolio')}
         </motion.a>
 
         {/* Desktop Navigation */}
@@ -67,10 +70,13 @@ const Navbar = () => {
                 whileTap={{ scale: 0.95 }}
                 className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm font-medium"
               >
-                {item.label}
+                {t(`nav.${item.key}`)}
               </motion.a>
             </motion.li>
           ))}
+          <li>
+            <LanguageSelector />
+          </li>
         </ul>
 
         {/* Mobile Menu Button */}
@@ -106,10 +112,17 @@ const Navbar = () => {
                     onClick={handleNavClick}
                     className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm font-medium block py-2"
                   >
-                    {item.label}
+                    {t(`nav.${item.key}`)}
                   </a>
                 </motion.li>
               ))}
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: navItems.length * 0.05 }}
+              >
+                <LanguageSelector />
+              </motion.li>
             </ul>
           </motion.div>
         )}

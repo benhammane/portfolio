@@ -2,68 +2,70 @@ import { Briefcase, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import { useClickSound } from '@/hooks/useClickSound';
-
-const experiences = [
-  {
-    title: 'Développement Frontend et Workflow (Stage)',
-    company: 'Tech Link Service',
-    period: '2025',
-    description: 'Développement d\'une solution SaaS de gestion de restaurants et intégration de commandes externes sur une interface centralisée.',
-    highlights: ['React / Flutterflow', 'TypeScript / JavaScript', 'Intégrations API (Uber Eats, Deliveroo)'],
-  },
-  {
-    title: 'Développement Web (Stage)',
-    company: 'Equipe MAROCVILLE',
-    period: '2022',
-    description: 'Développement d\'une application de gestion (stocks, commandes, clients) avec Laravel et MySQL.',
-    highlights: ['Laravel & MySQL', 'Design d\'interface', 'Automatisation des tests'],
-  },
-  {
-    title: 'Employé polyvalent',
-    company: 'Crêpes Corner',
-    period: '2024',
-    description: 'Mission en point de vente, gestion du service client et polyvalence opérationnelle.',
-    highlights: ['Service client', 'Travail en équipe', 'Adaptabilité'],
-  },
-  {
-    title: 'Magasinier',
-    company: 'Equipe MAROCVILLE',
-    period: '—',
-    description: "Réception et documentation des produits, contrôle des colis endommagés, rangement sur étagères et assistance aux préparateurs de commandes pour le ramassage et l'emballage.",
-    highlights: ['Réception & contrôle', 'Gestion des stocks', 'Préparation de commandes'],
-  },
-  {
-    title: 'Employé polyvalent',
-    company: 'Snack O mimosas',
-    period: '—',
-    description: "Accueil et prise de commandes, préparation rapide et précise des plats, service clientèle, et entretien des zones de préparation et de salle en respectant les normes d'hygiène.",
-    highlights: ['Accueil & prise de commandes', 'Préparation & propreté', 'Hygiène alimentaire'],
-  },
-  {
-    title: 'Livreur de commandes',
-    company: 'Uber Eats',
-    period: '—',
-    description: "Livraison rapide et sécurisée des commandes, utilisation efficace des outils de navigation et interaction professionnelle avec les clients.",
-    highlights: ['Livraison & navigation', 'Relation client', 'Entretien du véhicule'],
-  },
-  {
-    title: 'Agent de sécurité (événement)',
-    company: 'Match de football (Ligue 1)',
-    period: '—',
-    description: "Assurer la sécurité des spectateurs et du personnel, appliquer les mesures de contrôle et coopérer avec les forces de l'ordre pour prévenir les incidents.",
-    highlights: ['Sécurité événementielle', 'Contrôle des foules', 'Coordination opérationnelle'],
-  },
-  {
-    title: 'Inventoriste',
-    company: 'RGIS',
-    period: 'Depuis mai 2025',
-    description: "Réalisation d'inventaires dans le nord de la France : comptage, validation et remontée des écarts, travail en équipe et rigueur des données.",
-    highlights: ['Inventaires régionaux', 'Précision & fiabilité', 'Travail en équipe'],
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ExperienceSection = () => {
   const { playClick } = useClickSound();
+  const { t } = useLanguage();
+
+  const experiences = [
+    {
+      title: t('experience.items.techLink.title'),
+      company: t('experience.items.techLink.company'),
+      period: t('experience.items.techLink.period'),
+      description: t('experience.items.techLink.description'),
+      highlights: t('experience.items.techLink.highlights'),
+    },
+    {
+      title: t('experience.items.marocville.title'),
+      company: t('experience.items.marocville.company'),
+      period: t('experience.items.marocville.period'),
+      description: t('experience.items.marocville.description'),
+      highlights: t('experience.items.marocville.highlights'),
+    },
+    {
+      title: t('experience.items.crepesCorner.title'),
+      company: t('experience.items.crepesCorner.company'),
+      period: t('experience.items.crepesCorner.period'),
+      description: t('experience.items.crepesCorner.description'),
+      highlights: t('experience.items.crepesCorner.highlights'),
+    },
+    {
+      title: t('experience.items.marocvilleMagasinier.title'),
+      company: t('experience.items.marocvilleMagasinier.company'),
+      period: t('experience.items.marocvilleMagasinier.period'),
+      description: t('experience.items.marocvilleMagasinier.description'),
+      highlights: t('experience.items.marocvilleMagasinier.highlights'),
+    },
+    {
+      title: t('experience.items.snackOMimosas.title'),
+      company: t('experience.items.snackOMimosas.company'),
+      period: t('experience.items.snackOMimosas.period'),
+      description: t('experience.items.snackOMimosas.description'),
+      highlights: t('experience.items.snackOMimosas.highlights'),
+    },
+    {
+      title: t('experience.items.uberEats.title'),
+      company: t('experience.items.uberEats.company'),
+      period: t('experience.items.uberEats.period'),
+      description: t('experience.items.uberEats.description'),
+      highlights: t('experience.items.uberEats.highlights'),
+    },
+    {
+      title: t('experience.items.securityAgent.title'),
+      company: t('experience.items.securityAgent.company'),
+      period: t('experience.items.securityAgent.period'),
+      description: t('experience.items.securityAgent.description'),
+      highlights: t('experience.items.securityAgent.highlights'),
+    },
+    {
+      title: t('experience.items.rgis.title'),
+      company: t('experience.items.rgis.company'),
+      period: t('experience.items.rgis.period'),
+      description: t('experience.items.rgis.description'),
+      highlights: t('experience.items.rgis.highlights'),
+    },
+  ];
 
   return (
     <section id="experience" className="section-padding relative">
@@ -71,10 +73,10 @@ const ExperienceSection = () => {
         <AnimatedSection>
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              Mes <span className="text-gradient">Experience</span>
+              {t('experience.title')} <span className="text-gradient">{t('experience.titleHighlight')}</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Mon évolution professionnelle à travers différentes entreprises et projets.
+              {t('experience.subtitle')}
             </p>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-cyan-400 mx-auto rounded-full mt-4" />
           </div>
