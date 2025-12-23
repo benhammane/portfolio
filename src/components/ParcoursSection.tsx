@@ -1,34 +1,31 @@
 import { GraduationCap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
-
-const parcours = [
-    { degree: "L1 Informatique Mathématique", school: "Université Picardie Jules Verne, Amiens" },
-    { degree: "L2 Informatique", school: "Université de Lille" },
-    { degree: "L3 Informatique", school: "Université de Lille" },
-    { degree: "M1 MIAGE", school: "Université de Lille" },
-];
+import { useTranslation } from 'react-i18next';
 
 const ParcoursSection = () => {
+    const { t } = useTranslation();
+    const parcoursCount = 4; // Number of education entries
+
     return (
         <section id="parcours" className="section-padding relative">
             <div className="container mx-auto px-6 relative z-10">
                 <AnimatedSection>
                     <div className="text-center mb-12">
                         <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-                            Mon <span className="text-gradient">Parcours</span>
+                            {t('parcours.title')} <span className="text-gradient">{t('parcours.titleHighlight')}</span>
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Parcours universitaire et formations suivies.
+                            {t('parcours.subtitle')}
                         </p>
                     </div>
                 </AnimatedSection>
 
                 <div className="max-w-3xl mx-auto">
                     <div className="space-y-6">
-                        {parcours.map((p, i) => (
+                        {Array.from({ length: parcoursCount }).map((_, i) => (
                             <motion.div
-                                key={p.degree}
+                                key={i}
                                 initial={{ opacity: 0, x: -10 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
@@ -39,8 +36,8 @@ const ParcoursSection = () => {
                                     <GraduationCap className="text-primary" />
                                 </div>
                                 <div>
-                                    <div className="font-display font-semibold">{p.degree}</div>
-                                    <div className="text-muted-foreground text-sm">{p.school}</div>
+                                    <div className="font-display font-semibold">{t(`parcours.list.${i}.degree`)}</div>
+                                    <div className="text-muted-foreground text-sm">{t(`parcours.list.${i}.school`)}</div>
                                 </div>
                             </motion.div>
                         ))}

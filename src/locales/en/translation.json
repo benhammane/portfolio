@@ -1,0 +1,224 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "parcours": "Education",
+    "interests": "Interests",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "Amine Benhammane",
+    "title": "Full-Stack Developer & M1 MIAGE Student",
+    "description": "Curious and rigorous, I specialize in web development and the design of innovative applications. I am looking for an alternance in development to contribute to concrete projects and deepen my technical skills.",
+    "contactMe": "Contact me",
+    "downloadCV": "Download CV",
+    "photoAlt": "Photo of Amine Benhammane",
+    "downloadSuccess": "Download",
+    "downloadSuccessDesc": "Your CV has been downloaded.",
+    "downloadError": "Error",
+    "downloadErrorDesc": "Unable to download the CV."
+  },
+  "about": {
+    "title": "About",
+    "titleHighlight": "me",
+    "paragraph1": "Master's degree student in Computer Science (MIAGE), I specialize in web development and the design of innovative applications. Curious, rigorous and motivated, I am looking for an alternance in development to deepen my skills and actively contribute to concrete projects.",
+    "paragraph2": "I have worked on various projects: websites (recipes, e-commerce), real-time applications (auctions, chat), and games in Java. I use technologies such as HTML, CSS, JavaScript, PHP (Laravel), MySQL, as well as design tools like Figma.",
+    "paragraph3": "Passionate about software quality and cybersecurity, I am also interested in distributed architectures, test automation and user experience.",
+    "skills": {
+      "frontend": {
+        "label": "Frontend",
+        "techs": "React, Vue, TypeScript"
+      },
+      "backend": {
+        "label": "Backend",
+        "techs": "Node.js, Python, SQL"
+      },
+      "design": {
+        "label": "Design",
+        "techs": "Figma, UI/UX"
+      },
+      "devops": {
+        "label": "DevOps",
+        "techs": "Docker, AWS, CI/CD"
+      }
+    }
+  },
+  "skills": {
+    "title": "My",
+    "titleHighlight": "Skills",
+    "subtitle": "Technologies and tools I master to create high-performance applications."
+  },
+  "projects": {
+    "title": "My",
+    "titleHighlight": "Projects",
+    "subtitle": "A selection of projects I have worked on, demonstrating my full-stack development skills and passion for creation.",
+    "list": [
+      {
+        "title": "Recipe sharing website",
+        "description": "Development of a recipe sharing website with interactive interface and user management."
+      },
+      {
+        "title": "E-commerce website",
+        "description": "Design of an online store with transaction management, users and catalog."
+      },
+      {
+        "title": "Video game (shmup)",
+        "description": "Design and programming of a shoot 'em up type game in Java."
+      },
+      {
+        "title": "Bike rental system",
+        "description": "Autonomous bike rental system with station and rental management."
+      },
+      {
+        "title": "Real-time auction application",
+        "description": "Real-time auction application with WebSocket communication and Node.js backend."
+      },
+      {
+        "title": "Railroad Ink (digital)",
+        "description": "Digital version of the multiplayer game, network management and interactive interface."
+      }
+    ]
+  },
+  "experience": {
+    "title": "My",
+    "titleHighlight": "Experience",
+    "subtitle": "My professional evolution through different companies and projects.",
+    "list": [
+      {
+        "title": "Frontend and Workflow Development (Internship)",
+        "company": "Tech Link Service",
+        "period": "2025",
+        "description": "Development of a SaaS restaurant management solution and integration of external orders on a centralized interface.",
+        "highlights": ["React / Flutterflow", "TypeScript / JavaScript", "API Integrations (Uber Eats, Deliveroo)"]
+      },
+      {
+        "title": "Web Development (Internship)",
+        "company": "Equipe MAROCVILLE",
+        "period": "2022",
+        "description": "Development of a management application (stocks, orders, customers) with Laravel and MySQL.",
+        "highlights": ["Laravel & MySQL", "Interface design", "Test automation"]
+      },
+      {
+        "title": "Versatile employee",
+        "company": "Crêpes Corner",
+        "period": "2024",
+        "description": "Point of sale mission, customer service management and operational versatility.",
+        "highlights": ["Customer service", "Teamwork", "Adaptability"]
+      },
+      {
+        "title": "Warehouse worker",
+        "company": "Equipe MAROCVILLE",
+        "period": "—",
+        "description": "Reception and documentation of products, control of damaged packages, storage on shelves and assistance to order pickers for collection and packaging.",
+        "highlights": ["Reception & control", "Inventory management", "Order preparation"]
+      },
+      {
+        "title": "Versatile employee",
+        "company": "Snack O mimosas",
+        "period": "—",
+        "description": "Customer reception and order taking, fast and accurate preparation of dishes, customer service, and maintenance of preparation and dining areas in accordance with hygiene standards.",
+        "highlights": ["Reception & order taking", "Preparation & cleanliness", "Food hygiene"]
+      },
+      {
+        "title": "Delivery driver",
+        "company": "Uber Eats",
+        "period": "—",
+        "description": "Fast and secure delivery of orders, efficient use of navigation tools and professional interaction with customers.",
+        "highlights": ["Delivery & navigation", "Customer relations", "Vehicle maintenance"]
+      },
+      {
+        "title": "Security agent (event)",
+        "company": "Football match (Ligue 1)",
+        "period": "—",
+        "description": "Ensuring the safety of spectators and staff, applying control measures and cooperating with law enforcement to prevent incidents.",
+        "highlights": ["Event security", "Crowd control", "Operational coordination"]
+      },
+      {
+        "title": "Inventory clerk",
+        "company": "RGIS",
+        "period": "Since May 2025",
+        "description": "Conducting inventories in northern France: counting, validation and reporting of discrepancies, teamwork and data accuracy.",
+        "highlights": ["Regional inventories", "Accuracy & reliability", "Teamwork"]
+      }
+    ]
+  },
+  "parcours": {
+    "title": "My",
+    "titleHighlight": "Education",
+    "subtitle": "Academic journey and training followed.",
+    "list": [
+      {
+        "degree": "L1 Computer Science Mathematics",
+        "school": "Université Picardie Jules Verne, Amiens"
+      },
+      {
+        "degree": "L2 Computer Science",
+        "school": "Université de Lille"
+      },
+      {
+        "degree": "L3 Computer Science",
+        "school": "Université de Lille"
+      },
+      {
+        "degree": "M1 MIAGE",
+        "school": "Université de Lille"
+      }
+    ]
+  },
+  "interests": {
+    "title": "Areas of",
+    "titleHighlight": "Interest",
+    "subtitle": "Beyond code, here is what I am passionate about and what motivates me daily.",
+    "list": [
+      {
+        "title": "Photography",
+        "description": "Capturing moments and working on visual composition."
+      },
+      {
+        "title": "Travel",
+        "description": "Discovering new cultures and inspirations for my projects."
+      },
+      {
+        "title": "Sports",
+        "description": "Regular physical activity to keep a clear and productive mind."
+      },
+      {
+        "title": "Software development",
+        "description": "Design, algorithms and implementation of reliable applications."
+      },
+      {
+        "title": "Cybersecurity & Algorithms",
+        "description": "Data security, cryptography and system optimization."
+      },
+      {
+        "title": "Streaming / Photography",
+        "description": "Content creation and photo editing to share my experiences."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "titleHighlight": "Me",
+    "subtitle": "Have a project in mind? Don't hesitate to contact me to discuss it.",
+    "discussTitle": "Let's talk",
+    "discussDescription": "I am always open to new opportunities, collaborations and discussions. Whether for a project, a question or just to say hello!",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "locationLabel": "Location",
+    "nameLabel": "Full name",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "your@email.com",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Your message...",
+    "sendButton": "Send message",
+    "successMessage": "Message sent successfully!"
+  },
+  "footer": {
+    "madeWith": "Made with",
+    "by": "by"
+  }
+}
