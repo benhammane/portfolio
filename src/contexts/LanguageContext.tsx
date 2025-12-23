@@ -2,11 +2,12 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { translations } from '@/lib/translations';
 
 type Language = 'fr' | 'en';
+type TranslationValue = string | string[] | Record<string, any>;
 
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: string) => any;
+  t: (key: string) => TranslationValue;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -21,7 +22,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     localStorage.setItem('language', language);
   }, [language]);
 
-  const t = (key: string): any => {
+  const t = (key: string): TranslationValue => {
     const keys = key.split('.');
     let value: any = translations[language];
     

@@ -61,7 +61,7 @@ export const translations = {
         },
         shmupGame: {
           title: 'Jeu vidéo (shmup)',
-          description: 'Conception et programmation d\'un jeu de type shoot – em up en Java.'
+          description: 'Conception et programmation d\'un jeu de type shoot \'em up en Java.'
         },
         bikeRental: {
           title: 'Système de location de vélos',
@@ -79,7 +79,7 @@ export const translations = {
     },
     experience: {
       title: 'Mes',
-      titleHighlight: 'Experience',
+      titleHighlight: 'Expériences',
       subtitle: 'Mon évolution professionnelle à travers différentes entreprises et projets.',
       items: {
         techLink: {
