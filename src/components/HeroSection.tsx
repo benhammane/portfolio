@@ -1,6 +1,7 @@
 import { ArrowDown, Github, Linkedin, Mail, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useClickSound } from '@/hooks/useClickSound';
+import { useLanguage } from '@/contexts/LanguageContext';
 import photo from '@/assert/photoPORTFOLIO.jpeg';
 import cvFile from '@/assert/CVBENHAMMANE.pdf';
 import { toast } from '@/hooks/use-toast';
@@ -8,6 +9,7 @@ import useParallax from '@/hooks/useParallax';
 
 const HeroSection = () => {
   const { playClick } = useClickSound();
+  const { t } = useLanguage();
 
   const handleClick = (callback?: () => void) => {
     playClick();
@@ -27,9 +29,9 @@ const HeroSection = () => {
       a.click();
       document.body.removeChild(a);
 
-      toast({ title: 'Téléchargement', description: 'Votre CV a été téléchargé.' });
+      toast({ title: t('hero.downloadToast'), description: t('hero.downloadSuccess') });
     } catch (e) {
-      toast({ title: 'Erreur', description: 'Impossible de télécharger le CV.' });
+      toast({ title: t('hero.downloadError'), description: t('hero.downloadErrorMessage') });
     }
   };
 
@@ -53,7 +55,7 @@ const HeroSection = () => {
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden glow animate-pulse-glow">
               <img
                 src={photo}
-                alt="Photo d'Amine Benhammane"
+                alt={t('hero.photoAlt')}
                 className="w-full h-full object-cover rounded-full ring-4 ring-primary/20 shadow-lg"
                 style={{ objectPosition: '80% 15%' }}
               />
@@ -69,7 +71,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-primary font-medium mb-4"
             >
-              Bonjour, je suis
+              {t('hero.greeting')}
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -77,7 +79,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="font-display text-4xl md:text-6xl font-bold mb-6"
             >
-              <span className="text-gradient">Amine Benhammane</span>
+              <span className="text-gradient">{t('hero.name')}</span>
             </motion.h1>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -85,7 +87,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="text-xl md:text-2xl text-muted-foreground mb-6"
             >
-              Développeur Full-Stack & Étudiant M1 MIAGE
+              {t('hero.title')}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -93,8 +95,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="text-muted-foreground leading-relaxed mb-8"
             >
-              Curieux et rigoureux, je me spécialise dans le développement web et la conception d'applications innovantes.
-              Je suis à la recherche d'une alternance en développement pour contribuer à des projets concrets et approfondir mes compétences techniques.
+              {t('hero.description')}
             </motion.p>
 
             {/* Action Buttons */}
@@ -109,14 +110,14 @@ const HeroSection = () => {
                 onClick={() => handleClick()}
                 className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-smooth hover-lift glow-sm active:scale-95"
               >
-                Me contacter
+                {t('hero.contactMe')}
               </a>
               <button
                 onClick={handleDownloadCV}
                 className="glass px-6 py-3 rounded-lg font-medium flex items-center gap-2 hover:bg-primary/10 transition-smooth hover-lift glow-sm active:scale-95"
               >
                 <Download size={18} />
-                Télécharger CV
+                {t('hero.downloadCV')}
               </button>
             </motion.div>
 

@@ -2,42 +2,44 @@ import { Camera, Gamepad2, Music, Plane, BookOpen, Coffee } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import { useClickSound } from '@/hooks/useClickSound';
-
-const interests = [
-  {
-    icon: Camera,
-    title: 'Photographie',
-    description: 'Capturer des moments et travailler la composition visuelle.',
-  },
-  {
-    icon: Plane,
-    title: 'Voyages',
-    description: 'Découvrir de nouvelles cultures et inspirations pour mes projets.',
-  },
-  {
-    icon: Gamepad2,
-    title: 'Sport',
-    description: 'Activité physique régulière pour garder l\'esprit clair et productif.',
-  },
-  {
-    icon: Coffee,
-    title: 'Développement logiciel',
-    description: 'Conception, algorithmes et implémentation d\'applications fiables.',
-  },
-  {
-    icon: BookOpen,
-    title: 'Cybersécurité & Algorithmes',
-    description: 'Sécurité des données, cryptographie et optimisation des systèmes.',
-  },
-  {
-    icon: Music,
-    title: 'Streaming / Photographie',
-    description: 'Création de contenu et retouche photo pour partager mes expériences.',
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const InterestsSection = () => {
   const { playClick } = useClickSound();
+  const { t } = useLanguage();
+
+  const interests = [
+    {
+      icon: Camera,
+      title: t('interests.items.photography.title'),
+      description: t('interests.items.photography.description'),
+    },
+    {
+      icon: Plane,
+      title: t('interests.items.travel.title'),
+      description: t('interests.items.travel.description'),
+    },
+    {
+      icon: Gamepad2,
+      title: t('interests.items.sport.title'),
+      description: t('interests.items.sport.description'),
+    },
+    {
+      icon: Coffee,
+      title: t('interests.items.development.title'),
+      description: t('interests.items.development.description'),
+    },
+    {
+      icon: BookOpen,
+      title: t('interests.items.cybersecurity.title'),
+      description: t('interests.items.cybersecurity.description'),
+    },
+    {
+      icon: Music,
+      title: t('interests.items.streaming.title'),
+      description: t('interests.items.streaming.description'),
+    },
+  ];
 
   return (
     <section id="interests" className="section-padding relative">
@@ -48,10 +50,10 @@ const InterestsSection = () => {
         <AnimatedSection>
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              Centres <span className="text-gradient">d'intérêt</span>
+              {t('interests.title')} <span className="text-gradient">{t('interests.titleHighlight')}</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Au-delà du code, voici ce qui me passionne et me motive au quotidien.
+              {t('interests.subtitle')}
             </p>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-cyan-400 mx-auto rounded-full mt-4" />
           </div>

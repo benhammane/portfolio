@@ -2,16 +2,18 @@ import { Code, Palette, Zap, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import { useClickSound } from '@/hooks/useClickSound';
-
-const skills = [
-  { icon: Code, label: 'Frontend', techs: 'React, Vue, TypeScript' },
-  { icon: Zap, label: 'Backend', techs: 'Node.js, Python, SQL' },
-  { icon: Palette, label: 'Design', techs: 'Figma, UI/UX' },
-  { icon: Globe, label: 'DevOps', techs: 'Docker, AWS, CI/CD' },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const AboutSection = () => {
   const { playClick } = useClickSound();
+  const { t } = useLanguage();
+
+  const skills = [
+    { icon: Code, label: t('about.skills.frontend'), techs: t('about.skills.frontendTechs') },
+    { icon: Zap, label: t('about.skills.backend'), techs: t('about.skills.backendTechs') },
+    { icon: Palette, label: t('about.skills.design'), techs: t('about.skills.designTechs') },
+    { icon: Globe, label: t('about.skills.devops'), techs: t('about.skills.devopsTechs') },
+  ];
 
   return (
     <section id="about" className="section-padding relative">
@@ -19,7 +21,7 @@ const AboutSection = () => {
         <AnimatedSection>
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              À propos de <span className="text-gradient">moi</span>
+              {t('about.title')} <span className="text-gradient">{t('about.titleHighlight')}</span>
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-cyan-400 mx-auto rounded-full" />
           </div>
@@ -36,7 +38,7 @@ const AboutSection = () => {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-muted-foreground leading-relaxed text-lg"
               >
-                Étudiant en Master 1 Informatique (MIAGE), je me spécialise dans le développement web et la conception d'applications innovantes. Curieux, rigoureux et motivé, je recherche une alternance en développement pour approfondir mes compétences et contribuer activement à des projets concrets.
+                {t('about.paragraph1')}
               </motion.p>
 
               <motion.p
@@ -46,7 +48,7 @@ const AboutSection = () => {
                 transition={{ duration: 0.6, delay: 0.25 }}
                 className="text-muted-foreground leading-relaxed"
               >
-                J'ai travaillé sur des projets variés : sites web (recettes, e-commerce), applications temps réel (enchères, chat), et jeux en Java. J'utilise des technologies telles que HTML, CSS, JavaScript, PHP (Laravel), MySQL, ainsi que des outils de design comme Figma.
+                {t('about.paragraph2')}
               </motion.p>
 
               <motion.p
@@ -56,7 +58,7 @@ const AboutSection = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-muted-foreground leading-relaxed"
               >
-                Passionné par la qualité logicielle et la cybersécurité, je m'intéresse également aux architectures distribuées, à l'automatisation des tests et à l'expérience utilisateur.
+                {t('about.paragraph3')}
               </motion.p>
             </div>
           </AnimatedSection>

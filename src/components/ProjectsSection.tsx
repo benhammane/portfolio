@@ -2,50 +2,52 @@ import { ExternalLink, Github, Folder } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import { useClickSound } from '@/hooks/useClickSound';
-
-const projects = [
-  {
-    title: 'Site de partage de recettes',
-    description: "Développement d'un site de partage de recettes avec interface interactive et gestion des utilisateurs.",
-    techs: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
-    github: '#',
-    demo: '#',
-  },
-  {
-    title: 'Site e-commerce',
-    description: "Conception d'une boutique en ligne avec gestion des transactions, utilisateurs et catalogue.",
-    techs: ['Laravel', 'PHP', 'JavaScript', 'MySQL'],
-    github: '#',
-    demo: '#',
-  },
-  {
-    title: 'Jeu vidéo (shmup)',
-    description: 'Conception et programmation d\'un jeu de type shoot \u2013 em up en Java.',
-    techs: ['Java', 'LibGDX'],
-    github: '#',
-  },
-  {
-    title: 'Système de location de vélos',
-    description: "Système autonome de location de vélos avec gestion des stations et des locations.",
-    techs: ['Java', 'MySQL', 'UML'],
-    github: '#',
-  },
-  {
-    title: 'Application d\'enchères en temps réel',
-    description: "Application d'enchères en temps réel avec communication via WebSocket et backend Node.js.",
-    techs: ['JavaScript', 'Node.js', 'socket.io', 'WebPack'],
-    github: '#',
-  },
-  {
-    title: 'Railroad Ink (numérique)',
-    description: "Version numérique du jeu multijoueur, gestion réseau et interface interactive.",
-    techs: ['Java', 'Python', 'JavaScript', 'WebSocket'],
-    github: '#',
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ProjectsSection = () => {
   const { playClick } = useClickSound();
+  const { t } = useLanguage();
+
+  const projects = [
+    {
+      title: t('projects.items.recipesSite.title'),
+      description: t('projects.items.recipesSite.description'),
+      techs: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
+      github: '#',
+      demo: '#',
+    },
+    {
+      title: t('projects.items.ecommerceSite.title'),
+      description: t('projects.items.ecommerceSite.description'),
+      techs: ['Laravel', 'PHP', 'JavaScript', 'MySQL'],
+      github: '#',
+      demo: '#',
+    },
+    {
+      title: t('projects.items.shmupGame.title'),
+      description: t('projects.items.shmupGame.description'),
+      techs: ['Java', 'LibGDX'],
+      github: '#',
+    },
+    {
+      title: t('projects.items.bikeRental.title'),
+      description: t('projects.items.bikeRental.description'),
+      techs: ['Java', 'MySQL', 'UML'],
+      github: '#',
+    },
+    {
+      title: t('projects.items.auctionApp.title'),
+      description: t('projects.items.auctionApp.description'),
+      techs: ['JavaScript', 'Node.js', 'socket.io', 'WebPack'],
+      github: '#',
+    },
+    {
+      title: t('projects.items.railroadInk.title'),
+      description: t('projects.items.railroadInk.description'),
+      techs: ['Java', 'Python', 'JavaScript', 'WebSocket'],
+      github: '#',
+    },
+  ];
 
   return (
     <section id="projects" className="section-padding relative">
@@ -56,11 +58,10 @@ const ProjectsSection = () => {
         <AnimatedSection>
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              Mes <span className="text-gradient">Projets</span>
+              {t('projects.title')} <span className="text-gradient">{t('projects.titleHighlight')}</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Une sélection de projets sur lesquels j'ai travaillé, démontrant mes compétences
-              en développement full-stack et ma passion pour la création.
+              {t('projects.subtitle')}
             </p>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-cyan-400 mx-auto rounded-full mt-4" />
           </div>
