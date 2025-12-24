@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useClickSound } from '@/hooks/useClickSound';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
+import ThemeToggle from './ThemeToggle';
 
 const navItems = [
   { labelKey: 'nav.home', href: '#hero' },
@@ -76,6 +77,7 @@ const Navbar = () => {
               </motion.li>
             ))}
           </ul>
+          <ThemeToggle />
           <LanguageSwitcher />
         </div>
 
@@ -120,8 +122,9 @@ const Navbar = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: navItems.length * 0.05 }}
-                className="pt-2 border-t border-border"
+                className="pt-2 border-t border-border flex items-center gap-3"
               >
+                <ThemeToggle />
                 <LanguageSwitcher />
               </motion.li>
             </ul>

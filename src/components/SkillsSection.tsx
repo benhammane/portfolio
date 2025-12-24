@@ -3,22 +3,6 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import AnimatedSection from './AnimatedSection';
 import { useTranslation } from 'react-i18next';
 
-const skills = [
-  'HTML',
-  'CSS',
-  'JavaScript',
-  'React',
-  'PHP (Laravel)',
-  'MySQL',
-  'Java',
-  'Python',
-  'C / C++',
-  'Git',
-  'Figma',
-  'Photoshop',
-  'Montage vidéo',
-];
-
 const SkillPill = ({ name, index }: { name: string; index: number }) => {
   return (
     <motion.div
@@ -36,6 +20,7 @@ const SkillPill = ({ name, index }: { name: string; index: number }) => {
 
 const SkillsSection = () => {
   const { t } = useTranslation();
+  const skills = t('skills.items', { returnObjects: true }) as string[];
 
   return (
     <section id="skills" className="section-padding relative">

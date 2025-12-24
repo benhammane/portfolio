@@ -9,6 +9,12 @@
     "interests": "Intérêts",
     "contact": "Contact"
   },
+  "theme": {
+    "light": "Clair",
+    "dark": "Sombre",
+    "toggleToLight": "Activer le thème clair",
+    "toggleToDark": "Activer le thème sombre"
+  },
   "hero": {
     "greeting": "Bonjour, je suis",
     "name": "Amine Benhammane",
@@ -50,7 +56,22 @@
   "skills": {
     "title": "Mes",
     "titleHighlight": "Compétences",
-    "subtitle": "Technologies et outils que je maîtrise pour créer des applications performantes."
+    "subtitle": "Technologies et outils que je maîtrise pour créer des applications performantes.",
+    "items": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "PHP (Laravel)",
+      "MySQL",
+      "Java",
+      "Python",
+      "C / C++",
+      "Git",
+      "Figma",
+      "Photoshop",
+      "Montage vidéo"
+    ]
   },
   "projects": {
     "title": "Mes",
