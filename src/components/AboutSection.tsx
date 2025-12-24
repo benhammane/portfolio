@@ -2,16 +2,18 @@ import { Code, Palette, Zap, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import { useClickSound } from '@/hooks/useClickSound';
-
-const skills = [
-  { icon: Code, label: 'Frontend', techs: 'React, Vue, TypeScript' },
-  { icon: Zap, label: 'Backend', techs: 'Node.js, Python, SQL' },
-  { icon: Palette, label: 'Design', techs: 'Figma, UI/UX' },
-  { icon: Globe, label: 'DevOps', techs: 'Docker, AWS, CI/CD' },
-];
+import { useTranslation } from 'react-i18next';
 
 const AboutSection = () => {
   const { playClick } = useClickSound();
+  const { t } = useTranslation();
+
+  const skills = [
+    { icon: Code, labelKey: 'about.skills.frontend.label', techsKey: 'about.skills.frontend.techs' },
+    { icon: Zap, labelKey: 'about.skills.backend.label', techsKey: 'about.skills.backend.techs' },
+    { icon: Palette, labelKey: 'about.skills.design.label', techsKey: 'about.skills.design.techs' },
+    { icon: Globe, labelKey: 'about.skills.devops.label', techsKey: 'about.skills.devops.techs' },
+  ];
 
   return (
     <section id="about" className="section-padding relative">
@@ -19,7 +21,7 @@ const AboutSection = () => {
         <AnimatedSection>
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              À propos de <span className="text-gradient">moi</span>
+              {t('about.title')} <span className="text-gradient">{t('about.titleHighlight')}</span>
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-cyan-400 mx-auto rounded-full" />
           </div>
@@ -36,7 +38,7 @@ const AboutSection = () => {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-muted-foreground leading-relaxed text-lg"
               >
-                Étudiant en Master 1 Informatique (MIAGE), je me spécialise dans le développement web et la conception d'applications innovantes. Curieux, rigoureux et motivé, je recherche une alternance en développement pour approfondir mes compétences et contribuer activement à des projets concrets.
+                {t('about.paragraph1')}
               </motion.p>
 
               <motion.p
@@ -46,7 +48,7 @@ const AboutSection = () => {
                 transition={{ duration: 0.6, delay: 0.25 }}
                 className="text-muted-foreground leading-relaxed"
               >
-                J'ai travaillé sur des projets variés : sites web (recettes, e-commerce), applications temps réel (enchères, chat), et jeux en Java. J'utilise des technologies telles que HTML, CSS, JavaScript, PHP (Laravel), MySQL, ainsi que des outils de design comme Figma.
+                {t('about.paragraph2')}
               </motion.p>
 
               <motion.p
@@ -56,7 +58,7 @@ const AboutSection = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-muted-foreground leading-relaxed"
               >
-                Passionné par la qualité logicielle et la cybersécurité, je m'intéresse également aux architectures distribuées, à l'automatisation des tests et à l'expérience utilisateur.
+                {t('about.paragraph3')}
               </motion.p>
             </div>
           </AnimatedSection>
@@ -64,7 +66,7 @@ const AboutSection = () => {
           {/* Skills Grid */}
           <div className="grid grid-cols-2 gap-4">
             {skills.map((skill, index) => (
-              <AnimatedSection key={skill.label} delay={0.3 + index * 0.1}>
+              <AnimatedSection key={skill.labelKey} delay={0.3 + index * 0.1}>
                 <motion.div
                   whileHover={{ scale: 1.05, y: -5 }}
                   whileTap={{ scale: 0.98 }}
@@ -72,8 +74,8 @@ const AboutSection = () => {
                   className="glass rounded-xl p-6 cursor-pointer group"
                 >
                   <skill.icon className="w-10 h-10 text-primary mb-4 group-hover:scale-110 transition-transform" />
-                  <h3 className="font-display font-semibold text-lg mb-2">{skill.label}</h3>
-                  <p className="text-muted-foreground text-sm">{skill.techs}</p>
+                  <h3 className="font-display font-semibold text-lg mb-2">{t(skill.labelKey)}</h3>
+                  <p className="text-muted-foreground text-sm">{t(skill.techsKey)}</p>
                 </motion.div>
               </AnimatedSection>
             ))}

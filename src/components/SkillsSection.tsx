@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import AnimatedSection from './AnimatedSection';
+import { useTranslation } from 'react-i18next';
 
 const skills = [
   'HTML',
@@ -34,6 +35,8 @@ const SkillPill = ({ name, index }: { name: string; index: number }) => {
 };
 
 const SkillsSection = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="skills" className="section-padding relative">
       <div className="absolute top-0 right-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
@@ -42,10 +45,10 @@ const SkillsSection = () => {
         <AnimatedSection>
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              Mes <span className="text-gradient">Compétences</span>
+              {t('skills.title')} <span className="text-gradient">{t('skills.titleHighlight')}</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Technologies et outils que je maîtrise pour créer des applications performantes.
+              {t('skills.subtitle')}
             </p>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-cyan-400 mx-auto rounded-full mt-4" />
           </div>
