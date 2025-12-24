@@ -9,6 +9,12 @@
     "interests": "Interests",
     "contact": "Contact"
   },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "toggleToLight": "Switch to light theme",
+    "toggleToDark": "Switch to dark theme"
+  },
   "hero": {
     "greeting": "Hello, I'm",
     "name": "Amine Benhammane",
@@ -50,7 +56,22 @@
   "skills": {
     "title": "My",
     "titleHighlight": "Skills",
-    "subtitle": "Technologies and tools I master to create high-performance applications."
+    "subtitle": "Technologies and tools I master to create high-performance applications.",
+    "items": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "PHP (Laravel)",
+      "MySQL",
+      "Java",
+      "Python",
+      "C / C++",
+      "Git",
+      "Figma",
+      "Photoshop",
+      "Video editing"
+    ]
   },
   "projects": {
     "title": "My",
