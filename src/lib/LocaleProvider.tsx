@@ -139,6 +139,8 @@ const translations: Record<Locale, Record<string, string>> = {
         form_message_placeholder: 'Votre message...',
         form_submit: 'Envoyer le message',
         toast_message_sent: 'Message envoyé avec succès !',
+        toast_message_error: "Erreur lors de l'envoi du message. Veuillez réessayer.",
+        form_sending: 'Envoi en cours...',
     },
     en: {
         toast_download: 'Your CV has been downloaded.',
@@ -276,6 +278,8 @@ const translations: Record<Locale, Record<string, string>> = {
         form_message_placeholder: 'Your message...',
         form_submit: 'Send message',
         toast_message_sent: 'Message sent successfully!',
+        toast_message_error: 'Error sending message. Please try again.',
+        form_sending: 'Sending...',
     },
 };
 
