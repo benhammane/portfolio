@@ -5,6 +5,7 @@ import AnimatedSection from './AnimatedSection';
 import { useClickSound } from '@/hooks/useClickSound';
 import { toast } from 'sonner';
 import { useLocale } from '@/lib/LocaleProvider';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
   const { playClick } = useClickSound();
@@ -14,12 +15,53 @@ const ContactSection = () => {
     email: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     playClick();
-    toast.success(t('toast_message_sent'));
-    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(true);
+
+    // EmailJS Configuration
+    // To use this form, you need to:
+    // 1. Create an account on https://www.emailjs.com/
+    // 2. Create an Email Service (e.g., Gmail, Outlook)
+    // 3. Create an Email Template with variables: {{from_name}}, {{from_email}}, {{message}}, {{to_email}}
+    // 4. Set the environment variables:
+    //    - VITE_EMAILJS_SERVICE_ID: Your EmailJS service ID
+    //    - VITE_EMAILJS_TEMPLATE_ID: Your EmailJS template ID
+    //    - VITE_EMAILJS_PUBLIC_KEY: Your EmailJS public key (safe to expose)
+    //    - VITE_CONTACT_EMAIL: The email address to receive messages
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    const toEmail = import.meta.env.VITE_CONTACT_EMAIL;
+
+    // Validate required environment variables
+    if (!serviceId || !templateId || !publicKey || !toEmail) {
+      console.error('EmailJS configuration is missing. Please set VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, VITE_EMAILJS_PUBLIC_KEY, and VITE_CONTACT_EMAIL environment variables.');
+      toast.error(t('toast_message_error'));
+      setIsSubmitting(false);
+      return;
+    }
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+      to_email: toEmail,
+    };
+
+    try {
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      toast.success(t('toast_message_sent'));
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast.error(t('toast_message_error'));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -86,7 +128,6 @@ const ContactSection = () => {
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     onFocus={playClick}
                     className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                    placeholder="Votre nom"
                     placeholder={t('form_name_placeholder')}
                     required
                   />
@@ -126,12 +167,13 @@ const ContactSection = () => {
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity glow-sm"
+                  disabled={isSubmitting}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity glow-sm disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {t('form_submit')}
-                  <Send size={18} />
+                  {isSubmitting ? t('form_sending') : t('form_submit')}
+                  <Send size={18} className={isSubmitting ? 'animate-pulse' : ''} />
                 </motion.button>
               </div>
             </form>
