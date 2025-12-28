@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import { useClickSound } from '@/hooks/useClickSound';
 import { toast } from 'sonner';
-import { useTranslation } from 'react-i18next';
+import { useLocale } from '@/lib/LocaleProvider';
 
 const ContactSection = () => {
   const { playClick } = useClickSound();
-  const { t } = useTranslation();
+  const { t } = useLocale();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,7 +18,7 @@ const ContactSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     playClick();
-    toast.success(t('contact.successMessage'));
+    toast.success(t('toast_message_sent'));
     setFormData({ name: '', email: '', message: '' });
   };
 
@@ -28,10 +28,10 @@ const ContactSection = () => {
         <AnimatedSection>
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              {t('contact.title')} <span className="text-gradient">{t('contact.titleHighlight')}</span>
+              {t('contact_title').split(' ')[0]} <span className="text-gradient">{t('contact_title').split(' ').slice(1).join(' ')}</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t('contact.subtitle')}
+              {t('contact_sub')}
             </p>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-cyan-400 mx-auto rounded-full mt-4" />
           </div>
@@ -42,17 +42,15 @@ const ContactSection = () => {
           <AnimatedSection delay={0.2}>
             <div className="space-y-8">
               <div>
-                <h3 className="font-display text-2xl font-semibold mb-6">{t('contact.discussTitle')}</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {t('contact.discussDescription')}
-                </p>
+                <h3 className="font-display text-2xl font-semibold mb-6">{t('contact_discuss_title')}</h3>
+                <p className="text-muted-foreground leading-relaxed">{t('contact_discuss_paragraph')}</p>
               </div>
 
               <div className="space-y-4">
                 {[
-                  { icon: Mail, label: t('contact.emailLabel'), value: 'benhammanemedamine@gmail.com' },
-                  { icon: Phone, label: t('contact.phoneLabel'), value: '+33 6 59 67 88 46' },
-                  { icon: MapPin, label: t('contact.locationLabel'), value: 'Lille, France' },
+                  { icon: Mail, label: t('contact_email_label'), value: 'benhammanemedamine@gmail.com' },
+                  { icon: Phone, label: t('contact_phone_label'), value: '+33 6 59 67 88 46' },
+                  { icon: MapPin, label: t('contact_location_label'), value: 'Lille, France' },
                 ].map((item, index) => (
                   <motion.div
                     key={item.label}
@@ -79,7 +77,7 @@ const ContactSection = () => {
               <div className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    {t('contact.nameLabel')}
+                    {t('form_name_label')}
                   </label>
                   <input
                     type="text"
@@ -88,14 +86,15 @@ const ContactSection = () => {
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     onFocus={playClick}
                     className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                    placeholder={t('contact.namePlaceholder')}
+                    placeholder="Votre nom"
+                    placeholder={t('form_name_placeholder')}
                     required
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    {t('contact.emailLabel')}
+                    {t('contact_email_label')}
                   </label>
                   <input
                     type="email"
@@ -104,14 +103,14 @@ const ContactSection = () => {
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     onFocus={playClick}
                     className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                    placeholder={t('contact.emailPlaceholder')}
+                    placeholder={t('form_email_placeholder')}
                     required
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    {t('contact.messageLabel')}
+                    {t('form_message_placeholder')}
                   </label>
                   <textarea
                     id="message"
@@ -120,7 +119,7 @@ const ContactSection = () => {
                     onFocus={playClick}
                     rows={5}
                     className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
-                    placeholder={t('contact.messagePlaceholder')}
+                    placeholder={t('form_message_placeholder')}
                     required
                   />
                 </div>
@@ -131,7 +130,7 @@ const ContactSection = () => {
                   whileTap={{ scale: 0.98 }}
                   className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity glow-sm"
                 >
-                  {t('contact.sendButton')}
+                  {t('form_submit')}
                   <Send size={18} />
                 </motion.button>
               </div>

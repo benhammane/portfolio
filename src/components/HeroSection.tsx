@@ -4,12 +4,12 @@ import { useClickSound } from '@/hooks/useClickSound';
 import photo from '@/assert/photoPORTFOLIO.jpeg';
 import cvFile from '@/assert/CVBENHAMMANE.pdf';
 import { toast } from '@/hooks/use-toast';
+import { useLocale } from '@/lib/LocaleProvider';
 import useParallax from '@/hooks/useParallax';
-import { useTranslation } from 'react-i18next';
 
 const HeroSection = () => {
   const { playClick } = useClickSound();
-  const { t } = useTranslation();
+  const { t } = useLocale();
 
   const handleClick = (callback?: () => void) => {
     playClick();
@@ -29,9 +29,9 @@ const HeroSection = () => {
       a.click();
       document.body.removeChild(a);
 
-      toast({ title: t('hero.downloadSuccess'), description: t('hero.downloadSuccessDesc') });
+      toast({ title: 'Téléchargement', description: t('toast_download') });
     } catch (e) {
-      toast({ title: t('hero.downloadError'), description: t('hero.downloadErrorDesc') });
+      toast({ title: 'Erreur', description: t('toast_error') });
     }
   };
 
@@ -55,7 +55,7 @@ const HeroSection = () => {
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden glow animate-pulse-glow">
               <img
                 src={photo}
-                alt={t('hero.photoAlt')}
+                alt="Photo d'Amine Benhammane"
                 className="w-full h-full object-cover rounded-full ring-4 ring-primary/20 shadow-lg"
                 style={{ objectPosition: '80% 15%' }}
               />
@@ -71,7 +71,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-primary font-medium mb-4"
             >
-              {t('hero.greeting')}
+              {t('hero_hello')}
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -79,7 +79,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="font-display text-4xl md:text-6xl font-bold mb-6"
             >
-              <span className="text-gradient">{t('hero.name')}</span>
+              <span className="text-gradient">Amine Benhammane</span>
             </motion.h1>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -87,7 +87,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="text-xl md:text-2xl text-muted-foreground mb-6"
             >
-              {t('hero.title')}
+              {t('hero_title_role')}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -95,7 +95,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="text-muted-foreground leading-relaxed mb-8"
             >
-              {t('hero.description')}
+              {t('hero_description')}
             </motion.p>
 
             {/* Action Buttons */}
@@ -110,14 +110,14 @@ const HeroSection = () => {
                 onClick={() => handleClick()}
                 className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-smooth hover-lift glow-sm active:scale-95"
               >
-                {t('hero.contactMe')}
+                {t('hero_cta_contact')}
               </a>
               <button
                 onClick={handleDownloadCV}
                 className="glass px-6 py-3 rounded-lg font-medium flex items-center gap-2 hover:bg-primary/10 transition-smooth hover-lift glow-sm active:scale-95"
               >
                 <Download size={18} />
-                {t('hero.downloadCV')}
+                {t('hero_download_cv')}
               </button>
             </motion.div>
 

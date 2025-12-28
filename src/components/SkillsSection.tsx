@@ -1,7 +1,23 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import AnimatedSection from './AnimatedSection';
-import { useTranslation } from 'react-i18next';
+import { useLocale } from '@/lib/LocaleProvider';
+
+const skills = [
+  'HTML',
+  'CSS',
+  'JavaScript',
+  'React',
+  'PHP (Laravel)',
+  'MySQL',
+  'Java',
+  'Python',
+  'C / C++',
+  'Git',
+  'Figma',
+  'Photoshop',
+  'Montage vidéo',
+];
 
 const SkillPill = ({ name, index }: { name: string; index: number }) => {
   return (
@@ -19,8 +35,7 @@ const SkillPill = ({ name, index }: { name: string; index: number }) => {
 };
 
 const SkillsSection = () => {
-  const { t } = useTranslation();
-  const skills = t('skills.items', { returnObjects: true }) as string[];
+  const { t } = useLocale();
 
   return (
     <section id="skills" className="section-padding relative">
@@ -30,10 +45,10 @@ const SkillsSection = () => {
         <AnimatedSection>
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              {t('skills.title')} <span className="text-gradient">{t('skills.titleHighlight')}</span>
+              {t('skills_title').split(' ')[0]} <span className="text-gradient">{t('skills_title').split(' ').slice(1).join(' ')}</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t('skills.subtitle')}
+              {t('skills_sub')}
             </p>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-cyan-400 mx-auto rounded-full mt-4" />
           </div>

@@ -2,40 +2,79 @@ import { ExternalLink, Github, Folder } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import { useClickSound } from '@/hooks/useClickSound';
-import { useTranslation } from 'react-i18next';
+
+const projects = [
+  {
+    title: 'Site de partage de recettes',
+    description: "Développement d'un site de partage de recettes avec interface interactive et gestion des utilisateurs.",
+    techs: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
+    github: '#',
+    demo: '#',
+  },
+  {
+    title: 'Site e-commerce',
+    description: "Conception d'une boutique en ligne avec gestion des transactions, utilisateurs et catalogue.",
+    techs: ['Laravel', 'PHP', 'JavaScript', 'MySQL'],
+    github: '#',
+    demo: '#',
+  },
+  {
+    title: 'Jeu vidéo (shmup)',
+    description: 'Conception et programmation d\'un jeu de type shoot \u2013 em up en Java.',
+    techs: ['Java', 'LibGDX'],
+    github: '#',
+  },
+  {
+    title: 'Système de location de vélos',
+    description: "Système autonome de location de vélos avec gestion des stations et des locations.",
+    techs: ['Java', 'MySQL', 'UML'],
+    github: '#',
+  },
+  {
+    title: 'Application d\'enchères en temps réel',
+    description: "Application d'enchères en temps réel avec communication via WebSocket et backend Node.js.",
+    techs: ['JavaScript', 'Node.js', 'socket.io', 'WebPack'],
+    github: '#',
+  },
+  {
+    title: 'Railroad Ink (numérique)',
+    description: "Version numérique du jeu multijoueur, gestion réseau et interface interactive.",
+    techs: ['Java', 'Python', 'JavaScript', 'WebSocket'],
+    github: '#',
+  },
+  {
+  title: 'Kanban',
+  description:
+    "Outil visuel de gestion des tâches et du flux de travail sous forme de tableau Kanban. Les tâches sont représentées par des cartes organisées en colonnes (À faire, En cours, Terminé) et déplacées selon leur avancement.",
+  techs: ['JavaScript', 'HTML', 'CSS'],
+  github: '#',
+  demo: '#',
+},
+{
+  title: 'Defi Go',
+  description:
+    "Jeu Android développé avec App Inventor 2 visant à encourager les utilisateurs à se dépasser quotidiennement. Le jeu propose des défis aléatoires (mémoire, tir, flappy bird, énigmes, calcul). Plus le joueur réussit de défis, plus son score augmente et des badges sont débloqués.",
+  techs: ['App Inventor 2', 'Android'],
+  github: '#',
+},
+{
+  title: 'Bubbleti',
+  description:
+    "Système de prise de commande pour salon de bubble tea. Les clients peuvent commander et payer via une borne ou directement à la caisse. Le système inclut également un écran d’affichage indiquant l’état des commandes (en cours / prêtes).",
+  techs: ['JavaScript', 'Node.js', 'MySQL'],
+  github: '#',
+},
+{
+  title: 'Bubbule',
+  description:
+    "Jeu inspiré de Talking Tom dans lequel l’utilisateur interagit avec un dragon virtuel : le nourrir, le laver, l’emmener aux toilettes, le faire dormir et jouer à des mini-jeux. Les points gagnés permettent d’acheter des accessoires pour personnaliser le dragon.",
+  techs: ['Game Design', 'JavaScript'],
+  github: '#',
+},
+];
 
 const ProjectsSection = () => {
   const { playClick } = useClickSound();
-  const { t } = useTranslation();
-
-  const projects = [
-    {
-      techs: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
-      github: '#',
-      demo: '#',
-    },
-    {
-      techs: ['Laravel', 'PHP', 'JavaScript', 'MySQL'],
-      github: '#',
-      demo: '#',
-    },
-    {
-      techs: ['Java', 'LibGDX'],
-      github: '#',
-    },
-    {
-      techs: ['Java', 'MySQL', 'UML'],
-      github: '#',
-    },
-    {
-      techs: ['JavaScript', 'Node.js', 'socket.io', 'WebPack'],
-      github: '#',
-    },
-    {
-      techs: ['Java', 'Python', 'JavaScript', 'WebSocket'],
-      github: '#',
-    },
-  ];
 
   return (
     <section id="projects" className="section-padding relative">
@@ -46,10 +85,11 @@ const ProjectsSection = () => {
         <AnimatedSection>
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              {t('projects.title')} <span className="text-gradient">{t('projects.titleHighlight')}</span>
+              Mes <span className="text-gradient">Projets</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t('projects.subtitle')}
+              Une sélection de projets sur lesquels j'ai travaillé, démontrant mes compétences
+              en développement full-stack et ma passion pour la création.
             </p>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-cyan-400 mx-auto rounded-full mt-4" />
           </div>
@@ -57,7 +97,7 @@ const ProjectsSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <AnimatedSection key={index} delay={index * 0.1}>
+            <AnimatedSection key={project.title} delay={index * 0.1}>
               <motion.div
                 initial={{ opacity: 0, y: 12, scale: 0.98 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -93,10 +133,10 @@ const ProjectsSection = () => {
                 </div>
 
                 <h3 className="font-display font-semibold text-xl mb-3 group-hover:text-primary transition-colors">
-                  {t(`projects.list.${index}.title`)}
+                  {project.title}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                  {t(`projects.list.${index}.description`)}
+                  {project.description}
                 </p>
 
                 <div className="flex flex-wrap gap-2">
