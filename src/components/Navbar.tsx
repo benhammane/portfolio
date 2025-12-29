@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useClickSound } from '@/hooks/useClickSound';
 import { useTheme } from '@/lib/ThemeProvider';
 import { useLocale } from '@/lib/LocaleProvider';
+import ABLogo from '@/assert/ABLogo.jpeg';
 const navItemsBase = [
   { key: 'nav_home', href: '#hero' },
   { key: 'nav_about', href: '#about' },
@@ -49,9 +50,14 @@ const Navbar = () => {
           onClick={handleNavClick}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="font-display font-bold text-xl text-gradient"
+          className="flex items-center gap-2"
         >
-          Portfolio
+          <img
+            src={ABLogo}
+            alt="AB Logo"
+            className="w-8 h-8 rounded-full object-cover"
+          />
+          <span className="font-display font-bold text-xl text-gradient">Portfolio</span>
         </motion.a>
 
         {/* Desktop Navigation */}
