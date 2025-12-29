@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import { useClickSound } from '@/hooks/useClickSound';
 import { useLocale } from '@/lib/LocaleProvider';
+import IlePORTFOLIO from '@/assert/IlePORTFOLIO.png';
 
 const skills = [
   { icon: Code, label: 'Frontend', techs: 'React, Vue, TypeScript' },
@@ -93,7 +94,7 @@ const AboutSection = () => {
             className="mt-16"
           >
             <a
-              href="https://mon-ile-interactive.com"
+              href="https://island-navigator.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
               onClick={playClick}
@@ -118,18 +119,14 @@ const AboutSection = () => {
                   </h3>
                 </div>
 
-                {/* Video Placeholder */}
-                <div className="aspect-video w-full bg-gradient-to-br from-primary/20 via-cyan-500/20 to-primary/30 relative">
+                {/* Cover Image */}
+                <div className="aspect-video w-full relative">
+                  <img
+                    src={IlePORTFOLIO}
+                    alt="Island Navigator Preview"
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                  />
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_30%,_rgba(0,0,0,0.4)_100%)]" />
-                  {/* Video element - replace src with actual video when available */}
-                  <video
-                    className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-300"
-                    muted
-                    loop
-                    playsInline
-                  >
-                    <source src="" type="video/mp4" />
-                  </video>
                 </div>
 
                 {/* Animated border effect */}
