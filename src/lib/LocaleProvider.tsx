@@ -141,6 +141,7 @@ const translations: Record<Locale, Record<string, string>> = {
         toast_message_sent: 'Message envoyé avec succès !',
         toast_message_error: "Erreur lors de l'envoi du message. Veuillez réessayer.",
         form_sending: 'Envoi en cours...',
+        video_cta: 'Découvrez mon portfolio à travers mon île interactive !',
     },
     en: {
         toast_download: 'Your CV has been downloaded.',
@@ -280,6 +281,7 @@ const translations: Record<Locale, Record<string, string>> = {
         toast_message_sent: 'Message sent successfully!',
         toast_message_error: 'Error sending message. Please try again.',
         form_sending: 'Sending...',
+        video_cta: 'Discover my portfolio through my interactive island!',
     },
 };
 

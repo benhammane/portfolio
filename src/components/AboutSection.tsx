@@ -1,4 +1,4 @@
-import { Code, Palette, Zap, Globe } from 'lucide-react';
+import { Code, Palette, Zap, Globe, Play } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import { useClickSound } from '@/hooks/useClickSound';
@@ -82,6 +82,62 @@ const AboutSection = () => {
             ))}
           </div>
         </div>
+
+        {/* Interactive Island Video Section */}
+        <AnimatedSection delay={0.5}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-16"
+          >
+            <a
+              href="https://mon-ile-interactive.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={playClick}
+              className="block group"
+            >
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="relative mx-auto max-w-3xl rounded-2xl overflow-hidden glass glow cursor-pointer"
+              >
+                {/* Catchy Text */}
+                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-gradient-to-t from-black/70 via-black/40 to-transparent">
+                  <motion.div
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    className="mb-4 p-4 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30"
+                  >
+                    <Play className="w-12 h-12 md:w-16 md:h-16 text-primary fill-primary/30" />
+                  </motion.div>
+                  <h3 className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-white text-center px-4 drop-shadow-lg">
+                    {t('video_cta')}
+                  </h3>
+                </div>
+
+                {/* Video Placeholder */}
+                <div className="aspect-video w-full bg-gradient-to-br from-primary/20 via-cyan-500/20 to-primary/30 relative">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_30%,_rgba(0,0,0,0.4)_100%)]" />
+                  {/* Video element - replace src with actual video when available */}
+                  <video
+                    className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-300"
+                    muted
+                    loop
+                    playsInline
+                  >
+                    <source src="" type="video/mp4" />
+                  </video>
+                </div>
+
+                {/* Animated border effect */}
+                <div className="absolute inset-0 rounded-2xl border-2 border-primary/30 group-hover:border-primary/60 transition-colors duration-300 pointer-events-none" />
+              </motion.div>
+            </a>
+          </motion.div>
+        </AnimatedSection>
       </div>
     </section>
   );
