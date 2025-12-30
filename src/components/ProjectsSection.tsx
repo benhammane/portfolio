@@ -12,6 +12,8 @@ import kanbanImg from '@/assert/Kanban.png';
 import defiGoImg from '@/assert/DefiGO.jpeg';
 import bubbletiImg from '@/assert/BubbletiMA.png';
 import bubbleJeuImg from '@/assert/BubbleJEU.png';
+import venteEnchereImg from '@/assert/venteEnchere.png';
+import railroadImg from '@/assert/railroad2.png';
 
 const projects = [
   {
@@ -49,12 +51,14 @@ const projects = [
     description: "Application d'enchères en temps réel avec communication via WebSocket et backend Node.js.",
     techs: ['JavaScript', 'Node.js', 'socket.io', 'WebPack'],
     github: '#',
+    image: venteEnchereImg,
   },
   {
     title: 'Railroad Ink (numérique)',
     description: "Version numérique du jeu multijoueur, gestion réseau et interface interactive.",
     techs: ['Java', 'Python', 'JavaScript', 'WebSocket'],
     github: '#',
+    image: railroadImg,
   },
   {
     title: 'Kanban',
