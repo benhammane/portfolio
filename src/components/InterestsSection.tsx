@@ -1,8 +1,16 @@
-import { Camera, Gamepad2, Music, Plane, BookOpen, Coffee } from 'lucide-react';
+import { Camera, Gamepad2, Music, Plane, BookOpen, Coffee, Video } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import AnimatedSection from './AnimatedSection';
 import { useClickSound } from '@/hooks/useClickSound';
 import { useLocale } from '@/lib/LocaleProvider';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import montageVideo from '@/assert/montagePORTFOLIO.mp4';
 
 const interests = [
   { icon: Camera, titleKey: 'interest_photo_title', descKey: 'interest_photo_desc' },
@@ -11,11 +19,20 @@ const interests = [
   { icon: Coffee, titleKey: 'interest_dev_title', descKey: 'interest_dev_desc' },
   { icon: BookOpen, titleKey: 'interest_book_title', descKey: 'interest_book_desc' },
   { icon: Music, titleKey: 'interest_music_title', descKey: 'interest_music_desc' },
+  { icon: Video, titleKey: 'interest_video_title', descKey: 'interest_video_desc', hasVideo: true },
 ];
 
 const InterestsSection = () => {
   const { playClick } = useClickSound();
   const { t } = useLocale();
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  const handleCardClick = (interest: typeof interests[0]) => {
+    playClick();
+    if (interest.hasVideo) {
+      setIsVideoOpen(true);
+    }
+  };
 
   return (
     <section id="interests" className="section-padding relative">
@@ -37,11 +54,11 @@ const InterestsSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {interests.map((interest, index) => (
-            <AnimatedSection key={interest.title} delay={index * 0.1}>
+            <AnimatedSection key={interest.titleKey} delay={index * 0.1}>
               <motion.div
                 whileHover={{ scale: 1.05, y: -8 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={playClick}
+                onClick={() => handleCardClick(interest)}
                 className="glass rounded-xl p-6 text-center cursor-pointer group"
               >
                 <motion.div
@@ -58,6 +75,26 @@ const InterestsSection = () => {
           ))}
         </div>
       </div>
+
+      {/* Video Modal */}
+      <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
+        <DialogContent className="max-w-4xl w-full p-0 overflow-hidden">
+          <DialogHeader className="p-4">
+            <DialogTitle>{t('interest_video_title')}</DialogTitle>
+          </DialogHeader>
+          <div className="aspect-video w-full">
+            <video
+              src={montageVideo}
+              controls
+              autoPlay
+              className="w-full h-full"
+              aria-label={t('interest_video_title')}
+            >
+              {t('interest_video_not_supported')}
+            </video>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
