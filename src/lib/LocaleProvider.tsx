@@ -43,6 +43,9 @@ const translations: Record<Locale, Record<string, string>> = {
         interest_book_desc: 'Sécurité des données, cryptographie et optimisation des systèmes.',
         interest_music_title: 'Streaming / Photographie',
         interest_music_desc: 'Création de contenu et retouche photo pour partager mes expériences.',
+        interest_video_title: 'Montage Vidéo',
+        interest_video_desc: 'Création et édition de vidéos pour raconter des histoires visuelles.',
+        interest_video_not_supported: 'Votre navigateur ne supporte pas la lecture de vidéos.',
 
         // Projects
         project_kanban_title: 'Kanban',
@@ -183,6 +186,9 @@ const translations: Record<Locale, Record<string, string>> = {
         interest_book_desc: 'Data security, cryptography and system optimization.',
         interest_music_title: 'Streaming / Photography',
         interest_music_desc: 'Content creation and photo editing to share my experiences.',
+        interest_video_title: 'Video Editing',
+        interest_video_desc: 'Creating and editing videos to tell visual stories.',
+        interest_video_not_supported: 'Your browser does not support video playback.',
 
         // Projects
         project_kanban_title: 'Kanban',
