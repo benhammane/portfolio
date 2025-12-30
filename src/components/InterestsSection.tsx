@@ -11,36 +11,39 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import montageVideo from '@/assert/montagePORTFOLIO.mp4';
+import sportVideo from '@/assert/sportPORTFOLIO.mp4';
 
 const interests = [
   { icon: Camera, titleKey: 'interest_photo_title', descKey: 'interest_photo_desc' },
   { icon: Plane, titleKey: 'interest_travel_title', descKey: 'interest_travel_desc' },
-  { icon: Gamepad2, titleKey: 'interest_sport_title', descKey: 'interest_sport_desc' },
+  { icon: Gamepad2, titleKey: 'interest_sport_title', descKey: 'interest_sport_desc', hasVideo: true, video: sportVideo },
   { icon: Coffee, titleKey: 'interest_dev_title', descKey: 'interest_dev_desc' },
   { icon: BookOpen, titleKey: 'interest_book_title', descKey: 'interest_book_desc' },
   { icon: Music, titleKey: 'interest_music_title', descKey: 'interest_music_desc' },
-  { icon: Play, titleKey: 'interest_video_title', descKey: 'interest_video_desc', hasVideo: true },
+  { icon: Play, titleKey: 'interest_video_title', descKey: 'interest_video_desc', hasVideo: true, video: montageVideo },
 ];
 
 const InterestsSection = () => {
   const { playClick } = useClickSound();
   const { t } = useLocale();
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const previewVideoRef = useRef<HTMLVideoElement>(null);
+  const [selectedInterest, setSelectedInterest] = useState<typeof interests[0] | null>(null);
+  const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
 
   useEffect(() => {
-    // Play preview video when component mounts
-    if (previewVideoRef.current) {
-      previewVideoRef.current.play().catch(() => {
-        // Autoplay might be blocked, that's okay
-      });
-    }
+    // Play preview videos when component mounts
+    Object.values(videoRefs.current).forEach(video => {
+      if (video) {
+        video.play().catch(() => {
+          // Autoplay might be blocked, that's okay
+        });
+      }
+    });
   }, []);
 
   const handleCardClick = (interest: typeof interests[0]) => {
     playClick();
     if (interest.hasVideo) {
-      setIsVideoOpen(true);
+      setSelectedInterest(interest);
     }
   };
 
@@ -75,8 +78,8 @@ const InterestsSection = () => {
                   {/* Video Preview */}
                   <div className="relative aspect-video w-full">
                     <video
-                      ref={previewVideoRef}
-                      src={montageVideo}
+                      ref={(el) => { videoRefs.current[interest.titleKey] = el; }}
+                      src={interest.video}
                       muted
                       loop
                       playsInline
@@ -86,7 +89,7 @@ const InterestsSection = () => {
                     <div 
                       className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/20 transition-colors"
                       role="button"
-                      aria-label={t('interest_video_title')}
+                      aria-label={t(interest.titleKey)}
                     >
                       <motion.div
                         whileHover={{ scale: 1.1 }}
@@ -125,18 +128,18 @@ const InterestsSection = () => {
       </div>
 
       {/* Video Modal */}
-      <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
+      <Dialog open={!!selectedInterest} onOpenChange={(open) => !open && setSelectedInterest(null)}>
         <DialogContent className="max-w-4xl w-full p-0 overflow-hidden">
           <DialogHeader className="p-4">
-            <DialogTitle>{t('interest_video_title')}</DialogTitle>
+            <DialogTitle>{selectedInterest ? t(selectedInterest.titleKey) : ''}</DialogTitle>
           </DialogHeader>
           <div className="aspect-video w-full">
             <video
-              src={montageVideo}
+              src={selectedInterest?.video}
               controls
               autoPlay
               className="w-full h-full"
-              aria-label={t('interest_video_title')}
+              aria-label={selectedInterest ? t(selectedInterest.titleKey) : ''}
             >
               {t('interest_video_not_supported')}
             </video>
