@@ -12,14 +12,16 @@ import {
 } from '@/components/ui/dialog';
 import montageVideo from '@/assert/montagePORTFOLIO.mp4';
 import sportVideo from '@/assert/sportPORTFOLIO.mp4';
+import voyageVideo from '@/assert/voyagePORTFOLIO4.mp4';
+import streamingVideo from '@/assert/streamingPORTFOLIO.mp4';
 
 const interests = [
   { icon: Camera, titleKey: 'interest_photo_title', descKey: 'interest_photo_desc' },
-  { icon: Plane, titleKey: 'interest_travel_title', descKey: 'interest_travel_desc' },
+  { icon: Plane, titleKey: 'interest_travel_title', descKey: 'interest_travel_desc', hasVideo: true, video: voyageVideo },
   { icon: Gamepad2, titleKey: 'interest_sport_title', descKey: 'interest_sport_desc', hasVideo: true, video: sportVideo },
   { icon: Coffee, titleKey: 'interest_dev_title', descKey: 'interest_dev_desc' },
   { icon: BookOpen, titleKey: 'interest_book_title', descKey: 'interest_book_desc' },
-  { icon: Music, titleKey: 'interest_music_title', descKey: 'interest_music_desc' },
+  { icon: Music, titleKey: 'interest_music_title', descKey: 'interest_music_desc', hasVideo: true, video: streamingVideo },
   { icon: Play, titleKey: 'interest_video_title', descKey: 'interest_video_desc', hasVideo: true, video: montageVideo },
 ];
 
