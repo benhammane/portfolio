@@ -196,24 +196,12 @@
     "subtitle": "Beyond code, here is what I am passionate about and what motivates me daily.",
     "list": [
       {
-        "title": "Photography",
-        "description": "Capturing moments and working on visual composition."
-      },
-      {
         "title": "Travel",
         "description": "Discovering new cultures and inspirations for my projects."
       },
       {
         "title": "Sports",
         "description": "Regular physical activity to keep a clear and productive mind."
-      },
-      {
-        "title": "Software development",
-        "description": "Design, algorithms and implementation of reliable applications."
-      },
-      {
-        "title": "Cybersecurity & Algorithms",
-        "description": "Data security, cryptography and system optimization."
       },
       {
         "title": "Streaming / Photography",
