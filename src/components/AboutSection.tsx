@@ -11,7 +11,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import IlePORTFOLIO from '@/assert/IlePORTFOLIO.png';
-import portfolioVideo from '@/assert/videoPORTFOLIOAB.mp4';
+import portfolioVideo from '@/assert/videoportfolioAB9.mp4';
 
 const skills = [
   { icon: Code, label: 'Frontend', techs: 'React, Vue, TypeScript' },
