@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { LocaleProvider } from "@/lib/LocaleProvider";
 import { ThemeProvider } from "@/lib/ThemeProvider";
+import ChatBot from "./components/ChatBot";
 
 const queryClient = new QueryClient();
 
@@ -17,13 +18,16 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
+
+          <ChatBot />
+
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
+
         </TooltipProvider>
       </ThemeProvider>
     </LocaleProvider>
