@@ -1,56 +1,44 @@
-import OpenAI from "openai";
-
 export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
+  const apiKey = process.env.OPENROUTER_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ error: "OPENROUTER_API_KEY is missing" });
+  }
+
   try {
-    // 1) Vérif clé
-    const key = process.env.OPENAI_API_KEY;
-    if (!key) {
-      return res.status(500).json({ error: "OPENAI_API_KEY manquante" });
-    }
+    const { message } = req.body;
+    if (!message) return res.status(400).json({ error: "Message missing" });
 
-    // 2) Vérif message
-    const { message } = req.body || {};
-    if (!message || typeof message !== "string") {
-      return res.status(400).json({ error: "Message manquant" });
-    }
-
-    // 3) Client OpenAI (créé ici pour éviter certains soucis)
-    const client = new OpenAI({ apiKey: key });
-
-    console.log("Calling OpenAI…", { length: message.length });
-
-    const completion = await client.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "system",
-          content:
-            "Tu es le chatbot du portfolio d’un étudiant en M1 MIAGE passionné par le développement. Réponds de façon pro, courte et utile.",
-        },
+    const payload = {
+      model: "mistral-small", // modèle gratuit
+      input: [
+        { role: "system", content: "Assistant pour portfolio." },
         { role: "user", content: message },
       ],
+    };
+
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify(payload),
     });
 
-    const reply = completion.choices?.[0]?.message?.content?.trim();
-
-    if (!reply) {
-      return res.status(500).json({ error: "Réponse vide du modèle" });
+    if (!response.ok) {
+      const err = await response.text();
+      return res.status(500).json({ error: err });
     }
 
-    return res.status(200).json({ reply });
-  } catch (err: any) {
-    // Erreur OpenAI lisible
-    console.error("API ERROR:", err?.status, err?.message, err);
+    const data = await response.json();
+    const reply = data?.output?.[0]?.content || "No reply from model.";
 
-    return res.status(500).json({
-      error:
-        err?.message ||
-        "Erreur serveur (voir logs vercel dev)",
-      status: err?.status || 500,
-    });
+    return res.status(200).json({ reply });
+  } catch (e: any) {
+    return res.status(500).json({ error: e.message });
   }
 }
