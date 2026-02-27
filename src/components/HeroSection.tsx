@@ -119,6 +119,15 @@ const HeroSection = () => {
                 <Download size={18} />
                 {t('hero_download_cv')}
               </button>
+              <a
+                href="https://adamine.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => handleClick()}
+                className="border-2 border-orange-500 text-orange-500 px-6 py-3 rounded-lg font-medium hover:bg-orange-500 hover:text-white transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md hover:shadow-lg"
+              >
+                💼 Activité Freelance
+              </a>
             </motion.div>
 
             {/* Social Links */}

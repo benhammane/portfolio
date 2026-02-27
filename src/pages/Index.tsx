@@ -9,6 +9,7 @@ import InterestsSection from '@/components/InterestsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
+// import Brain3D from "@/components/Brain3D";
 
 const Index = () => {
   return (
@@ -26,6 +27,7 @@ const Index = () => {
         <ExperienceSection />
         <ParcoursSection />
         <InterestsSection />
+
         <ContactSection />
       </motion.main>
       <Footer />

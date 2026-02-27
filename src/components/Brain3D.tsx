@@ -1,8 +1,8 @@
 // import * as THREE from "three";
-// import { Canvas, useFrame } from "@react-three/fiber";
-// import { OrbitControls, Text, Html } from "@react-three/drei";
-// import { EffectComposer, Bloom } from "@react-three/postprocessing";
 // import React, { useMemo, useRef, useState } from "react";
+// import { Canvas, useFrame } from "@react-three/fiber";
+// import { OrbitControls, Text, Html, Line } from "@react-three/drei";
+// import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
 // type NodeId = string;
 
@@ -53,58 +53,60 @@
 // function SkillGraph() {
 //     const [hovered, setHovered] = useState<SkillNode | null>(null);
 
-//     // Petits points flottants (ambiance)
+//     // Particules (ambiance)
 //     const particles = useMemo(() => {
-//         const pts = [];
+//         const pts: number[] = [];
 //         for (let i = 0; i < 220; i++) {
-//             pts.push((Math.random() - 0.5) * 10, (Math.random() - 0.5) * 6, (Math.random() - 0.5) * 10);
+//             pts.push(
+//                 (Math.random() - 0.5) * 10,
+//                 (Math.random() - 0.5) * 6,
+//                 (Math.random() - 0.5) * 10
+//             );
 //         }
 //         return new Float32Array(pts);
 //     }, []);
 
 //     return (
 //         <>
-//             {/* Fond "space" */}
+//             {/* Fond */}
 //             <color attach="background" args={["#05070f"]} />
 
 //             {/* Particules */}
 //             <points>
 //                 <bufferGeometry>
-//                     <bufferAttribute attach="attributes-position" array={particles} count={particles.length / 3} itemSize={3} />
+//                     <bufferAttribute
+//                         attach="attributes-position"
+//                         array={particles}
+//                         count={particles.length / 3}
+//                         itemSize={3}
+//                     />
 //                 </bufferGeometry>
 //                 <pointsMaterial size={0.02} color="#9ca3af" transparent opacity={0.35} />
 //             </points>
 
-//             {/* Liens */}
+//             {/* Liens (FIX: utiliser <Line /> de drei) */}
 //             {LINKS.map((l, idx) => {
 //                 const a = NODES.find((n) => n.id === l.from)!;
 //                 const b = NODES.find((n) => n.id === l.to)!;
 
-//                 const points = useMemo(
-//                     () => [new THREE.Vector3(...a.position), new THREE.Vector3(...b.position)],
-//                     // eslint-disable-next-line react-hooks/exhaustive-deps
-//                     [a.id, b.id]
-//                 );
-
-//                 const geom = useMemo(() => new THREE.BufferGeometry().setFromPoints(points), [points]);
-
 //                 return (
-//                     <line key={idx} geometry={geom}>
-//                         <lineBasicMaterial color="#94a3b8" transparent opacity={0.35} />
-//                     </line>
+//                     <Line
+//                         key={idx}
+//                         points={[a.position, b.position]}
+//                         color="#94a3b8"
+//                         transparent
+//                         opacity={0.35}
+//                         lineWidth={1}
+//                     />
 //                 );
 //             })}
 
 //             {/* Nodes */}
 //             {NODES.map((n) => (
-//                 <SkillNode3D
-//                     key={n.id}
-//                     node={n}
-//                     onHover={(v) => setHovered(v)}
-//                 />
+//                 <SkillNode3D key={n.id} node={n} onHover={(v) => setHovered(v)} />
 //             ))}
 
-//             {/* Tooltip (2D HTML super lisible) */}
+//             {/* Tooltip */}
 //             {hovered && (
 //                 <Html position={hovered.position} center>
 //                     <div
@@ -139,10 +141,8 @@
 //     const ref = useRef<THREE.Mesh>(null);
 //     const baseColor = useMemo(() => colorByGroup(node.group), [node.group]);
 
-//     // Taille par niveau
 //     const radius = 0.12 + node.level * 0.02;
 
-//     // Animation douce (respiration)
 //     useFrame(({ clock }) => {
 //         const t = clock.getElapsedTime();
 //         if (ref.current) {
@@ -152,11 +152,7 @@
 
 //     return (
 //         <group position={node.position}>
-//             <mesh
-//                 ref={ref}
-//                 onPointerEnter={() => onHover(node)}
-//                 onPointerLeave={() => onHover(null)}
-//             >
+//             <mesh ref={ref} onPointerEnter={() => onHover(node)} onPointerLeave={() => onHover(null)}>
 //                 <sphereGeometry args={[radius, 32, 32]} />
 //                 <meshStandardMaterial
 //                     color={baseColor}
@@ -186,6 +182,7 @@
 //             <Canvas camera={{ position: [0, 0.4, 4.2], fov: 50 }}>
 //                 <ambientLight intensity={0.4} />
 //                 <directionalLight position={[3, 4, 2]} intensity={1.2} />
+
 //                 <SkillGraph />
 
 //                 {/* Wow effect */}
