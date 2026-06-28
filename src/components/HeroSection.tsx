@@ -50,9 +50,8 @@ const HeroSection = () => {
   ];
 
   const stats = [
-    { to: 10, suffix: '+', label: t('stat_projects') },
+    { to: 20, suffix: '+', label: t('stat_projects') },
     { to: 13, suffix: '+', label: t('stat_techs') },
-    { to: 8, suffix: '', label: t('stat_experiences') },
   ];
 
   return (
