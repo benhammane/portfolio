@@ -1,149 +1,93 @@
 import { Briefcase, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
-import AnimatedSection from './AnimatedSection';
 import { useClickSound } from '@/hooks/useClickSound';
 import { useLocale } from '@/lib/LocaleProvider';
+import SectionHeading from '@/components/fx/SectionHeading';
+
+const experiences = [
+  { titleKey: 'exp_frontend_title', companyKey: 'exp_frontend_company', periodKey: 'exp_frontend_period', descKey: 'exp_frontend_desc', highlights: ['exp_frontend_h1', 'exp_frontend_h2', 'exp_frontend_h3'] },
+  { titleKey: 'exp_web_title', companyKey: 'exp_web_company', periodKey: 'exp_web_period', descKey: 'exp_web_desc', highlights: ['exp_web_h1', 'exp_web_h2', 'exp_web_h3'] },
+  { titleKey: 'exp_crepes_title', companyKey: 'exp_crepes_company', periodKey: 'exp_crepes_period', descKey: 'exp_crepes_desc', highlights: ['exp_crepes_h1', 'exp_crepes_h2', 'exp_crepes_h3'] },
+  { titleKey: 'exp_magasinier_title', companyKey: 'exp_magasinier_company', periodKey: 'exp_magasinier_period', descKey: 'exp_magasinier_desc', highlights: ['exp_magasinier_h1', 'exp_magasinier_h2', 'exp_magasinier_h3'] },
+  { titleKey: 'exp_snack_title', companyKey: 'exp_snack_company', periodKey: 'exp_snack_period', descKey: 'exp_snack_desc', highlights: ['exp_snack_h1', 'exp_snack_h2', 'exp_snack_h3'] },
+  { titleKey: 'exp_uber_title', companyKey: 'exp_uber_company', periodKey: 'exp_uber_period', descKey: 'exp_uber_desc', highlights: ['exp_uber_h1', 'exp_uber_h2', 'exp_uber_h3'] },
+  { titleKey: 'exp_security_title', companyKey: 'exp_security_company', periodKey: 'exp_security_period', descKey: 'exp_security_desc', highlights: ['exp_security_h1', 'exp_security_h2', 'exp_security_h3'] },
+  { titleKey: 'exp_rgis_title', companyKey: 'exp_rgis_company', periodKey: 'exp_rgis_period', descKey: 'exp_rgis_desc', highlights: ['exp_rgis_h1', 'exp_rgis_h2', 'exp_rgis_h3'] },
+];
 
 const ExperienceSection = () => {
   const { playClick } = useClickSound();
   const { t } = useLocale();
 
-  const experiences = [
-    {
-      titleKey: 'exp_frontend_title',
-      companyKey: 'exp_frontend_company',
-      periodKey: 'exp_frontend_period',
-      descKey: 'exp_frontend_desc',
-      highlights: ['exp_frontend_h1', 'exp_frontend_h2', 'exp_frontend_h3'],
-    },
-    {
-      titleKey: 'exp_web_title',
-      companyKey: 'exp_web_company',
-      periodKey: 'exp_web_period',
-      descKey: 'exp_web_desc',
-      highlights: ['exp_web_h1', 'exp_web_h2', 'exp_web_h3'],
-    },
-    {
-      titleKey: 'exp_crepes_title',
-      companyKey: 'exp_crepes_company',
-      periodKey: 'exp_crepes_period',
-      descKey: 'exp_crepes_desc',
-      highlights: ['exp_crepes_h1', 'exp_crepes_h2', 'exp_crepes_h3'],
-    },
-    {
-      titleKey: 'exp_magasinier_title',
-      companyKey: 'exp_magasinier_company',
-      periodKey: 'exp_magasinier_period',
-      descKey: 'exp_magasinier_desc',
-      highlights: ['exp_magasinier_h1', 'exp_magasinier_h2', 'exp_magasinier_h3'],
-    },
-    {
-      titleKey: 'exp_snack_title',
-      companyKey: 'exp_snack_company',
-      periodKey: 'exp_snack_period',
-      descKey: 'exp_snack_desc',
-      highlights: ['exp_snack_h1', 'exp_snack_h2', 'exp_snack_h3'],
-    },
-    {
-      titleKey: 'exp_uber_title',
-      companyKey: 'exp_uber_company',
-      periodKey: 'exp_uber_period',
-      descKey: 'exp_uber_desc',
-      highlights: ['exp_uber_h1', 'exp_uber_h2', 'exp_uber_h3'],
-    },
-    {
-      titleKey: 'exp_security_title',
-      companyKey: 'exp_security_company',
-      periodKey: 'exp_security_period',
-      descKey: 'exp_security_desc',
-      highlights: ['exp_security_h1', 'exp_security_h2', 'exp_security_h3'],
-    },
-    {
-      titleKey: 'exp_rgis_title',
-      companyKey: 'exp_rgis_company',
-      periodKey: 'exp_rgis_period',
-      descKey: 'exp_rgis_desc',
-      highlights: ['exp_rgis_h1', 'exp_rgis_h2', 'exp_rgis_h3'],
-    },
-  ];
-
   return (
     <section id="experience" className="section-padding relative">
-      <div className="container mx-auto px-6">
-        <AnimatedSection>
-          <div className="text-center mb-16">
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              {t('experience_title').split(' ')[0]} <span className="text-gradient">{t('experience_title').split(' ').slice(1).join(' ')}</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t('experience_sub')}
-            </p>
-            <div className="w-20 h-1 bg-gradient-to-r from-primary to-cyan-400 mx-auto rounded-full mt-4" />
-          </div>
-        </AnimatedSection>
+      <div className="container relative z-10 mx-auto px-6">
+        <SectionHeading
+          eyebrow="05 — Parcours pro"
+          title="Mes"
+          highlight="Expériences"
+          subtitle={t('experience_sub')}
+        />
 
-        <div className="max-w-3xl mx-auto">
-          {experiences.map((exp, index) => (
-            <AnimatedSection key={index} delay={index * 0.2}>
-              <div className="relative pl-8 pb-12 last:pb-0">
-                {/* Timeline line */}
-                {index !== experiences.length - 1 && (
-                  <motion.div
-                    initial={{ height: 0 }}
-                    whileInView={{ height: '100%' }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                    viewport={{ once: true }}
-                    className="absolute left-[11px] top-10 w-0.5 bg-gradient-to-b from-primary to-transparent"
-                  />
-                )}
+        <div className="relative mx-auto max-w-3xl">
+          {/* Ligne verticale */}
+          <div className="absolute left-[15px] top-2 h-full w-px bg-gradient-to-b from-brand via-brand/40 to-transparent md:left-[19px]" />
 
-                {/* Timeline dot */}
+          <div className="space-y-8">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={exp.titleKey}
+                initial={{ opacity: 0, x: -24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                className="relative pl-12 md:pl-16"
+              >
+                {/* Point */}
                 <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.3 }}
                   viewport={{ once: true }}
-                  className="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary flex items-center justify-center glow-sm"
+                  transition={{ duration: 0.4, delay: index * 0.05 + 0.1, type: 'spring' }}
+                  className="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-brand/15 ring-1 ring-brand/40 md:h-10 md:w-10"
                 >
-                  <Briefcase size={12} className="text-primary-foreground" />
+                  <Briefcase size={14} className="text-brand" />
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 12, scale: 0.995 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.08 }}
-                  whileHover={{ scale: 1.02, x: 10 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ x: 6 }}
                   onClick={playClick}
-                  className="glass rounded-xl p-6 ml-4 cursor-pointer"
+                  className="card-spotlight cursor-pointer rounded-2xl glass p-6"
+                  onMouseMove={(e) => {
+                    const el = e.currentTarget;
+                    const r = el.getBoundingClientRect();
+                    el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+                    el.style.setProperty('--my', `${e.clientY - r.top}px`);
+                  }}
                 >
-                  <div className="flex flex-wrap items-center gap-4 mb-3">
-                    <h3 className="font-display font-semibold text-xl">{t(exp.titleKey)}</h3>
-                    <span className="text-primary font-medium">{t(exp.companyKey)}</span>
+                  <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <h3 className="font-display text-lg font-semibold">{t(exp.titleKey)}</h3>
+                    <span className="font-medium text-brand">{t(exp.companyKey)}</span>
                   </div>
-
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm mb-4">
-                    <Calendar size={14} />
+                  <div className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-secondary/60 px-2.5 py-1 text-xs text-muted-foreground">
+                    <Calendar size={12} />
                     {t(exp.periodKey)}
                   </div>
-
-                  <p className="text-muted-foreground mb-4">{t(exp.descKey)}</p>
-
+                  <p className="mb-4 text-sm leading-relaxed text-muted-foreground">{t(exp.descKey)}</p>
                   <div className="flex flex-wrap gap-2">
-                    {exp.highlights.map((highlightKey) => (
+                    {exp.highlights.map((h) => (
                       <span
-                        key={highlightKey}
-                        className="text-xs px-3 py-1 bg-secondary text-secondary-foreground rounded-full"
+                        key={h}
+                        className="rounded-full border border-border/50 bg-background/40 px-2.5 py-1 text-xs text-muted-foreground"
                       >
-                        {t(highlightKey)}
+                        {t(h)}
                       </span>
                     ))}
                   </div>
                 </motion.div>
-              </div>
-            </AnimatedSection>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

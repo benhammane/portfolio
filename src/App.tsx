@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import { LocaleProvider } from "@/lib/LocaleProvider";
 import { ThemeProvider } from "@/lib/ThemeProvider";
 import ChatBot from "./components/ChatBot";
+import ScrollProgress from "./components/fx/ScrollProgress";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
           <Toaster />
           <Sonner />
 
+          <ScrollProgress />
           <ChatBot />
 
           <BrowserRouter>

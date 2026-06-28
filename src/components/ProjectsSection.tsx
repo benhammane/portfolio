@@ -1,9 +1,11 @@
-import { ExternalLink, Github } from 'lucide-react';
+import { ArrowUpRight, Github } from 'lucide-react';
 import { motion } from 'framer-motion';
-import AnimatedSection from './AnimatedSection';
 import { useClickSound } from '@/hooks/useClickSound';
+import { useLocale } from '@/lib/LocaleProvider';
+import SectionHeading from '@/components/fx/SectionHeading';
+import { staggerContainer, staggerItem } from '@/components/fx/Reveal';
 
-// Import project images
+// Project images
 import foodixImg from '@/assert/foodix.png';
 import jesmoniteImg from '@/assert/jesmoniteEcommerce.jpeg';
 import jeuTirImg from '@/assert/jeuTIR.png';
@@ -18,181 +20,155 @@ import railroadImg from '@/assert/railroad2.png';
 const projects = [
   {
     title: 'Site de partage de recettes',
-    description: "Développement d'un site de partage de recettes avec interface interactive et gestion des utilisateurs.",
+    description: "Site de partage de recettes avec interface interactive et gestion des utilisateurs.",
     techs: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
-    github: '#',
-    demo: '#',
-    image: foodixImg,
+    github: '#', demo: '#', image: foodixImg, featured: true,
   },
   {
     title: 'Site e-commerce',
-    description: "Conception d'une boutique en ligne avec gestion des transactions, utilisateurs et catalogue.",
+    description: "Boutique en ligne avec gestion des transactions, utilisateurs et catalogue.",
     techs: ['Laravel', 'PHP', 'JavaScript', 'MySQL'],
-    github: '#',
-    demo: '#',
-    image: jesmoniteImg,
+    github: '#', demo: '#', image: jesmoniteImg, featured: true,
   },
   {
     title: 'Jeu vidéo (shmup)',
     description: "Conception et programmation d'un jeu de type shoot-em-up en Java.",
-    techs: ['Java', 'LibGDX'],
-    github: '#',
-    image: jeuTirImg,
+    techs: ['Java', 'LibGDX'], github: '#', image: jeuTirImg,
   },
   {
     title: 'Système de location de vélos',
     description: "Système autonome de location de vélos avec gestion des stations et des locations.",
-    techs: ['Java', 'MySQL', 'UML'],
-    github: '#',
-    image: vlilleImg,
+    techs: ['Java', 'MySQL', 'UML'], github: '#', image: vlilleImg,
   },
   {
     title: "Application d'enchères en temps réel",
-    description: "Application d'enchères en temps réel avec communication via WebSocket et backend Node.js.",
-    techs: ['JavaScript', 'Node.js', 'socket.io', 'WebPack'],
-    github: '#',
-    image: venteEnchereImg,
+    description: "Enchères temps réel via WebSocket avec backend Node.js.",
+    techs: ['JavaScript', 'Node.js', 'socket.io', 'WebPack'], github: '#', image: venteEnchereImg,
   },
   {
     title: 'Railroad Ink (numérique)',
     description: "Version numérique du jeu multijoueur, gestion réseau et interface interactive.",
-    techs: ['Java', 'Python', 'JavaScript', 'WebSocket'],
-    github: '#',
-    image: railroadImg,
+    techs: ['Java', 'Python', 'JavaScript', 'WebSocket'], github: '#', image: railroadImg,
   },
   {
     title: 'Kanban',
-    description: "Outil visuel de gestion des tâches et du flux de travail sous forme de tableau Kanban. Les tâches sont représentées par des cartes organisées en colonnes (À faire, En cours, Terminé) et déplacées selon leur avancement.",
-    techs: ['JavaScript', 'HTML', 'CSS'],
-    github: '#',
-    demo: '#',
-    image: kanbanImg,
+    description: "Tableau de gestion des tâches avec cartes déplaçables (À faire, En cours, Terminé).",
+    techs: ['JavaScript', 'HTML', 'CSS'], github: '#', demo: '#', image: kanbanImg,
   },
   {
     title: 'Defi Go',
-    description: "Jeu Android développé avec App Inventor 2 visant à encourager les utilisateurs à se dépasser quotidiennement. Le jeu propose des défis aléatoires (mémoire, tir, flappy bird, énigmes, calcul). Plus le joueur réussit de défis, plus son score augmente et des badges sont débloqués.",
-    techs: ['App Inventor 2', 'Android'],
-    github: '#',
-    image: defiGoImg,
+    description: "Jeu Android (App Inventor 2) à défis aléatoires quotidiens : mémoire, tir, énigmes, calcul.",
+    techs: ['App Inventor 2', 'Android'], github: '#', image: defiGoImg,
   },
   {
     title: 'Bubbleti',
-    description: "Système de prise de commande pour salon de bubble tea. Les clients peuvent commander et payer via une borne ou directement à la caisse. Le système inclut également un écran d'affichage indiquant l'état des commandes (en cours / prêtes).",
-    techs: ['JavaScript', 'Node.js', 'MySQL'],
-    github: '#',
-    image: bubbletiImg,
+    description: "Système de commande pour salon de bubble tea : borne, paiement et affichage des commandes.",
+    techs: ['JavaScript', 'Node.js', 'MySQL'], github: '#', image: bubbletiImg,
   },
   {
     title: 'Bubbule',
-    description: "Jeu inspiré de Talking Tom dans lequel l'utilisateur interagit avec un dragon virtuel : le nourrir, le laver, l'emmener aux toilettes, le faire dormir et jouer à des mini-jeux. Les points gagnés permettent d'acheter des accessoires pour personnaliser le dragon.",
-    techs: ['Game Design', 'JavaScript'],
-    github: '#',
-    image: bubbleJeuImg,
+    description: "Jeu façon Talking Tom : nourrir, laver et faire jouer un dragon virtuel avec des mini-jeux.",
+    techs: ['Game Design', 'JavaScript'], github: '#', image: bubbleJeuImg,
   },
 ];
 
+const handleSpotlight = (e: React.MouseEvent<HTMLElement>) => {
+  const el = e.currentTarget;
+  const rect = el.getBoundingClientRect();
+  el.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+  el.style.setProperty('--my', `${e.clientY - rect.top}px`);
+};
+
 const ProjectsSection = () => {
   const { playClick } = useClickSound();
+  const { t } = useLocale();
 
   return (
     <section id="projects" className="section-padding relative">
-      {/* Background decoration */}
-      <div className="absolute top-1/2 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+      <div className="container relative z-10 mx-auto px-6">
+        <SectionHeading
+          eyebrow="04 — Portfolio"
+          title="Mes"
+          highlight="Projets"
+          subtitle={t('projects_sub')}
+        />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <AnimatedSection>
-          <div className="text-center mb-16">
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              Mes <span className="text-gradient">Projets</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Une sélection de projets sur lesquels j'ai travaillé, démontrant mes compétences
-              en développement full-stack et ma passion pour la création.
-            </p>
-            <div className="w-20 h-1 bg-gradient-to-r from-primary to-cyan-400 mx-auto rounded-full mt-4" />
-          </div>
-        </AnimatedSection>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
+          {projects.map((project) => (
+            <motion.article
+              key={project.title}
+              variants={staggerItem}
+              onMouseMove={handleSpotlight}
+              onClick={playClick}
+              whileHover={{ y: -8 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+              className={`card-spotlight group flex cursor-pointer flex-col overflow-hidden rounded-3xl glass ${
+                project.featured ? 'md:col-span-2 lg:col-span-1' : ''
+              }`}
+            >
+              {/* Image */}
+              <div className="relative h-52 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <AnimatedSection key={project.title} delay={index * 0.1}>
-              <motion.div
-                initial={{ opacity: 0, y: 12, scale: 0.98 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.08 }}
-                whileHover={{ scale: 1.03, y: -8 }}
-                whileTap={{ scale: 0.98 }}
-                className="glass rounded-2xl overflow-hidden h-full group cursor-pointer hover-lift glow-sm ring-1 ring-primary/10 flex flex-col"
-                onClick={playClick}
-              >
-                {/* Project Image */}
-                {project.image ? (
-                  <div className="relative overflow-hidden h-48">
-                    <motion.img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
-                    {/* Glow effect on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-cyan-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                ) : (
-                  <div className="relative h-48 bg-gradient-to-br from-primary/20 via-primary/10 to-cyan-400/20 flex items-center justify-center">
-                    <span className="text-6xl opacity-30">🚀</span>
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-                  </div>
-                )}
-
-                {/* Content */}
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="font-display font-semibold text-xl group-hover:text-primary transition-colors line-clamp-2">
-                      {project.title}
-                    </h3>
-                    <div className="flex gap-2 ml-2 shrink-0">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          onClick={(e) => { e.stopPropagation(); playClick(); }}
-                          className="text-muted-foreground hover:text-primary transition-colors p-1.5 rounded-lg hover:bg-primary/10"
-                        >
-                          <Github size={18} />
-                        </a>
-                      )}
-                      {project.demo && (
-                        <a
-                          href={project.demo}
-                          onClick={(e) => { e.stopPropagation(); playClick(); }}
-                          className="text-muted-foreground hover:text-primary transition-colors p-1.5 rounded-lg hover:bg-primary/10"
-                        >
-                          <ExternalLink size={18} />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {project.techs.map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                {/* Actions au survol */}
+                <div className="absolute right-4 top-4 flex gap-2 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      aria-label="Code source"
+                      onClick={(e) => { e.stopPropagation(); playClick(); }}
+                      className="rounded-full bg-background/80 p-2.5 text-foreground backdrop-blur-md transition-colors hover:bg-brand hover:text-primary-foreground"
+                    >
+                      <Github size={16} />
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      aria-label="Démo"
+                      onClick={(e) => { e.stopPropagation(); playClick(); }}
+                      className="rounded-full bg-background/80 p-2.5 text-foreground backdrop-blur-md transition-colors hover:bg-brand hover:text-primary-foreground"
+                    >
+                      <ArrowUpRight size={16} />
+                    </a>
+                  )}
                 </div>
-              </motion.div>
-            </AnimatedSection>
+              </div>
+
+              {/* Contenu */}
+              <div className="flex flex-grow flex-col p-6">
+                <h3 className="font-display text-lg font-semibold transition-colors group-hover:text-brand">
+                  {project.title}
+                </h3>
+                <p className="mt-2 line-clamp-3 flex-grow text-sm leading-relaxed text-muted-foreground">
+                  {project.description}
+                </p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {project.techs.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-border/60 bg-secondary/50 px-2.5 py-1 text-xs font-medium text-muted-foreground"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
