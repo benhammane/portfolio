@@ -2,8 +2,7 @@ import { Suspense, lazy, useEffect, useRef, useState, Component, ReactNode } fro
 import { Bot } from 'lucide-react';
 import { useReducedMotion } from 'framer-motion';
 
-// Visuel 3D actif : robot Spline (modèle exact demandé).
-// Alternatives R3F maison dispo : './HumanoidModel', './RobotModel', './DroneModel'.
+// Visuel 3D actif : robot Spline.
 const Scene = lazy(() => import('./SplineRobot'));
 
 /** Visuel statique de repli (mobile, reduced-motion, ou si la 3D échoue). */

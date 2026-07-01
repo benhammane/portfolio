@@ -11,16 +11,27 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://amine-portfolio.vercel.app/blog/jeu-video-java-lecons</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://amine-portfolio.vercel.app/blog/react-tailwind-projets-clients</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://amine-portfolio.vercel.app/blog/portfolio-anime-framer-motion</loc>
-    <priority>0.7</priority>
-  </url>
+
+  <!-- Articles existants -->
+  <url><loc>https://amine-portfolio.vercel.app/blog/jeu-video-java-lecons</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/react-tailwind-projets-clients</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/portfolio-anime-framer-motion</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/websocket-encheres-temps-reel</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/typescript-pourquoi-adopter</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/lancer-micro-agence-web-20-ans</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/optimiser-performance-react</loc><priority>0.7</priority></url>
+
+  <!-- Nouveaux articles — orientés clients -->
+  <url><loc>https://amine-portfolio.vercel.app/blog/combien-coute-site-web-2025</loc><priority>0.8</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/site-vitrine-vs-ecommerce</loc><priority>0.8</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/pourquoi-site-web-perd-clients</loc><priority>0.8</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/refonte-site-web-5-signes</loc><priority>0.7</priority></url>
+
+  <!-- Nouveaux articles — techniques / recruteurs -->
+  <url><loc>https://amine-portfolio.vercel.app/blog/seo-bases-developpeur-web</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/nextjs-vs-vite-quand-choisir</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/git-conventions-equipe</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/deployer-react-vercel-guide</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/api-rest-nodejs-bonnes-pratiques</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/accessibilite-web-guide-developpeur</loc><priority>0.7</priority></url>
 </urlset>

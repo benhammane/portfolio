@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { Sparkles, MousePointer2, Cpu, Eye } from 'lucide-react';
 import { useLocale } from '@/lib/LocaleProvider';
 import InteractiveRobot from '@/components/fx/InteractiveRobot';
-import LedStage from '@/components/fx/LedStage';
 
 const RobotSection = () => {
   const { t } = useLocale();
@@ -72,13 +71,7 @@ const RobotSection = () => {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative h-[380px] w-full sm:h-[460px] lg:h-[560px]"
           >
-            {/* halo derrière le robot */}
-            <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-3/15 blur-[100px]" />
-            {/* habillage LED — couche arrière */}
-            <LedStage variant="back" />
             <InteractiveRobot className="h-full w-full" />
-            {/* habillage LED — couche avant */}
-            <LedStage variant="front" />
           </motion.div>
         </div>
       </div>

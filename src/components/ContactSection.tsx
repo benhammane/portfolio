@@ -1,4 +1,5 @@
 import { Mail, MapPin, Phone, Send, Github, Linkedin } from 'lucide-react';
+import { trackContactSubmit, trackSocialClick } from '@/lib/analytics';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useClickSound } from '@/hooks/useClickSound';
@@ -39,6 +40,7 @@ const ContactSection = () => {
 
     try {
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      trackContactSubmit();
       toast.success(t('toast_message_sent'));
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
@@ -56,8 +58,8 @@ const ContactSection = () => {
   ];
 
   const socials = [
-    { icon: Github, href: 'https://github.com/benhammane' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/benhammaneamine/' },
+    { icon: Github, href: 'https://github.com/benhammane', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/benhammaneamine/', label: 'LinkedIn' },
   ];
 
   const inputClass =
@@ -111,13 +113,13 @@ const ContactSection = () => {
             </div>
 
             <div className="mt-6 flex gap-3">
-              {socials.map(({ icon: Icon, href }, i) => (
+              {socials.map(({ icon: Icon, href, label }, i) => (
                 <a
                   key={i}
                   href={href}
                   target="_blank"
                   rel="noreferrer"
-                  onClick={playClick}
+                  onClick={() => { playClick(); trackSocialClick(label); }}
                   className="rounded-xl glass p-3 text-muted-foreground transition-all hover:-translate-y-1 hover:text-brand"
                 >
                   <Icon size={20} />

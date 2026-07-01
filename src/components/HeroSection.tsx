@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ArrowDown, Github, Linkedin, Mail, Download, Briefcase, Sparkles } from 'lucide-react';
+import { LiquidButton } from '@/components/ui/liquid-glass-button';
+import { trackCvDownload, trackSocialClick, trackAgencyClick } from '@/lib/analytics';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useClickSound } from '@/hooks/useClickSound';
 import photo from '@/assert/photoPORTFOLIO.jpeg';
@@ -28,6 +30,7 @@ const HeroSection = () => {
 
   const handleDownloadCV = () => {
     playClick();
+    trackCvDownload();
     try {
       const a = document.createElement('a');
       a.href = cvFile;
@@ -172,25 +175,23 @@ const HeroSection = () => {
               </Magnetic>
 
               <Magnetic>
-                <button
-                  onClick={handleDownloadCV}
-                  className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 font-medium transition-smooth hover:bg-brand/10 active:scale-95"
-                >
+                <LiquidButton variant="ghost" size="md" onClick={handleDownloadCV}>
                   <Download size={18} />
                   {t('hero_download_cv')}
-                </button>
+                </LiquidButton>
               </Magnetic>
 
-              <a
+              <LiquidButton
+                variant="amber"
+                size="md"
                 href="https://adamine.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => handleClick()}
-                className="inline-flex items-center gap-2 rounded-full border border-amber-500/60 px-6 py-3 font-medium text-amber-500 transition-smooth hover:bg-amber-500 hover:text-background active:scale-95"
+                onClick={() => { handleClick(); trackAgencyClick(); }}
               >
                 <Briefcase size={18} />
                 {t('hero_freelance')}
-              </a>
+              </LiquidButton>
             </motion.div>
 
             {/* Réseaux */}
@@ -207,7 +208,7 @@ const HeroSection = () => {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  onClick={() => handleClick()}
+                  onClick={() => { handleClick(); trackSocialClick(label); }}
                   className="rounded-full glass p-3 text-muted-foreground transition-smooth hover:-translate-y-1 hover:text-brand"
                 >
                   <Icon size={20} />

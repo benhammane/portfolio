@@ -1,5 +1,6 @@
 import { ArrowUpRight, Github, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { LiquidButton } from '@/components/ui/liquid-glass-button';
 import { useClickSound } from '@/hooks/useClickSound';
 import { useLocale } from '@/lib/LocaleProvider';
 import SectionHeading from '@/components/fx/SectionHeading';
@@ -165,16 +166,18 @@ const FeaturedProject = ({ project, index }: { project: Featured; index: number 
         </div>
 
         {/* CTA */}
-        <a
+        <LiquidButton
+          variant="brand"
+          size="md"
+          className="mt-8"
           href={link}
           target="_blank"
           rel="noopener noreferrer"
           onClick={playClick}
-          className="mt-8 inline-flex items-center gap-2 rounded-full glass px-6 py-3 font-medium transition-smooth hover:bg-brand/10 hover:text-brand"
         >
           {project.url ? 'Voir le site' : 'Voir sur GitHub'}
-          <ArrowUpRight size={17} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </a>
+          <ArrowUpRight size={17} />
+        </LiquidButton>
       </div>
 
       {/* Mockup */}
