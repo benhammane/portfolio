@@ -14,7 +14,7 @@ const HeroSection = () => {
   const { t } = useLocale();
   const [roleIndex, setRoleIndex] = useState(0);
 
-  const roles = [t('hero_role_1'), t('hero_role_2'), t('hero_role_3'), t('hero_role_4')];
+  const roles = [t('hero_role_1'), t('hero_role_2'), t('hero_role_3'), t('hero_role_4'), t('hero_role_5')];
 
   useEffect(() => {
     const id = setInterval(() => setRoleIndex((i) => (i + 1) % roles.length), 2600);
@@ -60,7 +60,15 @@ const HeroSection = () => {
       className="relative flex min-h-screen items-center justify-center overflow-hidden pt-28 pb-16"
     >
       <div className="container relative z-10 mx-auto px-6">
-        <div className="flex flex-col-reverse items-center gap-14 lg:flex-row lg:justify-between lg:gap-16">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="border-gradient relative mx-auto max-w-6xl rounded-[2.5rem] bg-card/30 px-6 py-12 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.85)] backdrop-blur-2xl sm:px-12 sm:py-14 lg:px-16"
+        >
+          {/* lueur de marque diffuse derrière le cadre */}
+          <div className="pointer-events-none absolute inset-0 rounded-[2.5rem] shadow-[0_0_120px_-30px_hsl(var(--brand)/0.4)]" />
+          <div className="relative flex flex-col-reverse items-center gap-14 lg:flex-row lg:justify-between lg:gap-16">
           {/* ---------- Texte ---------- */}
           <div className="max-w-xl text-center lg:text-left">
             {/* Badge dispo */}
@@ -74,7 +82,11 @@ const HeroSection = () => {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
               </span>
-              <span className="text-muted-foreground">{t('hero_badge_available')}</span>
+              <span className="text-muted-foreground">
+                {t('hero_badge_available')}
+                <span className="mx-1.5 text-border">·</span>
+                <span className="text-foreground/80">{t('hero_badge_extra')}</span>
+              </span>
             </motion.div>
 
             {/* Salutation */}
@@ -145,14 +157,18 @@ const HeroSection = () => {
               className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
             >
               <Magnetic>
-                <a
-                  href="#contact"
-                  onClick={() => handleClick()}
-                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-brand-gradient px-7 py-3 font-medium text-primary-foreground transition-transform active:scale-95 glow-sm"
-                >
-                  <span className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-500 group-hover:translate-x-full" />
-                  {t('hero_cta_contact')}
-                </a>
+                <div className="relative">
+                  {/* aura lumineuse qui respire */}
+                  <div className="absolute -inset-1 rounded-full bg-brand-gradient opacity-70 blur-md animate-pulse" />
+                  <a
+                    href="#contact"
+                    onClick={() => handleClick()}
+                    className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-brand-gradient px-7 py-3 font-medium text-primary-foreground transition-transform active:scale-95"
+                  >
+                    <span className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-500 group-hover:translate-x-full" />
+                    {t('hero_cta_contact')}
+                  </a>
+                </div>
               </Magnetic>
 
               <Magnetic>
@@ -257,7 +273,8 @@ const HeroSection = () => {
               <span className="font-mono text-sm text-brand">{'</>'}</span>
             </motion.div>
           </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
 
       {/* Indicateur de scroll */}

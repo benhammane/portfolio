@@ -1,0 +1,190 @@
+{
+  "_client-CrOieeCM.js": {
+    "file": "assets/client-CrOieeCM.js",
+    "name": "client",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_howler-CicUytZ4.js": {
+    "file": "assets/howler-CicUytZ4.js",
+    "name": "howler",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "index.html": {
+    "file": "assets/app-CaC2VLxD.js",
+    "name": "app",
+    "src": "index.html",
+    "isEntry": true,
+    "dynamicImports": [
+      "_client-CrOieeCM.js",
+      "_client-CrOieeCM.js",
+      "src/components/fx/SplineRobot.tsx"
+    ],
+    "css": [
+      "assets/app-CaNYk8C8.css"
+    ],
+    "assets": [
+      "assets/ABLogo-BerroeTX.jpeg",
+      "assets/photoPORTFOLIO-DPmCKCTs.jpeg",
+      "assets/CVBENHAMMANE-IRIuqQcM.pdf",
+      "assets/IlePORTFOLIO-DOdFVPMr.png",
+      "assets/videoportfolioAB9-BehU4c-P.mp4",
+      "assets/foodix-CL3Z8gnp.png",
+      "assets/jesmoniteEcommerce-BimJgX3A.jpeg",
+      "assets/jeuTIR-CIsiTWHo.png",
+      "assets/Vlille-DVWe0gwx.png",
+      "assets/Kanban-BcbRfMij.png",
+      "assets/DefiGO-D1q092XA.jpeg",
+      "assets/BubbletiMA-FDnnh2Ha.png",
+      "assets/BubbleJEU--xPidpft.png",
+      "assets/venteEnchere-BG1kJ5Mh.png",
+      "assets/railroad2-D-YN35gN.png",
+      "assets/montagePORTFOLIO-1OU4dYRN.mp4",
+      "assets/sportPORTFOLIO-B09R26nU.mp4",
+      "assets/voyagePORTFOLIO4-CDaetBvu.mp4",
+      "assets/streamingPORTFOLIO-ChqmKbvk.mp4"
+    ]
+  },
+  "node_modules/@splinetool/runtime/build/boolean.js": {
+    "file": "assets/boolean-DW615i1i.js",
+    "name": "boolean",
+    "src": "node_modules/@splinetool/runtime/build/boolean.js",
+    "isDynamicEntry": true
+  },
+  "node_modules/@splinetool/runtime/build/gaussian-splat-compression.js": {
+    "file": "assets/gaussian-splat-compression-ro4O0smp.js",
+    "name": "gaussian-splat-compression",
+    "src": "node_modules/@splinetool/runtime/build/gaussian-splat-compression.js",
+    "isDynamicEntry": true
+  },
+  "node_modules/@splinetool/runtime/build/navmesh.js": {
+    "file": "assets/navmesh-BFd9Mv4x.js",
+    "name": "navmesh",
+    "src": "node_modules/@splinetool/runtime/build/navmesh.js",
+    "isDynamicEntry": true
+  },
+  "node_modules/@splinetool/runtime/build/opentype.js": {
+    "file": "assets/opentype-D6jUvuOk.js",
+    "name": "opentype",
+    "src": "node_modules/@splinetool/runtime/build/opentype.js",
+    "isDynamicEntry": true
+  },
+  "node_modules/@splinetool/runtime/build/physics.js": {
+    "file": "assets/physics-BM4kW-A5.js",
+    "name": "physics",
+    "src": "node_modules/@splinetool/runtime/build/physics.js",
+    "isDynamicEntry": true
+  },
+  "node_modules/@splinetool/runtime/build/process.js": {
+    "file": "assets/process-BIZ-YYuM.js",
+    "name": "process",
+    "src": "node_modules/@splinetool/runtime/build/process.js",
+    "isDynamicEntry": true
+  },
+  "node_modules/@splinetool/runtime/build/ui.js": {
+    "file": "assets/ui-C7lJvRaX.js",
+    "name": "ui",
+    "src": "node_modules/@splinetool/runtime/build/ui.js",
+    "isDynamicEntry": true
+  },
+  "src/assert/ABLogo.jpeg": {
+    "file": "assets/ABLogo-BerroeTX.jpeg",
+    "src": "src/assert/ABLogo.jpeg"
+  },
+  "src/assert/BubbleJEU.png": {
+    "file": "assets/BubbleJEU--xPidpft.png",
+    "src": "src/assert/BubbleJEU.png"
+  },
+  "src/assert/BubbletiMA.png": {
+    "file": "assets/BubbletiMA-FDnnh2Ha.png",
+    "src": "src/assert/BubbletiMA.png"
+  },
+  "src/assert/CVBENHAMMANE.pdf": {
+    "file": "assets/CVBENHAMMANE-IRIuqQcM.pdf",
+    "src": "src/assert/CVBENHAMMANE.pdf"
+  },
+  "src/assert/DefiGO.jpeg": {
+    "file": "assets/DefiGO-D1q092XA.jpeg",
+    "src": "src/assert/DefiGO.jpeg"
+  },
+  "src/assert/IlePORTFOLIO.png": {
+    "file": "assets/IlePORTFOLIO-DOdFVPMr.png",
+    "src": "src/assert/IlePORTFOLIO.png"
+  },
+  "src/assert/Kanban.png": {
+    "file": "assets/Kanban-BcbRfMij.png",
+    "src": "src/assert/Kanban.png"
+  },
+  "src/assert/Vlille.png": {
+    "file": "assets/Vlille-DVWe0gwx.png",
+    "src": "src/assert/Vlille.png"
+  },
+  "src/assert/foodix.png": {
+    "file": "assets/foodix-CL3Z8gnp.png",
+    "src": "src/assert/foodix.png"
+  },
+  "src/assert/jesmoniteEcommerce.jpeg": {
+    "file": "assets/jesmoniteEcommerce-BimJgX3A.jpeg",
+    "src": "src/assert/jesmoniteEcommerce.jpeg"
+  },
+  "src/assert/jeuTIR.png": {
+    "file": "assets/jeuTIR-CIsiTWHo.png",
+    "src": "src/assert/jeuTIR.png"
+  },
+  "src/assert/montagePORTFOLIO.mp4": {
+    "file": "assets/montagePORTFOLIO-1OU4dYRN.mp4",
+    "src": "src/assert/montagePORTFOLIO.mp4"
+  },
+  "src/assert/photoPORTFOLIO.jpeg": {
+    "file": "assets/photoPORTFOLIO-DPmCKCTs.jpeg",
+    "src": "src/assert/photoPORTFOLIO.jpeg"
+  },
+  "src/assert/railroad2.png": {
+    "file": "assets/railroad2-D-YN35gN.png",
+    "src": "src/assert/railroad2.png"
+  },
+  "src/assert/sportPORTFOLIO.mp4": {
+    "file": "assets/sportPORTFOLIO-B09R26nU.mp4",
+    "src": "src/assert/sportPORTFOLIO.mp4"
+  },
+  "src/assert/streamingPORTFOLIO.mp4": {
+    "file": "assets/streamingPORTFOLIO-ChqmKbvk.mp4",
+    "src": "src/assert/streamingPORTFOLIO.mp4"
+  },
+  "src/assert/venteEnchere.png": {
+    "file": "assets/venteEnchere-BG1kJ5Mh.png",
+    "src": "src/assert/venteEnchere.png"
+  },
+  "src/assert/videoportfolioAB9.mp4": {
+    "file": "assets/videoportfolioAB9-BehU4c-P.mp4",
+    "src": "src/assert/videoportfolioAB9.mp4"
+  },
+  "src/assert/voyagePORTFOLIO4.mp4": {
+    "file": "assets/voyagePORTFOLIO4-CDaetBvu.mp4",
+    "src": "src/assert/voyagePORTFOLIO4.mp4"
+  },
+  "src/components/fx/SplineRobot.tsx": {
+    "file": "assets/SplineRobot-EywFTQWn.js",
+    "name": "SplineRobot",
+    "src": "src/components/fx/SplineRobot.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ],
+    "dynamicImports": [
+      "node_modules/@splinetool/runtime/build/navmesh.js",
+      "node_modules/@splinetool/runtime/build/physics.js",
+      "node_modules/@splinetool/runtime/build/process.js",
+      "node_modules/@splinetool/runtime/build/boolean.js",
+      "_howler-CicUytZ4.js",
+      "node_modules/@splinetool/runtime/build/opentype.js",
+      "node_modules/@splinetool/runtime/build/ui.js",
+      "node_modules/@splinetool/runtime/build/gaussian-splat-compression.js"
+    ]
+  }
+}

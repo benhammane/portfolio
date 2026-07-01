@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Sun, Moon, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useClickSound } from '@/hooks/useClickSound';
@@ -11,6 +12,7 @@ const navItemsBase = [
   { key: 'nav_about', href: '#about', id: 'about' },
   { key: 'nav_skills', href: '#skills', id: 'skills' },
   { key: 'nav_projects', href: '#projects', id: 'projects' },
+  { key: 'nav_freelance', href: '#freelance', id: 'freelance' },
   { key: 'nav_experience', href: '#experience', id: 'experience' },
   { key: 'nav_parcours', href: '#parcours', id: 'parcours' },
   { key: 'nav_interests', href: '#interests', id: 'interests' },
@@ -101,6 +103,15 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+          <li>
+            <Link
+              to="/blog"
+              onClick={handleNavClick}
+              className="block rounded-full px-3.5 py-1.5 text-sm font-medium text-brand transition-colors hover:bg-brand/10"
+            >
+              {t('nav_blog')}
+            </Link>
+          </li>
         </ul>
 
         {/* Actions */}
@@ -174,6 +185,15 @@ const Navbar = () => {
                   </a>
                 </motion.li>
               ))}
+              <motion.li initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }}>
+                <Link
+                  to="/blog"
+                  onClick={handleNavClick}
+                  className="block rounded-xl px-4 py-2.5 text-sm font-medium text-brand hover:bg-brand/10"
+                >
+                  {t('nav_blog')}
+                </Link>
+              </motion.li>
             </ul>
           </motion.div>
         )}

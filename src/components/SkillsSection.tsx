@@ -1,30 +1,7 @@
 import { motion } from 'framer-motion';
-import { Layout, Server, PenTool } from 'lucide-react';
+import { Layout, Server, Wrench } from 'lucide-react';
 import { useLocale } from '@/lib/LocaleProvider';
 import SectionHeading from '@/components/fx/SectionHeading';
-
-interface Skill {
-  name: string;
-  level: number;
-}
-
-const SkillBar = ({ name, level, delay }: Skill & { delay: number }) => (
-  <div>
-    <div className="mb-1.5 flex items-center justify-between">
-      <span className="text-sm font-medium">{name}</span>
-      <span className="font-mono text-xs text-muted-foreground">{level}%</span>
-    </div>
-    <div className="h-1.5 w-full overflow-hidden rounded-full bg-secondary">
-      <motion.div
-        initial={{ width: 0 }}
-        whileInView={{ width: `${level}%` }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.1, delay, ease: [0.22, 1, 0.36, 1] }}
-        className="h-full rounded-full bg-brand-gradient"
-      />
-    </div>
-  </div>
-);
 
 const SkillsSection = () => {
   const { t } = useLocale();
@@ -33,48 +10,63 @@ const SkillsSection = () => {
     {
       icon: Layout,
       title: t('skills_cat_frontend'),
-      skills: [
-        { name: 'React', level: 88 },
-        { name: 'TypeScript / JavaScript', level: 85 },
-        { name: 'HTML / CSS', level: 92 },
-        { name: 'Tailwind CSS', level: 86 },
-      ],
+      skills: ['React', 'TypeScript', 'JavaScript', 'HTML / CSS', 'Tailwind CSS', 'Framer Motion'],
     },
     {
       icon: Server,
       title: t('skills_cat_backend'),
-      skills: [
-        { name: 'Node.js', level: 80 },
-        { name: 'PHP (Laravel)', level: 82 },
-        { name: 'Python', level: 75 },
-        { name: 'Java', level: 78 },
-      ],
+      skills: ['Node.js', 'PHP (Laravel)', 'Python', 'Java', 'MySQL', 'REST API'],
     },
     {
-      icon: PenTool,
+      icon: Wrench,
       title: t('skills_cat_tools'),
-      skills: [
-        { name: 'MySQL', level: 84 },
-        { name: 'Git', level: 86 },
-        { name: 'Figma', level: 80 },
-        { name: 'Montage vidéo', level: 88 },
-      ],
+      skills: ['Git', 'Figma', 'Vite', 'Vercel', 'Photoshop', 'Montage vidéo'],
     },
   ];
 
-  const extra = ['C / C++', 'Photoshop', 'WebSocket', 'REST API', 'UML', 'Vite', 'Framer Motion'];
+  // Bandeaux défilants (2 rangées, sens opposés)
+  const rowA = ['React', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Node.js', 'PHP', 'Laravel', 'MySQL', 'Python', 'Java'];
+  const rowB = ['Git', 'Figma', 'Vite', 'Vercel', 'REST API', 'WebSocket', 'C / C++', 'UML', 'Framer Motion', 'Photoshop', 'socket.io', 'Montage vidéo'];
+
+  const Pill = ({ label }: { label: string }) => (
+    <span className="flex shrink-0 items-center gap-2 rounded-full border border-border/60 bg-card/40 px-4 py-2 text-sm backdrop-blur-sm">
+      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+      {label}
+    </span>
+  );
+
+  const Marquee = ({ items, reverse = false }: { items: string[]; reverse?: boolean }) => (
+    <div
+      className="flex overflow-hidden"
+      style={{
+        maskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)',
+      }}
+    >
+      <div
+        className={`flex w-max items-center gap-4 pr-4 animate-marquee hover:[animation-play-state:paused] ${
+          reverse ? '[animation-direction:reverse]' : ''
+        }`}
+      >
+        {[...items, ...items].map((s, i) => (
+          <Pill key={`${s}-${i}`} label={s} />
+        ))}
+      </div>
+    </div>
+  );
 
   return (
-    <section id="skills" className="section-padding relative">
+    <section id="skills" className="section-padding relative overflow-hidden">
       <div className="container relative z-10 mx-auto px-6">
         <SectionHeading
-          eyebrow="03 — Stack"
-          title="Mes"
-          highlight="Compétences"
+          eyebrow="03 — Stack technique"
+          title="Les technologies que je"
+          highlight="maîtrise"
           subtitle={t('skills_sub')}
         />
 
-        <div className="grid gap-6 lg:grid-cols-3">
+        {/* Cartes par catégorie (pills) */}
+        <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-3">
           {categories.map((cat, ci) => (
             <motion.div
               key={cat.title}
@@ -82,44 +74,46 @@ const SkillsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: ci * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-3xl glass p-7 hover-lift"
+              className="card-spotlight rounded-3xl glass p-7 hover-lift"
+              onMouseMove={(e) => {
+                const el = e.currentTarget;
+                const r = el.getBoundingClientRect();
+                el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+                el.style.setProperty('--my', `${e.clientY - r.top}px`);
+              }}
             >
-              <div className="mb-6 flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand/10 text-brand ring-1 ring-brand/20">
-                  <cat.icon size={20} />
-                </div>
-                <h3 className="font-display text-lg font-semibold">{cat.title}</h3>
+              <div className="mb-5 flex items-center gap-2.5">
+                <cat.icon size={18} className="text-brand" />
+                <h3 className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-brand">
+                  {cat.title}
+                </h3>
               </div>
-              <div className="space-y-5">
-                {cat.skills.map((skill, si) => (
-                  <SkillBar key={skill.name} {...skill} delay={ci * 0.1 + si * 0.08} />
+              <div className="flex flex-wrap gap-2">
+                {cat.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-border/60 bg-secondary/40 px-3 py-1.5 text-sm transition-colors hover:border-brand/40 hover:text-brand"
+                  >
+                    {skill}
+                  </span>
                 ))}
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Compétences additionnelles */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-3"
-        >
-          <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-            {t('skills_also')} —
-          </span>
-          {extra.map((s) => (
-            <span
-              key={s}
-              className="rounded-full border border-border/60 bg-secondary/40 px-4 py-1.5 text-sm transition-colors hover:border-brand/40 hover:text-brand"
-            >
-              {s}
-            </span>
-          ))}
-        </motion.div>
       </div>
+
+      {/* Bandeaux défilants pleine largeur */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="mt-14 space-y-4"
+      >
+        <Marquee items={rowA} />
+        <Marquee items={rowB} reverse />
+      </motion.div>
     </section>
   );
 };
