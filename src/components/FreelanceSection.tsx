@@ -5,10 +5,11 @@ import {
 } from 'lucide-react';
 import { useLocale } from '@/lib/LocaleProvider';
 import { useClickSound } from '@/hooks/useClickSound';
+import weblocalScreenshot from '@/assert/weblocal-screenshot.webp';
 
 const AGENCY_URL = 'https://adamine.vercel.app';
 
-/** Maquette de navigateur stylisée représentant le site de l'agence. */
+/** Maquette de navigateur avec la vraie capture d'écran du site de l'agence. */
 const BrowserMockup = ({ note }: { note: string }) => (
   <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-card/60 shadow-2xl backdrop-blur">
     {/* Barre du navigateur */}
@@ -21,43 +22,14 @@ const BrowserMockup = ({ note }: { note: string }) => (
       </div>
     </div>
 
-    {/* Page factice */}
-    <div className="relative aspect-[4/3] w-full bg-gradient-to-br from-background via-card to-background p-5">
-      <div className="absolute right-6 top-8 h-24 w-24 rounded-full bg-brand/20 blur-2xl" />
-
-      {/* Nav du site */}
-      <div className="relative flex items-center justify-between">
-        <div className="flex items-center gap-1.5">
-          <span className="h-4 w-4 rounded bg-brand" />
-          <span className="text-xs font-bold">WebLocal</span>
-        </div>
-        <div className="hidden gap-2 sm:flex">
-          {[0, 1, 2].map((i) => <span key={i} className="h-1.5 w-8 rounded bg-muted" />)}
-        </div>
-        <span className="h-5 w-14 rounded-full bg-brand/80" />
-      </div>
-
-      {/* Hero du site */}
-      <div className="relative mt-8 space-y-2.5">
-        <div className="h-3 w-3/4 rounded bg-foreground/80" />
-        <div className="h-3 w-1/2 rounded bg-gradient-to-r from-brand to-brand-3" />
-        <div className="h-2 w-2/3 rounded bg-muted" />
-        <div className="mt-3 flex gap-2">
-          <span className="h-6 w-24 rounded-full bg-brand" />
-          <span className="h-6 w-20 rounded-full border border-border" />
-        </div>
-      </div>
-
-      {/* Cartes du site */}
-      <div className="relative mt-6 grid grid-cols-3 gap-2">
-        {[0, 1, 2].map((i) => (
-          <div key={i} className="rounded-lg border border-border/50 bg-card/60 p-2">
-            <span className="mb-1.5 block h-4 w-4 rounded bg-brand/70" />
-            <span className="mb-1 block h-1.5 w-full rounded bg-muted" />
-            <span className="block h-1.5 w-2/3 rounded bg-muted" />
-          </div>
-        ))}
-      </div>
+    {/* Vraie capture du site */}
+    <div className="relative aspect-[4/3] w-full overflow-hidden">
+      <img
+        src={weblocalScreenshot}
+        alt="Aperçu du site WebLocal"
+        loading="lazy"
+        className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+      />
     </div>
 
     {/* Badge "en ligne" flottant */}
@@ -161,7 +133,7 @@ const FreelanceSection = () => {
               onClick={playClick}
               whileHover={{ y: -6, rotate: -0.5 }}
               transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-              className="block"
+              className="group block"
               aria-label="WebLocal"
             >
               <BrowserMockup note={t('freelance_note')} />

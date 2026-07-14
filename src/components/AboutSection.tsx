@@ -6,7 +6,7 @@ import { useLocale } from '@/lib/LocaleProvider';
 import SectionHeading from '@/components/fx/SectionHeading';
 import LazyVideo from '@/components/fx/LazyVideo';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import IlePORTFOLIO from '@/assert/IlePORTFOLIO.webp';
+import auroraIsleScreenshot from '@/assert/aurora-isle-screenshot.webp';
 import portfolioVideo from '@/assert/videoportfolioAB9.mp4';
 
 const skills = [
@@ -147,8 +147,8 @@ const AboutSection = () => {
               </div>
               <div className="relative aspect-video w-full">
                 <img
-                  src={IlePORTFOLIO}
-                  alt="Island Navigator"
+                  src={auroraIsleScreenshot}
+                  alt="Aurora Isle — île interactive 3D"
                   loading="lazy"
                   className="h-full w-full object-cover opacity-80 transition-opacity duration-300 group-hover:opacity-100"
                 />
