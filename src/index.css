@@ -1,5 +1,4 @@
-/* 1️⃣ Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* 1️⃣ Google Fonts : chargées en async depuis index.html (perf — un @import ici bloquait le rendu ~2 s sur mobile) */
 
 /* 2️⃣ Directives Tailwind */
 @tailwind base;
@@ -194,7 +193,9 @@
       hsl(var(--brand)) 100%
     );
     background-size: 200% auto;
-    animation: text-shine 6s linear infinite;
+    /* steps() : ~20 repaints/s au lieu de 60 (background-position n'est pas
+       compositable — on réduit la fréquence de paint, invisible à l'œil sur un dégradé lent) */
+    animation: text-shine 6s steps(120) infinite;
   }
 
   /* ---------- Glow ---------- */
@@ -313,9 +314,11 @@
   50% { transform: translateY(-22px) translateX(8px); }
 }
 
+/* Composée (opacity) plutôt que box-shadow : évite un repaint GPU à chaque frame.
+   À utiliser sur un pseudo-élément/div portant une ombre statique. */
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 26px hsl(var(--glow) / 0.28); }
-  50% { box-shadow: 0 0 56px hsl(var(--glow) / 0.5); }
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
 }
 
 @keyframes aurora-drift {

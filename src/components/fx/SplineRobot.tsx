@@ -1,11 +1,10 @@
 import Spline from '@splinetool/react-spline';
 
 /**
- * Robot humanoïde Spline (exactement le modèle "Tesla-bot" noir laqué demandé),
- * 3D interactive : il suit le curseur.
+ * Robot Spline (Nexbot, modèle communauté), 3D interactive : il suit le curseur.
  * InteractiveRobot gère déjà le lazy-load au scroll, le Suspense et l'error-boundary.
  */
-const SCENE = 'https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode';
+const SCENE = 'https://prod.spline.design/QWFwT7uWkGBL9YAX/scene.splinecode';
 
 const SplineRobot = () => (
   <div className="relative h-full w-full">

@@ -251,6 +251,10 @@ const HeroSection = () => {
               <img
                 src={photo}
                 alt="Amine Benhammane"
+                width={320}
+                height={320}
+                fetchPriority="high"
+                decoding="async"
                 className="h-full w-full rounded-full object-cover"
                 style={{ objectPosition: '80% 15%' }}
               />

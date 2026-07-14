@@ -1,9 +1,10 @@
 import { Gamepad2, Music, Plane, Play } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { useClickSound } from '@/hooks/useClickSound';
 import { useLocale } from '@/lib/LocaleProvider';
 import SectionHeading from '@/components/fx/SectionHeading';
+import LazyVideo from '@/components/fx/LazyVideo';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import montageVideo from '@/assert/montagePORTFOLIO.mp4';
 import sportVideo from '@/assert/sportPORTFOLIO.mp4';
@@ -21,11 +22,6 @@ const InterestsSection = () => {
   const { playClick } = useClickSound();
   const { t } = useLocale();
   const [selectedInterest, setSelectedInterest] = useState<typeof interests[0] | null>(null);
-  const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
-
-  useEffect(() => {
-    Object.values(videoRefs.current).forEach((video) => video?.play().catch(() => {}));
-  }, []);
 
   const handleCardClick = (interest: typeof interests[0]) => {
     playClick();
@@ -55,8 +51,7 @@ const InterestsSection = () => {
               className="group cursor-pointer overflow-hidden rounded-3xl glass"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden">
-                <video
-                  ref={(el) => { videoRefs.current[interest.titleKey] = el; }}
+                <LazyVideo
                   src={interest.video}
                   muted
                   loop

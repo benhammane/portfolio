@@ -1,11 +1,12 @@
 import { Code, Palette, Zap, Globe, Play, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { useClickSound } from '@/hooks/useClickSound';
 import { useLocale } from '@/lib/LocaleProvider';
 import SectionHeading from '@/components/fx/SectionHeading';
+import LazyVideo from '@/components/fx/LazyVideo';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import IlePORTFOLIO from '@/assert/IlePORTFOLIO.png';
+import IlePORTFOLIO from '@/assert/IlePORTFOLIO.webp';
 import portfolioVideo from '@/assert/videoportfolioAB9.mp4';
 
 const skills = [
@@ -26,11 +27,6 @@ const AboutSection = () => {
   const { playClick } = useClickSound();
   const { t } = useLocale();
   const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const videoPreviewRef = useRef<HTMLVideoElement | null>(null);
-
-  useEffect(() => {
-    videoPreviewRef.current?.play().catch(() => {});
-  }, []);
 
   return (
     <section id="about" className="section-padding relative">
@@ -89,8 +85,7 @@ const AboutSection = () => {
             className="group relative mx-auto max-w-3xl cursor-pointer overflow-hidden rounded-3xl glass border-gradient glow-sm"
           >
             <div className="relative aspect-video w-full">
-              <video
-                ref={videoPreviewRef}
+              <LazyVideo
                 src={portfolioVideo}
                 muted
                 loop

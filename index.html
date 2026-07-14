@@ -7,6 +7,23 @@
   <meta name="author" content="Amine Benhammane" />
   <meta name="twitter:card" content="summary_large_image" />
   <!-- Le <title>, la description et les balises OG sont gérés par page via <Head> (voir src/pages/*) -->
+
+  <!-- Google Fonts en async : ne bloque pas le premier rendu (display=swap affiche le texte
+       avec la police système en attendant). Le pattern media="print" + onload différe le CSS. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+  </noscript>
 </head>
 
 <body>

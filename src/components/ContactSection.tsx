@@ -119,6 +119,7 @@ const ContactSection = () => {
                   href={href}
                   target="_blank"
                   rel="noreferrer"
+                  aria-label={label}
                   onClick={() => { playClick(); trackSocialClick(label); }}
                   className="rounded-xl glass p-3 text-muted-foreground transition-all hover:-translate-y-1 hover:text-brand"
                 >

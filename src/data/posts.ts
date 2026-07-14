@@ -218,7 +218,6 @@ export const posts: Post[] = [
       { type: 'p', text: "Le Profiler de React DevTools identifie les composants qui rerendent trop souvent. Lighthouse et WebPageTest donnent une vue d'ensemble. Sans ces données, on risque de passer du temps sur des détails qui ne changent rien à l'expérience utilisateur réelle." },
     ],
   },
-];
 
   // ─── Article 8 ───────────────────────────────────────────────────────────────
   {
@@ -534,6 +533,7 @@ export const posts: Post[] = [
       { type: 'p', text: "En bonus : les sites accessibles sont mieux indexés par Google, car les robots de crawl fonctionnent de manière similaire aux lecteurs d'écran. Accessibilité et SEO se renforcent mutuellement." },
     ],
   },
+];
 
 export const getPost = (slug?: string) => posts.find((p) => p.slug === slug);
 

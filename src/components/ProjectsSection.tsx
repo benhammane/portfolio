@@ -7,16 +7,16 @@ import SectionHeading from '@/components/fx/SectionHeading';
 import { staggerContainer, staggerItem } from '@/components/fx/Reveal';
 
 // Project images
-import foodixImg from '@/assert/foodix.png';
+import foodixImg from '@/assert/foodix.webp';
 import jesmoniteImg from '@/assert/jesmoniteEcommerce.jpeg';
-import jeuTirImg from '@/assert/jeuTIR.png';
+import jeuTirImg from '@/assert/jeuTIR.webp';
 import vlilleImg from '@/assert/Vlille.png';
 import kanbanImg from '@/assert/Kanban.png';
 import defiGoImg from '@/assert/DefiGO.jpeg';
 import bubbletiImg from '@/assert/BubbletiMA.png';
 import bubbleJeuImg from '@/assert/BubbleJEU.png';
-import venteEnchereImg from '@/assert/venteEnchere.png';
-import railroadImg from '@/assert/railroad2.png';
+import venteEnchereImg from '@/assert/venteEnchere.webp';
+import railroadImg from '@/assert/railroad2.webp';
 
 const GITHUB = 'https://github.com/benhammane';
 
