@@ -16,6 +16,9 @@ const skills = [
   { icon: Globe, label: 'Outils', techs: 'Git, MySQL, REST' },
 ];
 
+// Vidéo de présentation masquée pour le moment (repasser à true pour la réafficher).
+const SHOW_INTRO_VIDEO = false;
+
 const handleSpotlight = (e: React.MouseEvent<HTMLElement>) => {
   const el = e.currentTarget;
   const rect = el.getBoundingClientRect();
@@ -71,42 +74,44 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* Vidéo de présentation */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mt-20"
-        >
+        {/* Vidéo de présentation (masquée pour le moment, voir SHOW_INTRO_VIDEO) */}
+        {SHOW_INTRO_VIDEO && (
           <motion.div
-            whileHover={{ scale: 1.01 }}
-            onClick={() => { playClick(); setIsVideoOpen(true); }}
-            className="group relative mx-auto max-w-3xl cursor-pointer overflow-hidden rounded-3xl glass border-gradient glow-sm"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="mt-20"
           >
-            <div className="relative aspect-video w-full">
-              <LazyVideo
-                src={portfolioVideo}
-                muted
-                loop
-                playsInline
-                className="h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 transition-colors group-hover:bg-black/25">
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                  className="mb-4 rounded-full border border-brand/40 bg-brand/20 p-4 backdrop-blur-sm"
-                >
-                  <Play className="h-10 w-10 fill-brand/30 text-brand md:h-12 md:w-12" />
-                </motion.div>
-                <h3 className="px-4 text-center font-display text-xl font-bold text-white drop-shadow-lg md:text-2xl">
-                  {t('about_video_cta')}
-                </h3>
+            <motion.div
+              whileHover={{ scale: 1.01 }}
+              onClick={() => { playClick(); setIsVideoOpen(true); }}
+              className="group relative mx-auto max-w-3xl cursor-pointer overflow-hidden rounded-3xl glass border-gradient glow-sm"
+            >
+              <div className="relative aspect-video w-full">
+                <LazyVideo
+                  src={portfolioVideo}
+                  muted
+                  loop
+                  playsInline
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 transition-colors group-hover:bg-black/25">
+                  <motion.div
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                    className="mb-4 rounded-full border border-brand/40 bg-brand/20 p-4 backdrop-blur-sm"
+                  >
+                    <Play className="h-10 w-10 fill-brand/30 text-brand md:h-12 md:w-12" />
+                  </motion.div>
+                  <h3 className="px-4 text-center font-display text-xl font-bold text-white drop-shadow-lg md:text-2xl">
+                    {t('about_video_cta')}
+                  </h3>
+                </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        )}
 
         {/* Île interactive */}
         <motion.div
@@ -153,19 +158,21 @@ const AboutSection = () => {
         </motion.div>
       </div>
 
-      {/* Modale vidéo */}
-      <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
-        <DialogContent className="w-full max-w-4xl overflow-hidden p-0">
-          <DialogHeader className="p-4">
-            <DialogTitle>{t('about_video_title')}</DialogTitle>
-          </DialogHeader>
-          <div className="aspect-video w-full">
-            <video src={portfolioVideo} controls autoPlay className="h-full w-full" aria-label={t('about_video_title')}>
-              {t('interest_video_not_supported')}
-            </video>
-          </div>
-        </DialogContent>
-      </Dialog>
+      {/* Modale vidéo (rendue seulement si la vidéo de présentation est active) */}
+      {SHOW_INTRO_VIDEO && (
+        <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
+          <DialogContent className="w-full max-w-4xl overflow-hidden p-0">
+            <DialogHeader className="p-4">
+              <DialogTitle>{t('about_video_title')}</DialogTitle>
+            </DialogHeader>
+            <div className="aspect-video w-full">
+              <video src={portfolioVideo} controls autoPlay className="h-full w-full" aria-label={t('about_video_title')}>
+                {t('interest_video_not_supported')}
+              </video>
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </section>
   );
 };

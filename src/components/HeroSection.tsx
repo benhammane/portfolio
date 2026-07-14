@@ -253,7 +253,8 @@ const HeroSection = () => {
                 alt="Amine Benhammane"
                 width={320}
                 height={320}
-                fetchPriority="high"
+                // @ts-expect-error -- React 18 ne connaît pas encore fetchPriority en camelCase, attribut DOM lowercase attendu
+                fetchpriority="high"
                 decoding="async"
                 className="h-full w-full rounded-full object-cover"
                 style={{ objectPosition: '80% 15%' }}

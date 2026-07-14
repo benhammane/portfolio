@@ -1,280 +1,214 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Bot, MessageCircle, Send, Sparkles, X } from 'lucide-react';
+import { useClickSound } from '@/hooks/useClickSound';
 
 type Message = {
-    role: "user" | "assistant";
-    content: string;
+  role: 'user' | 'assistant';
+  content: string;
 };
 
-export default function ChatBot() {
-    const [open, setOpen] = useState(false);
-    const [messages, setMessages] = useState<Message[]>([
-        {
-            role: "assistant",
-            content:
-                "Salut 👋 Je suis le chatbot du portfolio d'Amine. Pose-moi une question sur ses projets, compétences ou son parcours.",
-        },
-    ]);
-    const [input, setInput] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [errorMsg, setErrorMsg] = useState<string | null>(null);
+const WELCOME_MESSAGE: Message = {
+  role: 'assistant',
+  content:
+    "Salut ! Je suis l'assistant IA du portfolio d'Amine. Pose-moi une question sur ses projets, ses compétences ou son parcours.",
+};
 
-    const listRef = useRef<HTMLDivElement | null>(null);
+/** Trois points qui pulsent en cascade pendant que l'assistant répond. */
+const TypingDots = () => (
+  <div className="flex items-center gap-1 px-1 py-1">
+    {[0, 1, 2].map((i) => (
+      <motion.span
+        key={i}
+        className="h-1.5 w-1.5 rounded-full bg-brand/70"
+        animate={{ opacity: [0.3, 1, 0.3] }}
+        transition={{ duration: 1.1, repeat: Infinity, delay: i * 0.15, ease: 'easeInOut' }}
+      />
+    ))}
+  </div>
+);
 
-    useEffect(() => {
-        // auto-scroll en bas à chaque nouveau message
-        if (listRef.current) {
-            listRef.current.scrollTop = listRef.current.scrollHeight;
-        }
-    }, [messages, open]);
+const ChatBot = () => {
+  const { playClick } = useClickSound();
+  const [open, setOpen] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([WELCOME_MESSAGE]);
+  const [input, setInput] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-    const sendMessage = async () => {
-        const text = input.trim();
-        if (!text || loading) return;
+  const listRef = useRef<HTMLDivElement | null>(null);
 
-        setErrorMsg(null);
-
-        // Ajoute le message user
-        setMessages((prev) => [...prev, { role: "user", content: text }]);
-        setInput("");
-        setLoading(true);
-
-        try {
-            const response = await fetch("/api/chat", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: text }),
-            });
-
-            // Si erreur côté API, on affiche un message utile
-            if (!response.ok) {
-                const maybeJson = await response
-                    .json()
-                    .catch(() => ({ error: "Erreur API" }));
-                throw new Error(maybeJson?.error || `Erreur API (${response.status})`);
-            }
-
-            const data: { reply?: string } = await response.json();
-
-            const reply = (data.reply ?? "").trim();
-            if (!reply) {
-                throw new Error("Réponse vide (API). Vérifie /api/chat.");
-            }
-
-            setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
-        } catch (err: any) {
-            console.error(err);
-            setErrorMsg(err?.message || "Erreur inconnue");
-            setMessages((prev) => [
-                ...prev,
-                {
-                    role: "assistant",
-                    content:
-                        "Oups, je n’arrive pas à répondre pour l’instant. Essaie encore dans quelques secondes.",
-                },
-            ]);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    // Bouton flottant quand le chat est fermé
-    if (!open) {
-        return (
-            <button
-                onClick={() => setOpen(true)}
-                style={{
-                    position: "fixed",
-                    bottom: 20,
-                    right: 20,
-                    width: 56,
-                    height: 56,
-                    borderRadius: 999,
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    background: "rgba(20, 184, 166, 0.95)", // teal-ish
-                    color: "#0b1220",
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    boxShadow: "0 10px 30px rgba(0,0,0,0.35)",
-                    zIndex: 9999,
-                }}
-                aria-label="Ouvrir le chat"
-                title="Ouvrir le chat"
-            >
-                💬
-            </button>
-        );
+  useEffect(() => {
+    if (listRef.current) {
+      listRef.current.scrollTop = listRef.current.scrollHeight;
     }
+  }, [messages, open, loading]);
 
-    // Fenêtre chat ouverte
-    return (
-        <div
-            style={{
-                position: "fixed",
-                bottom: 20,
-                right: 20,
-                width: 360,
-                maxWidth: "calc(100vw - 40px)",
-                background: "#0b1220", // dark pour matcher ton thème
-                color: "#e5e7eb",
-                borderRadius: 14,
-                boxShadow: "0 10px 30px rgba(0,0,0,0.45)",
-                border: "1px solid rgba(255,255,255,0.10)",
-                overflow: "hidden",
-                zIndex: 9999,
-            }}
-        >
+  const sendMessage = async () => {
+    const text = input.trim();
+    if (!text || loading) return;
+
+    setErrorMsg(null);
+    const nextMessages = [...messages, { role: 'user' as const, content: text }];
+    setMessages(nextMessages);
+    setInput('');
+    setLoading(true);
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        // On envoie l'historique (hors message de bienvenue) pour garder le contexte de la conversation.
+        body: JSON.stringify({ message: text, history: nextMessages.slice(1, -1) }),
+      });
+
+      if (!response.ok) {
+        const maybeJson = await response.json().catch(() => ({ error: 'Erreur API' }));
+        throw new Error(maybeJson?.error || `Erreur API (${response.status})`);
+      }
+
+      const data: { reply?: string } = await response.json();
+      const reply = (data.reply ?? '').trim();
+      if (!reply) throw new Error('Réponse vide (API). Vérifie /api/chat.');
+
+      setMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Erreur inconnue';
+      console.error(err);
+      setErrorMsg(message);
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: 'assistant',
+          content: "Oups, je n'arrive pas à répondre pour l'instant. Réessaie dans quelques secondes.",
+        },
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const toggleOpen = () => {
+    playClick();
+    setOpen((o) => !o);
+  };
+
+  return (
+    <>
+      {/* Bouton flottant */}
+      <motion.button
+        onClick={toggleOpen}
+        whileHover={{ scale: 1.06 }}
+        whileTap={{ scale: 0.94 }}
+        aria-label={open ? "Fermer l'assistant" : "Ouvrir l'assistant IA"}
+        title="Assistant IA"
+        className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-brand-gradient text-primary-foreground shadow-[0_10px_30px_-6px_hsl(var(--brand)/0.55)] transition-shadow hover:shadow-[0_14px_38px_-4px_hsl(var(--brand)/0.7)] sm:bottom-6 sm:right-6"
+      >
+        {/* halo qui respire, coupé si l'utilisateur préfère moins d'animation */}
+        <span className="pointer-events-none absolute inset-0 rounded-full bg-brand-gradient opacity-60 blur-md motion-safe:animate-pulse" />
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.span
+            key={open ? 'close' : 'chat'}
+            initial={{ opacity: 0, rotate: -45, scale: 0.6 }}
+            animate={{ opacity: 1, rotate: 0, scale: 1 }}
+            exit={{ opacity: 0, rotate: 45, scale: 0.6 }}
+            transition={{ duration: 0.18 }}
+            className="relative"
+          >
+            {open ? <X size={22} /> : <MessageCircle size={22} />}
+          </motion.span>
+        </AnimatePresence>
+      </motion.button>
+
+      {/* Fenêtre de chat */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: 16, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.96 }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed bottom-24 right-5 z-40 flex w-[min(380px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-3xl glass border-gradient shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] sm:bottom-28 sm:right-6"
+          >
             {/* Header */}
-            <div
-                style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    padding: "10px 12px",
-                    background: "rgba(255,255,255,0.04)",
-                    borderBottom: "1px solid rgba(255,255,255,0.08)",
-                }}
-            >
-                <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                    <div
-                        style={{
-                            width: 10,
-                            height: 10,
-                            borderRadius: 999,
-                            background: loading ? "#fbbf24" : "#34d399",
-                            boxShadow: "0 0 0 3px rgba(52,211,153,0.15)",
-                        }}
-                    />
-                    <div style={{ fontWeight: 700 }}>Assistant Portfolio</div>
+            <div className="flex items-center justify-between gap-3 border-b border-border/60 bg-card/40 px-4 py-3.5">
+              <div className="flex items-center gap-2.5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand/10 text-brand ring-1 ring-brand/20">
+                  <Bot size={18} />
                 </div>
-
-                <button
-                    onClick={() => setOpen(false)}
-                    style={{
-                        background: "transparent",
-                        color: "#e5e7eb",
-                        border: "none",
-                        cursor: "pointer",
-                        fontSize: 18,
-                        lineHeight: 1,
-                    }}
-                    aria-label="Fermer le chat"
-                    title="Fermer"
-                >
-                    ✕
-                </button>
+                <div>
+                  <p className="flex items-center gap-1.5 font-display text-sm font-semibold">
+                    Assistant IA
+                    <Sparkles size={12} className="text-brand" />
+                  </p>
+                  <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <span
+                      className={`h-1.5 w-1.5 rounded-full ${loading ? 'bg-amber-400' : 'bg-emerald-400'}`}
+                    />
+                    {loading ? 'Réfléchit…' : 'En ligne'}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={toggleOpen}
+                aria-label="Fermer l'assistant"
+                className="rounded-full p-1.5 text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground"
+              >
+                <X size={16} />
+              </button>
             </div>
 
             {/* Messages */}
-            <div
-                ref={listRef}
-                style={{
-                    padding: 12,
-                    height: 320,
-                    overflowY: "auto",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 10,
-                }}
-            >
-                {messages.map((m, idx) => {
-                    const isUser = m.role === "user";
-                    return (
-                        <div
-                            key={idx}
-                            style={{
-                                alignSelf: isUser ? "flex-end" : "flex-start",
-                                maxWidth: "85%",
-                                padding: "10px 12px",
-                                borderRadius: 14,
-                                background: isUser
-                                    ? "rgba(20,184,166,0.9)"
-                                    : "rgba(255,255,255,0.07)",
-                                color: isUser ? "#071016" : "#e5e7eb",
-                                border: "1px solid rgba(255,255,255,0.10)",
-                                whiteSpace: "pre-wrap",
-                                wordBreak: "break-word",
-                            }}
-                        >
-                            {m.content}
-                        </div>
-                    );
-                })}
+            <div ref={listRef} className="flex h-[360px] flex-col gap-3 overflow-y-auto px-4 py-4">
+              {messages.map((m, idx) => (
+                <div
+                  key={idx}
+                  className={`max-w-[85%] whitespace-pre-wrap break-words rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
+                    m.role === 'user'
+                      ? 'self-end rounded-br-md bg-brand-gradient text-primary-foreground'
+                      : 'self-start rounded-bl-md border border-border/60 bg-secondary/40 text-foreground'
+                  }`}
+                >
+                  {m.content}
+                </div>
+              ))}
 
-                {loading && (
-                    <div
-                        style={{
-                            alignSelf: "flex-start",
-                            maxWidth: "85%",
-                            padding: "10px 12px",
-                            borderRadius: 14,
-                            background: "rgba(255,255,255,0.07)",
-                            border: "1px solid rgba(255,255,255,0.10)",
-                        }}
-                    >
-                        … Le bot réfléchit
-                    </div>
-                )}
+              {loading && (
+                <div className="self-start rounded-2xl rounded-bl-md border border-border/60 bg-secondary/40">
+                  <TypingDots />
+                </div>
+              )}
 
-                {errorMsg && (
-                    <div
-                        style={{
-                            marginTop: 6,
-                            fontSize: 12,
-                            color: "#fca5a5",
-                            opacity: 0.95,
-                        }}
-                    >
-                        ⚠️ {errorMsg}
-                    </div>
-                )}
+              {errorMsg && (
+                <p className="mt-1 text-xs text-destructive/90">⚠ {errorMsg}</p>
+              )}
             </div>
 
             {/* Input */}
-            <div
-                style={{
-                    display: "flex",
-                    gap: 8,
-                    padding: 12,
-                    borderTop: "1px solid rgba(255,255,255,0.08)",
-                    background: "rgba(255,255,255,0.03)",
-                }}
-            >
-                <input
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Pose une question…"
-                    style={{
-                        flex: 1,
-                        padding: "10px 12px",
-                        borderRadius: 12,
-                        border: "1px solid rgba(255,255,255,0.14)",
-                        background: "rgba(0,0,0,0.25)",
-                        color: "#e5e7eb",
-                        outline: "none",
-                    }}
-                    onKeyDown={(e) => {
-                        if (e.key === "Enter") sendMessage();
-                    }}
-                />
-                <button
-                    onClick={sendMessage}
-                    disabled={loading || !input.trim()}
-                    style={{
-                        padding: "10px 12px",
-                        borderRadius: 12,
-                        border: "1px solid rgba(255,255,255,0.14)",
-                        cursor: loading || !input.trim() ? "not-allowed" : "pointer",
-                        background:
-                            loading || !input.trim()
-                                ? "rgba(255,255,255,0.06)"
-                                : "rgba(20,184,166,0.95)",
-                        color: loading || !input.trim() ? "#9ca3af" : "#071016",
-                        fontWeight: 700,
-                    }}
-                >
-                    Envoyer
-                </button>
+            <div className="flex items-center gap-2 border-t border-border/60 bg-card/40 p-3">
+              <input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+                placeholder="Pose une question…"
+                className="flex-1 rounded-full border border-border bg-background/40 px-4 py-2.5 text-sm placeholder:text-muted-foreground/60 focus:border-brand/50 focus:outline-none focus:ring-2 focus:ring-brand/30"
+              />
+              <motion.button
+                onClick={sendMessage}
+                disabled={loading || !input.trim()}
+                whileHover={{ scale: loading || !input.trim() ? 1 : 1.06 }}
+                whileTap={{ scale: loading || !input.trim() ? 1 : 0.94 }}
+                aria-label="Envoyer le message"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-gradient text-primary-foreground transition-opacity disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                <Send size={16} />
+              </motion.button>
             </div>
-        </div>
-    );
-}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
+export default ChatBot;

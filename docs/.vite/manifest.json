@@ -1,14 +1,14 @@
 {
-  "_client-DXo2swXW.js": {
-    "file": "assets/client-DXo2swXW.js",
+  "_client-jJt8Gatg.js": {
+    "file": "assets/client-jJt8Gatg.js",
     "name": "client",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
     ]
   },
-  "_howler-CntiVIpP.js": {
-    "file": "assets/howler-CntiVIpP.js",
+  "_howler-DNiD1vrO.js": {
+    "file": "assets/howler-DNiD1vrO.js",
     "name": "howler",
     "isDynamicEntry": true,
     "imports": [
@@ -16,24 +16,23 @@
     ]
   },
   "index.html": {
-    "file": "assets/app-DsEj6duH.js",
+    "file": "assets/app-C7709YZe.js",
     "name": "app",
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
-      "_client-DXo2swXW.js",
-      "_client-DXo2swXW.js",
+      "_client-jJt8Gatg.js",
+      "_client-jJt8Gatg.js",
       "src/components/fx/SplineRobot.tsx"
     ],
     "css": [
-      "assets/app-CbrJ286t.css"
+      "assets/app-BCAGCr9x.css"
     ],
     "assets": [
       "assets/ABLogo-BerroeTX.jpeg",
       "assets/photoPORTFOLIO-DPmCKCTs.jpeg",
-      "assets/CVBENHAMMANE-IRIuqQcM.pdf",
+      "assets/CVBENHAMMANE-D8NxFOV0.pdf",
       "assets/IlePORTFOLIO-83Q91_h1.webp",
-      "assets/videoportfolioAB9-BehU4c-P.mp4",
       "assets/foodix-BMtQBk38.webp",
       "assets/jesmoniteEcommerce-BimJgX3A.jpeg",
       "assets/jeuTIR-BQF3koVk.webp",
@@ -105,7 +104,7 @@
     "src": "src/assert/BubbletiMA.png"
   },
   "src/assert/CVBENHAMMANE.pdf": {
-    "file": "assets/CVBENHAMMANE-IRIuqQcM.pdf",
+    "file": "assets/CVBENHAMMANE-D8NxFOV0.pdf",
     "src": "src/assert/CVBENHAMMANE.pdf"
   },
   "src/assert/DefiGO.jpeg": {
@@ -169,7 +168,7 @@
     "src": "src/assert/voyagePORTFOLIO4.mp4"
   },
   "src/components/fx/SplineRobot.tsx": {
-    "file": "assets/SplineRobot-x5Oghqb8.js",
+    "file": "assets/SplineRobot-jtB7VBc0.js",
     "name": "SplineRobot",
     "src": "src/components/fx/SplineRobot.tsx",
     "isDynamicEntry": true,
@@ -181,7 +180,7 @@
       "node_modules/@splinetool/runtime/build/physics.js",
       "node_modules/@splinetool/runtime/build/process.js",
       "node_modules/@splinetool/runtime/build/boolean.js",
-      "_howler-CntiVIpP.js",
+      "_howler-DNiD1vrO.js",
       "node_modules/@splinetool/runtime/build/opentype.js",
       "node_modules/@splinetool/runtime/build/ui.js",
       "node_modules/@splinetool/runtime/build/gaussian-splat-compression.js"
