@@ -1,14 +1,14 @@
 {
-  "_client-jJt8Gatg.js": {
-    "file": "assets/client-jJt8Gatg.js",
+  "_client-C_04LHI4.js": {
+    "file": "assets/client-C_04LHI4.js",
     "name": "client",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
     ]
   },
-  "_howler-DNiD1vrO.js": {
-    "file": "assets/howler-DNiD1vrO.js",
+  "_howler-DsoYdj-r.js": {
+    "file": "assets/howler-DsoYdj-r.js",
     "name": "howler",
     "isDynamicEntry": true,
     "imports": [
@@ -16,23 +16,23 @@
     ]
   },
   "index.html": {
-    "file": "assets/app-C7709YZe.js",
+    "file": "assets/app-BH2rocFp.js",
     "name": "app",
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
-      "_client-jJt8Gatg.js",
-      "_client-jJt8Gatg.js",
+      "_client-C_04LHI4.js",
+      "_client-C_04LHI4.js",
       "src/components/fx/SplineRobot.tsx"
     ],
     "css": [
-      "assets/app-BCAGCr9x.css"
+      "assets/app-RX6rBUBD.css"
     ],
     "assets": [
       "assets/ABLogo-BerroeTX.jpeg",
       "assets/photoPORTFOLIO-DPmCKCTs.jpeg",
       "assets/CVBENHAMMANE-D8NxFOV0.pdf",
-      "assets/IlePORTFOLIO-83Q91_h1.webp",
+      "assets/aurora-isle-screenshot-CfXz-iwY.webp",
       "assets/foodix-BMtQBk38.webp",
       "assets/jesmoniteEcommerce-BimJgX3A.jpeg",
       "assets/jeuTIR-BQF3koVk.webp",
@@ -43,6 +43,7 @@
       "assets/BubbleJEU--xPidpft.png",
       "assets/venteEnchere-vvtUiUMv.webp",
       "assets/railroad2-CoJ06UEO.webp",
+      "assets/weblocal-screenshot-DV8zEqfc.webp",
       "assets/montagePORTFOLIO-1OU4dYRN.mp4",
       "assets/sportPORTFOLIO-B09R26nU.mp4",
       "assets/voyagePORTFOLIO4-CDaetBvu.mp4",
@@ -111,10 +112,6 @@
     "file": "assets/DefiGO-D1q092XA.jpeg",
     "src": "src/assert/DefiGO.jpeg"
   },
-  "src/assert/IlePORTFOLIO.webp": {
-    "file": "assets/IlePORTFOLIO-83Q91_h1.webp",
-    "src": "src/assert/IlePORTFOLIO.webp"
-  },
   "src/assert/Kanban.png": {
     "file": "assets/Kanban-BcbRfMij.png",
     "src": "src/assert/Kanban.png"
@@ -122,6 +119,10 @@
   "src/assert/Vlille.png": {
     "file": "assets/Vlille-DVWe0gwx.png",
     "src": "src/assert/Vlille.png"
+  },
+  "src/assert/aurora-isle-screenshot.webp": {
+    "file": "assets/aurora-isle-screenshot-CfXz-iwY.webp",
+    "src": "src/assert/aurora-isle-screenshot.webp"
   },
   "src/assert/foodix.webp": {
     "file": "assets/foodix-BMtQBk38.webp",
@@ -167,8 +168,12 @@
     "file": "assets/voyagePORTFOLIO4-CDaetBvu.mp4",
     "src": "src/assert/voyagePORTFOLIO4.mp4"
   },
+  "src/assert/weblocal-screenshot.webp": {
+    "file": "assets/weblocal-screenshot-DV8zEqfc.webp",
+    "src": "src/assert/weblocal-screenshot.webp"
+  },
   "src/components/fx/SplineRobot.tsx": {
-    "file": "assets/SplineRobot-jtB7VBc0.js",
+    "file": "assets/SplineRobot-C_006TqH.js",
     "name": "SplineRobot",
     "src": "src/components/fx/SplineRobot.tsx",
     "isDynamicEntry": true,
@@ -180,7 +185,7 @@
       "node_modules/@splinetool/runtime/build/physics.js",
       "node_modules/@splinetool/runtime/build/process.js",
       "node_modules/@splinetool/runtime/build/boolean.js",
-      "_howler-DNiD1vrO.js",
+      "_howler-DsoYdj-r.js",
       "node_modules/@splinetool/runtime/build/opentype.js",
       "node_modules/@splinetool/runtime/build/ui.js",
       "node_modules/@splinetool/runtime/build/gaussian-splat-compression.js"

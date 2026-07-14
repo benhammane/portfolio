@@ -34,4 +34,35 @@
   <url><loc>https://amine-portfolio.vercel.app/blog/deployer-react-vercel-guide</loc><priority>0.7</priority></url>
   <url><loc>https://amine-portfolio.vercel.app/blog/api-rest-nodejs-bonnes-pratiques</loc><priority>0.7</priority></url>
   <url><loc>https://amine-portfolio.vercel.app/blog/accessibilite-web-guide-developpeur</loc><priority>0.7</priority></url>
+
+  <!-- Vague SEO — orientés clients / commerces locaux -->
+  <url><loc>https://amine-portfolio.vercel.app/blog/creer-site-web-restaurant</loc><priority>0.8</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/site-web-artisan-guide</loc><priority>0.8</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/referencement-local-google-business</loc><priority>0.8</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/obtenir-avis-google-clients</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/site-web-ou-reseaux-sociaux-commerce</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/tarif-maintenance-site-web</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/nom-de-domaine-hebergement-guide</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/vitesse-site-web-conversion</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/checklist-avant-lancer-site</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/mobile-first-pourquoi-essentiel</loc><priority>0.7</priority></url>
+
+  <!-- Vague SEO — techniques / recruteurs / devs -->
+  <url><loc>https://amine-portfolio.vercel.app/blog/react-hooks-guide-debutant</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/useeffect-erreurs-courantes</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/css-flexbox-vs-grid</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/tailwind-vs-css-classique</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/javascript-async-await-guide</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/api-rest-vs-graphql</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/authentification-jwt-guide</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/docker-debutant-guide</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/tests-automatises-frontend</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/clean-code-principes</loc><priority>0.7</priority></url>
+
+  <!-- Vague SEO — carrière / alternance -->
+  <url><loc>https://amine-portfolio.vercel.app/blog/reussir-recherche-alternance-informatique</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/cv-developpeur-junior</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/preparer-entretien-technique</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/idees-projets-portfolio-developpeur</loc><priority>0.7</priority></url>
+  <url><loc>https://amine-portfolio.vercel.app/blog/veille-techno-developpeur</loc><priority>0.7</priority></url>
 </urlset>
