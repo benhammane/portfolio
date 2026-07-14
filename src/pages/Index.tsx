@@ -41,7 +41,7 @@ const Index = () => {
         <title>Amine Benhammane — Développeur Full-Stack & Fondateur de WebLocal</title>
         <meta
           name="description"
-          content="Portfolio d'Amine Benhammane, développeur full-stack (M1 MIAGE) et fondateur de l'agence WebLocal. Création de sites web et d'applications sur-mesure. Disponible pour une alternance."
+          content="Portfolio d'Amine Benhammane, développeur full-stack (M2 MIAGE) et fondateur de l'agence WebLocal. Création de sites web et d'applications sur-mesure. Disponible pour une alternance."
         />
         <meta name="keywords" content="développeur full-stack, React, TypeScript, freelance, création site web, WebLocal, alternance, Lille" />
         <meta property="og:title" content="Amine Benhammane — Développeur Full-Stack & Freelance" />

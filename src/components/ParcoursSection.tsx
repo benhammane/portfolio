@@ -8,6 +8,7 @@ const parcours = [
   { step: '02', degree: 'L2 Informatique', school: 'Université de Lille' },
   { step: '03', degree: 'L3 Informatique', school: 'Université de Lille' },
   { step: '04', degree: 'M1 MIAGE', school: 'Université de Lille' },
+  { step: '05', degree: 'M2 MIAGE', school: 'Université de Lille' },
 ];
 
 const ParcoursSection = () => {

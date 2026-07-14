@@ -6,7 +6,7 @@
 
 // Contexte factuel injecté dans le prompt système pour éviter que le modèle invente des infos.
 const PROFILE_CONTEXT = `
-Profil : Amine Benhammane, étudiant en Master 1 Informatique (MIAGE), recherche une alternance en développement.
+Profil : Amine Benhammane, étudiant en Master 2 Informatique (MIAGE) à l'Université de Lille, recherche une alternance en développement.
 Stack : React, TypeScript, Tailwind CSS, Node.js, Laravel, Python, MySQL, Figma, Git.
 Projets clés : plateforme e-commerce (Laravel), système d'enchères en temps réel (Node.js + WebSocket/socket.io),
 Bubbleti (système de commande pour salon de bubble tea), site de partage de recettes, plusieurs jeux (Java, App Inventor 2).
@@ -53,37 +53,59 @@ export default async function handler(req: any, res: any) {
     // Historique limité aux 10 derniers échanges pour rester léger.
     const trimmedHistory = history.slice(-10).filter((m) => m?.role && m?.content);
 
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: 'mistralai/mistral-7b-instruct', // modèle gratuit sur OpenRouter
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
-          ...trimmedHistory,
-          { role: 'user', content: message },
-        ],
-        max_tokens: 400,
-        temperature: 0.6,
-      }),
-    });
+    // Modèles gratuits (suffixe :free = 0 crédit requis), essayés dans l'ordre.
+    // Sans ce suffixe, OpenRouter facture des crédits → erreur 402 si le compte n'en a pas.
+    const FREE_MODELS = [
+      'mistralai/mistral-7b-instruct:free',
+      'meta-llama/llama-3.1-8b-instruct:free',
+      'google/gemma-2-9b-it:free',
+    ];
 
-    const data = await response.json();
+    let lastError: unknown = null;
 
-    if (!response.ok) {
-      console.error('OpenRouter error:', data);
-      return res.status(502).json({ error: 'Erreur du fournisseur IA (OpenRouter)' });
+    for (const model of FREE_MODELS) {
+      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${apiKey}`,
+          // Headers recommandés par OpenRouter pour identifier l'app
+          'HTTP-Referer': 'https://benhammaneamine.vercel.app',
+          'X-Title': 'Portfolio Amine Benhammane',
+        },
+        body: JSON.stringify({
+          model,
+          messages: [
+            { role: 'system', content: SYSTEM_PROMPT },
+            ...trimmedHistory,
+            { role: 'user', content: message },
+          ],
+          max_tokens: 400,
+          temperature: 0.6,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (response.ok) {
+        const reply = data?.choices?.[0]?.message?.content?.trim();
+        if (reply) {
+          return res.status(200).json({ reply });
+        }
+        lastError = 'Réponse vide du modèle ' + model;
+        continue;
+      }
+
+      // Modèle indisponible / saturé / crédits insuffisants → on tente le suivant
+      lastError = data?.error ?? `HTTP ${response.status}`;
+      console.error(`OpenRouter error (${model}):`, lastError);
     }
 
-    const reply = data.choices?.[0]?.message?.content?.trim();
-    if (!reply) {
-      return res.status(502).json({ error: 'Réponse vide du modèle' });
-    }
-
-    return res.status(200).json({ reply });
+    const detail =
+      typeof lastError === 'object' && lastError !== null
+        ? (lastError as { message?: string }).message ?? JSON.stringify(lastError)
+        : String(lastError);
+    return res.status(502).json({ error: `Fournisseur IA indisponible — ${detail}` });
   } catch (error) {
     console.error('Chat handler error:', error);
     return res.status(500).json({ error: 'Erreur serveur inattendue' });

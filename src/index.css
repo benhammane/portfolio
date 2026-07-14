@@ -223,7 +223,9 @@
   }
 
   /* ---------- Bordure dégradée ---------- */
-  .border-gradient {
+  /* :where() = spécificité nulle : fournit le position:relative par défaut pour le ::before,
+     sans écraser un `fixed`/`absolute` posé par une classe Tailwind (bug du panneau ChatBot). */
+  :where(.border-gradient) {
     position: relative;
   }
   .border-gradient::before {
