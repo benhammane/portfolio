@@ -13,11 +13,15 @@ const BlogList = () => {
   return (
     <>
       <Head>
+        <html lang={locale} />
         <title>Blog — Amine Benhammane | Développeur Web</title>
         <meta name="description" content={t('blog_sub')} />
         <meta property="og:title" content="Blog — Amine Benhammane" />
         <meta property="og:description" content={t('blog_sub')} />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/blog`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image.jpg`} />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image.jpg`} />
         <link rel="canonical" href={`${SITE_URL}/blog`} />
       </Head>
 

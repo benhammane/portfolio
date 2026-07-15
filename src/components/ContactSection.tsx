@@ -11,11 +11,20 @@ import emailjs from '@emailjs/browser';
 const ContactSection = () => {
   const { playClick } = useClickSound();
   const { t } = useLocale();
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '', company: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Honeypot anti-spam : champ invisible pour les humains, rempli par les bots.
+    // On feint un envoi réussi pour ne pas révéler la détection.
+    if (formData.company) {
+      setFormData({ name: '', email: '', message: '', company: '' });
+      toast.success(t('toast_message_sent'));
+      return;
+    }
+
     playClick();
     setIsSubmitting(true);
 
@@ -42,7 +51,7 @@ const ContactSection = () => {
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
       trackContactSubmit();
       toast.success(t('toast_message_sent'));
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: '', email: '', message: '', company: '' });
     } catch (error) {
       console.error('EmailJS Error:', error);
       toast.error(t('toast_message_error'));
@@ -139,6 +148,19 @@ const ContactSection = () => {
             className="rounded-3xl glass border-gradient p-8 lg:col-span-3"
           >
             <div className="space-y-5">
+              {/* Honeypot anti-spam : caché visuellement et aux lecteurs d'écran, piège à bots */}
+              <div className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden" aria-hidden="true">
+                <label htmlFor="company">Entreprise</label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.company}
+                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                />
+              </div>
               <div>
                 <label htmlFor="name" className="mb-2 block text-sm font-medium">{t('form_name_label')}</label>
                 <input

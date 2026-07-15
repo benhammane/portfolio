@@ -191,6 +191,7 @@ const ChatBot = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                 placeholder="Pose une question…"
+                aria-label="Votre message à l'assistant IA"
                 className="flex-1 rounded-full border border-border bg-background/40 px-4 py-2.5 text-sm placeholder:text-muted-foreground/60 focus:border-brand/50 focus:outline-none focus:ring-2 focus:ring-brand/30"
               />
               <motion.button

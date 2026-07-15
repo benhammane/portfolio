@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://amine-portfolio.vercel.app/sitemap.xml
+Sitemap: https://benhammaneamine.vercel.app/sitemap.xml

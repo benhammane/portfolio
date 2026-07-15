@@ -37,6 +37,7 @@ const SkillsSection = () => {
 
   const Marquee = ({ items, reverse = false }: { items: string[]; reverse?: boolean }) => (
     <div
+      aria-hidden="true"
       className="flex overflow-hidden"
       style={{
         maskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)',

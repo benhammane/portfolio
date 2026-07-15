@@ -21,64 +21,61 @@ import railroadImg from '@/assert/railroad2.webp';
 const GITHUB = 'https://github.com/benhammane';
 
 interface Featured {
-  title: string;
-  category: string;
+  titleKey: string;
+  categoryKey: string;
   year: string;
-  description: string;
-  callout: string;
-  highlights: string[];
+  descKey: string;
+  calloutKey: string;
+  highlightKeys: string[];
   techs: string[];
   image: string;
-  url?: string; // lien démo réel (sinon → GitHub)
+  url?: string; // lien démo réel ou repo GitHub spécifique (sinon → profil GitHub)
   domain: string; // affiché dans la barre du mockup
 }
 
-// ⭐ 4 projets vedettes (mets à jour `url` avec tes vrais liens de démo)
+// ⭐ 4 projets vedettes
 const featured: Featured[] = [
   {
-    title: 'Site e-commerce',
-    category: 'Site e-commerce · Full-Stack',
+    titleKey: 'project_ecommerce_title',
+    categoryKey: 'project_ecommerce_category',
     year: '2022',
-    description:
-      "Boutique en ligne complète pour la vente de produits : catalogue, panier, gestion des commandes, des utilisateurs et back-office administrateur.",
-    callout: 'Une boutique clé en main, du catalogue au paiement, avec un espace admin pour tout piloter.',
-    highlights: ['Catalogue produits', 'Panier & commandes', 'Espace utilisateur', 'Back-office admin'],
+    descKey: 'project_ecommerce_desc',
+    calloutKey: 'project_ecommerce_callout',
+    highlightKeys: ['project_ecommerce_h1', 'project_ecommerce_h2', 'project_ecommerce_h3', 'project_ecommerce_h4'],
     techs: ['Laravel', 'PHP', 'JavaScript', 'MySQL'],
     image: jesmoniteImg,
     domain: 'e-commerce.demo',
   },
   {
-    title: "Application d'enchères en temps réel",
-    category: 'Temps réel · WebSocket',
+    titleKey: 'project_encheres_title',
+    categoryKey: 'project_encheres_category',
     year: '2023',
-    description:
-      "Plateforme d'enchères où chaque offre se met à jour instantanément pour tous les participants, sans rechargement, grâce aux WebSockets.",
-    callout: 'Des enchères qui se mettent à jour en direct pour tous les participants, en temps réel.',
-    highlights: ['Enchères en direct', 'Backend Node.js', 'Multi-utilisateurs', 'Notifications live'],
+    descKey: 'project_encheres_desc',
+    calloutKey: 'project_encheres_callout',
+    highlightKeys: ['project_encheres_h1', 'project_encheres_h2', 'project_encheres_h3', 'project_encheres_h4'],
     techs: ['JavaScript', 'Node.js', 'socket.io', 'WebPack'],
     image: venteEnchereImg,
     domain: 'encheres.demo',
   },
   {
-    title: 'Bubbleti',
-    category: 'Système de commande · Full-Stack',
+    titleKey: 'project_bubbleti_title',
+    categoryKey: 'project_bubbleti_category',
     year: '2024',
-    description:
-      "Système complet de prise de commande pour un salon de bubble tea : commande en borne ou en caisse, paiement, et écran d'affichage de l'état des commandes en temps réel.",
-    callout: 'De la commande à la préparation : un flux complet pensé pour un vrai commerce.',
-    highlights: ['Commande en borne', 'Paiement intégré', "Écran d'état des commandes", 'Base de données MySQL'],
+    descKey: 'project_bubbleti_desc',
+    calloutKey: 'project_bubbleti_callout',
+    highlightKeys: ['project_bubbleti_h1', 'project_bubbleti_h2', 'project_bubbleti_h3', 'project_bubbleti_h4'],
     techs: ['JavaScript', 'Node.js', 'MySQL'],
     image: bubbletiImg,
     domain: 'bubbleti.demo',
+    url: 'https://github.com/benhammane/Bubbleti',
   },
   {
-    title: 'Site de partage de recettes',
-    category: 'Plateforme communautaire · Full-Stack',
+    titleKey: 'project_recettes_title',
+    categoryKey: 'project_recettes_category',
     year: '2021',
-    description:
-      "Plateforme sociale permettant de publier, rechercher et gérer des recettes de cuisine, avec une interface interactive et une gestion des utilisateurs.",
-    callout: 'Une communauté autour de la cuisine : publier, chercher et partager ses recettes.',
-    highlights: ['Publication de recettes', 'Recherche & filtres', 'Gestion des utilisateurs', 'Interface interactive'],
+    descKey: 'project_recettes_desc',
+    calloutKey: 'project_recettes_callout',
+    highlightKeys: ['project_recettes_h1', 'project_recettes_h2', 'project_recettes_h3', 'project_recettes_h4'],
     techs: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
     image: foodixImg,
     domain: 'recettes.demo',
@@ -87,12 +84,12 @@ const featured: Featured[] = [
 
 // Autres réalisations (grille compacte)
 const others = [
-  { title: 'Jeu vidéo (shmup)', description: "Shoot-em-up conçu et programmé en Java.", techs: ['Java', 'LibGDX'], image: jeuTirImg },
-  { title: 'Système de location de vélos', description: 'Gestion autonome des stations et des locations.', techs: ['Java', 'MySQL', 'UML'], image: vlilleImg },
-  { title: 'Railroad Ink (numérique)', description: 'Version numérique multijoueur avec gestion réseau.', techs: ['Java', 'Python', 'WebSocket'], image: railroadImg },
-  { title: 'Kanban', description: 'Tableau de gestion des tâches avec cartes déplaçables.', techs: ['JavaScript', 'HTML', 'CSS'], image: kanbanImg },
-  { title: 'Defi Go', description: 'Jeu Android à défis quotidiens (App Inventor 2).', techs: ['App Inventor 2', 'Android'], image: defiGoImg },
-  { title: 'Bubbule', description: "Jeu façon Talking Tom avec un dragon virtuel et des mini-jeux.", techs: ['Game Design', 'JavaScript'], image: bubbleJeuImg },
+  { titleKey: 'project_shmup_title', descKey: 'project_shmup_desc', techs: ['Java', 'LibGDX'], image: jeuTirImg },
+  { titleKey: 'project_velo_title', descKey: 'project_velo_desc', techs: ['Java', 'MySQL', 'UML'], image: vlilleImg },
+  { titleKey: 'project_railroad_title', descKey: 'project_railroad_desc', techs: ['Java', 'Python', 'WebSocket'], image: railroadImg },
+  { titleKey: 'project_kanban_title', descKey: 'project_kanban_desc', techs: ['JavaScript', 'HTML', 'CSS'], image: kanbanImg },
+  { titleKey: 'project_delidefi_title', descKey: 'project_delidefi_desc', techs: ['App Inventor 2', 'Android'], image: defiGoImg },
+  { titleKey: 'project_bubbele_title', descKey: 'project_bubbele_desc', techs: ['Game Design', 'JavaScript'], image: bubbleJeuImg, url: 'https://github.com/benhammane/Bubulle' },
 ];
 
 /** Cadre navigateur contenant la capture du projet. */
@@ -114,8 +111,10 @@ const ProjectFrame = ({ image, domain, alt }: { image: string; domain: string; a
 
 const FeaturedProject = ({ project, index }: { project: Featured; index: number }) => {
   const { playClick } = useClickSound();
+  const { t } = useLocale();
   const link = project.url || GITHUB;
   const reversed = index % 2 === 1;
+  const title = t(project.titleKey);
 
   return (
     <motion.div
@@ -129,28 +128,28 @@ const FeaturedProject = ({ project, index }: { project: Featured; index: number 
       <div className={reversed ? 'lg:order-2' : 'lg:order-1'}>
         <div className="mb-4 flex flex-wrap items-center gap-3">
           <span className="rounded-full border border-brand/30 bg-brand/10 px-3 py-1 font-mono text-xs text-brand">
-            {project.category}
+            {t(project.categoryKey)}
           </span>
           <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
         </div>
 
-        <h3 className="font-display text-3xl font-bold tracking-tight md:text-4xl">{project.title}</h3>
+        <h3 className="font-display text-3xl font-bold tracking-tight md:text-4xl">{title}</h3>
 
-        <p className="mt-4 leading-relaxed text-muted-foreground">{project.description}</p>
+        <p className="mt-4 leading-relaxed text-muted-foreground">{t(project.descKey)}</p>
 
         {/* Encadré résultat */}
         <div className="mt-5 border-l-2 border-brand pl-4">
-          <p className="font-medium text-foreground/90">{project.callout}</p>
+          <p className="font-medium text-foreground/90">{t(project.calloutKey)}</p>
         </div>
 
         {/* Points forts */}
         <div className="mt-6">
-          <p className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Points forts</p>
+          <p className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">{t('projects_highlights_label')}</p>
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            {project.highlights.map((h) => (
-              <div key={h} className="flex items-center gap-2 text-sm">
+            {project.highlightKeys.map((hKey) => (
+              <div key={hKey} className="flex items-center gap-2 text-sm">
                 <Check size={15} className="shrink-0 text-brand" />
-                {h}
+                {t(hKey)}
               </div>
             ))}
           </div>
@@ -175,7 +174,7 @@ const FeaturedProject = ({ project, index }: { project: Featured; index: number 
           rel="noopener noreferrer"
           onClick={playClick}
         >
-          {project.url ? 'Voir le site' : 'Voir sur GitHub'}
+          {project.url ? t('projects_view_site') : t('projects_view_github')}
           <ArrowUpRight size={17} />
         </LiquidButton>
       </div>
@@ -187,10 +186,10 @@ const FeaturedProject = ({ project, index }: { project: Featured; index: number 
         rel="noopener noreferrer"
         onClick={playClick}
         className={`block ${reversed ? 'lg:order-1' : 'lg:order-2'}`}
-        aria-label={project.title}
+        aria-label={title}
       >
         <motion.div whileHover={{ y: -6 }} transition={{ type: 'spring', stiffness: 260, damping: 20 }}>
-          <ProjectFrame image={project.image} domain={project.domain} alt={project.title} />
+          <ProjectFrame image={project.image} domain={project.domain} alt={title} />
         </motion.div>
       </a>
     </motion.div>
@@ -209,14 +208,14 @@ const ProjectsSection = () => {
         {/* Projets vedettes */}
         <div className="space-y-20 md:space-y-28">
           {featured.map((p, i) => (
-            <FeaturedProject key={p.title} project={p} index={i} />
+            <FeaturedProject key={p.titleKey} project={p} index={i} />
           ))}
         </div>
 
         {/* Autres réalisations */}
         <div className="mt-24">
           <div className="mb-10 flex items-center gap-4">
-            <h3 className="font-display text-xl font-semibold">Autres réalisations</h3>
+            <h3 className="font-display text-xl font-semibold">{t('projects_others_heading')}</h3>
             <span className="h-px flex-1 bg-border/60" />
           </div>
 
@@ -227,38 +226,41 @@ const ProjectsSection = () => {
             viewport={{ once: true, amount: 0.1 }}
             className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
           >
-            {others.map((project) => (
-              <motion.a
-                key={project.title}
-                href={GITHUB}
-                target="_blank"
-                rel="noopener noreferrer"
-                variants={staggerItem}
-                onClick={playClick}
-                whileHover={{ y: -8 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-                className="group flex flex-col overflow-hidden rounded-3xl glass"
-              >
-                <div className="relative h-44 overflow-hidden">
-                  <img src={project.image} alt={project.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
-                  <div className="absolute right-3 top-3 rounded-full bg-background/80 p-2 opacity-0 backdrop-blur-md transition-opacity group-hover:opacity-100">
-                    <Github size={15} />
+            {others.map((project) => {
+              const title = t(project.titleKey);
+              return (
+                <motion.a
+                  key={project.titleKey}
+                  href={project.url || GITHUB}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variants={staggerItem}
+                  onClick={playClick}
+                  whileHover={{ y: -8 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+                  className="group flex flex-col overflow-hidden rounded-3xl glass"
+                >
+                  <div className="relative h-44 overflow-hidden">
+                    <img src={project.image} alt={title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
+                    <div className="absolute right-3 top-3 rounded-full bg-background/80 p-2 opacity-0 backdrop-blur-md transition-opacity group-hover:opacity-100">
+                      <Github size={15} />
+                    </div>
                   </div>
-                </div>
-                <div className="flex flex-grow flex-col p-6">
-                  <h4 className="font-display font-semibold transition-colors group-hover:text-brand">{project.title}</h4>
-                  <p className="mt-2 flex-grow text-sm leading-relaxed text-muted-foreground">{project.description}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.techs.map((tech) => (
-                      <span key={tech} className="rounded-full border border-border/60 bg-secondary/40 px-2.5 py-1 text-xs text-muted-foreground">
-                        {tech}
-                      </span>
-                    ))}
+                  <div className="flex flex-grow flex-col p-6">
+                    <h4 className="font-display font-semibold transition-colors group-hover:text-brand">{title}</h4>
+                    <p className="mt-2 flex-grow text-sm leading-relaxed text-muted-foreground">{t(project.descKey)}</p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {project.techs.map((tech) => (
+                        <span key={tech} className="rounded-full border border-border/60 bg-secondary/40 px-2.5 py-1 text-xs text-muted-foreground">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </motion.a>
-            ))}
+                </motion.a>
+              );
+            })}
           </motion.div>
         </div>
       </div>

@@ -1,73 +1,47 @@
-# Welcome to your Lovable project
+# Portfolio — Amine Benhammane
 
-## Project info
+Portfolio personnel d'Amine Benhammane, développeur full-stack (M2 MIAGE, Université de Lille) et fondateur de l'agence [WebLocal](https://adamine.vercel.app).
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**Production** : https://benhammaneamine.vercel.app
 
-## How can I edit this code?
+## Stack technique
 
-There are several ways of editing your application.
+- **React 18** + **TypeScript**
+- **Vite** + **vite-react-ssg** (génération statique — build vers `docs/`)
+- **Tailwind CSS** + **shadcn/ui** (Radix primitives)
+- **Framer Motion** pour les animations
+- **React Three Fiber** / **Spline** pour le robot 3D interactif (chargé en lazy, désactivé si `prefers-reduced-motion` ou mobile)
+- **EmailJS** pour le formulaire de contact
+- **Google Analytics 4** (désactivé en dev)
+- Assistant IA (chatbot) branché sur l'API OpenRouter via une fonction serverless Vercel (`api/chat.ts`)
 
-**Use Lovable**
+## Fonctionnalités
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- Site bilingue FR/EN (`src/lib/LocaleProvider.tsx`)
+- Thème clair/sombre avec persistance et anti-FOUC
+- Blog intégré avec génération de pages statiques par article (SEO) et JSON-LD
+- Section projets, expériences, parcours et une section dédiée à l'agence WebLocal
 
-Changes made via Lovable will be committed automatically to this repo.
+## Développement local
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Prérequis : Node.js + npm.
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+git clone <url-du-repo>
+cd portfolio
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Scripts
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+| Commande              | Description                                      |
+| ---------------------- | ------------------------------------------------- |
+| `npm run dev`           | Serveur de développement (Vite)                   |
+| `npm run build`         | Build statique de production (sort dans `docs/`)  |
+| `npm run preview`       | Prévisualise le build de production                |
+| `npm run lint`          | Lint ESLint                                        |
 
-**Use GitHub Codespaces**
+## Variables d'environnement
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Voir `.env.example` pour la liste complète (EmailJS, Google Analytics, OpenRouter pour l'assistant IA).

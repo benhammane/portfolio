@@ -6,7 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Amine Benhammane" />
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#0a0a0a" />
   <!-- Le <title>, la description et les balises OG sont gérés par page via <Head> (voir src/pages/*) -->
+
+  <!-- Anti-FOUC thème : pose la classe .dark AVANT le premier paint (site statique,
+       ThemeProvider ne s'exécute qu'après hydratation React sans ce script). -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- Google Fonts en async : ne bloque pas le premier rendu (display=swap affiche le texte
        avec la police système en attendant). Le pattern media="print" + onload différe le CSS. -->

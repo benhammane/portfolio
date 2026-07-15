@@ -1,5 +1,5 @@
-// ⚠️ IMPORTANT SEO : remplace par l'URL RÉELLE de ton portfolio (pas ton agence).
-// Elle sert aux balises canoniques et Open Graph (partages LinkedIn/Twitter).
-export const SITE_URL = 'https://amine-portfolio.vercel.app';
+// URL réelle de déploiement du portfolio (pas celle de l'agence WebLocal/adamine).
+// Elle sert aux balises canoniques, Open Graph et au sitemap.
+export const SITE_URL = 'https://benhammaneamine.vercel.app';
 
 export const SITE_NAME = 'Amine Benhammane';

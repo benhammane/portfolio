@@ -1,14 +1,14 @@
 {
-  "_client-C_04LHI4.js": {
-    "file": "assets/client-C_04LHI4.js",
+  "_client-7cmEwdkR.js": {
+    "file": "assets/client-7cmEwdkR.js",
     "name": "client",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
     ]
   },
-  "_howler-DsoYdj-r.js": {
-    "file": "assets/howler-DsoYdj-r.js",
+  "_howler-DHzu18J-.js": {
+    "file": "assets/howler-DHzu18J-.js",
     "name": "howler",
     "isDynamicEntry": true,
     "imports": [
@@ -16,17 +16,17 @@
     ]
   },
   "index.html": {
-    "file": "assets/app-BH2rocFp.js",
+    "file": "assets/app-BPpGI8F3.js",
     "name": "app",
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
-      "_client-C_04LHI4.js",
-      "_client-C_04LHI4.js",
+      "_client-7cmEwdkR.js",
+      "_client-7cmEwdkR.js",
       "src/components/fx/SplineRobot.tsx"
     ],
     "css": [
-      "assets/app-RX6rBUBD.css"
+      "assets/app-C4IEnRJs.css"
     ],
     "assets": [
       "assets/ABLogo-BerroeTX.jpeg",
@@ -173,7 +173,7 @@
     "src": "src/assert/weblocal-screenshot.webp"
   },
   "src/components/fx/SplineRobot.tsx": {
-    "file": "assets/SplineRobot-C_006TqH.js",
+    "file": "assets/SplineRobot-ChTECx5l.js",
     "name": "SplineRobot",
     "src": "src/components/fx/SplineRobot.tsx",
     "isDynamicEntry": true,
@@ -185,7 +185,7 @@
       "node_modules/@splinetool/runtime/build/physics.js",
       "node_modules/@splinetool/runtime/build/process.js",
       "node_modules/@splinetool/runtime/build/boolean.js",
-      "_howler-DsoYdj-r.js",
+      "_howler-DHzu18J-.js",
       "node_modules/@splinetool/runtime/build/opentype.js",
       "node_modules/@splinetool/runtime/build/ui.js",
       "node_modules/@splinetool/runtime/build/gaussian-splat-compression.js"

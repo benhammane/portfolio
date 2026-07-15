@@ -1,6 +1,6 @@
 {
   "\u0000C:/Users/Amine/Desktop/Dev_GitHub/portfolio/node_modules/@splinetool/runtime/build/howler.js?commonjs-exports": [
-    "/assets/howler-DsoYdj-r.js"
+    "/assets/howler-DHzu18J-.js"
   ],
   "\u0000C:/Users/Amine/Desktop/Dev_GitHub/portfolio/node_modules/prop-types/index.js?commonjs-module": [
     "/assets/ABLogo-BerroeTX.jpeg",
@@ -45,7 +45,7 @@
     "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
   ],
   "\u0000C:/Users/Amine/Desktop/Dev_GitHub/portfolio/node_modules/react-dom/client.js?commonjs-exports": [
-    "/assets/client-C_04LHI4.js"
+    "/assets/client-7cmEwdkR.js"
   ],
   "\u0000C:/Users/Amine/Desktop/Dev_GitHub/portfolio/node_modules/react-dom/index.js?commonjs-module": [
     "/assets/ABLogo-BerroeTX.jpeg",
@@ -1308,10 +1308,10 @@
     "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
   ],
   "node_modules/@splinetool/react-spline/dist/ParentSize.js": [
-    "/assets/SplineRobot-C_006TqH.js"
+    "/assets/SplineRobot-ChTECx5l.js"
   ],
   "node_modules/@splinetool/react-spline/dist/react-spline.js": [
-    "/assets/SplineRobot-C_006TqH.js"
+    "/assets/SplineRobot-ChTECx5l.js"
   ],
   "node_modules/@splinetool/runtime/build/boolean.js": [
     "/assets/boolean-DW615i1i.js"
@@ -1320,7 +1320,7 @@
     "/assets/gaussian-splat-compression-ro4O0smp.js"
   ],
   "node_modules/@splinetool/runtime/build/howler.js": [
-    "/assets/howler-DsoYdj-r.js"
+    "/assets/howler-DHzu18J-.js"
   ],
   "node_modules/@splinetool/runtime/build/navmesh.js": [
     "/assets/navmesh-BFd9Mv4x.js"
@@ -1335,7 +1335,7 @@
     "/assets/process-BIZ-YYuM.js"
   ],
   "node_modules/@splinetool/runtime/build/runtime.js": [
-    "/assets/SplineRobot-C_006TqH.js"
+    "/assets/SplineRobot-ChTECx5l.js"
   ],
   "node_modules/@splinetool/runtime/build/ui.js": [
     "/assets/ui-C7lJvRaX.js"
@@ -4953,7 +4953,7 @@
     "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
   ],
   "node_modules/lodash.debounce/index.js": [
-    "/assets/SplineRobot-C_006TqH.js"
+    "/assets/SplineRobot-ChTECx5l.js"
   ],
   "node_modules/lucide-react/dist/esm/Icon.js": [
     "/assets/ABLogo-BerroeTX.jpeg",
@@ -8862,7 +8862,7 @@
     "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
   ],
   "node_modules/react-dom/client.js": [
-    "/assets/client-C_04LHI4.js"
+    "/assets/client-7cmEwdkR.js"
   ],
   "node_modules/react-dom/index.js": [
     "/assets/ABLogo-BerroeTX.jpeg",
@@ -8928,7 +8928,7 @@
     "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
   ],
   "node_modules/react-merge-refs/dist/index.mjs": [
-    "/assets/SplineRobot-C_006TqH.js"
+    "/assets/SplineRobot-ChTECx5l.js"
   ],
   "node_modules/react-remove-scroll-bar/dist/es2015/component.js": [
     "/assets/ABLogo-BerroeTX.jpeg",
@@ -10569,7 +10569,7 @@
     "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
   ],
   "src/components/fx/SplineRobot.tsx": [
-    "/assets/SplineRobot-C_006TqH.js"
+    "/assets/SplineRobot-ChTECx5l.js"
   ],
   "src/components/ui/dialog.tsx": [
     "/assets/ABLogo-BerroeTX.jpeg",

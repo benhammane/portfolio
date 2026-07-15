@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Head } from 'vite-react-ssg';
 import { motion } from 'framer-motion';
-import { SITE_URL } from '@/config';
+import { SITE_URL, SITE_NAME } from '@/config';
+import { useLocale } from '@/lib/LocaleProvider';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
@@ -16,6 +17,8 @@ import ContactSection from '@/components/ContactSection';
 import Preloader from '@/components/fx/Preloader';
 
 const Index = () => {
+  const { locale } = useLocale();
+
   // Intro affichée une seule fois par session
   const [loading, setLoading] = useState(() => {
     try {
@@ -37,7 +40,7 @@ const Index = () => {
   return (
     <div className="relative min-h-screen">
       <Head>
-        <html lang="fr" />
+        <html lang={locale} />
         <title>Amine Benhammane — Développeur Full-Stack & Fondateur de WebLocal</title>
         <meta
           name="description"
@@ -47,7 +50,29 @@ const Index = () => {
         <meta property="og:title" content="Amine Benhammane — Développeur Full-Stack & Freelance" />
         <meta property="og:description" content="Développeur full-stack et fondateur de WebLocal. Sites web & applications sur-mesure." />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image.jpg`} />
+        <meta property="og:image:width" content="1024" />
+        <meta property="og:image:height" content="1536" />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image.jpg`} />
         <link rel="canonical" href={`${SITE_URL}/`} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: SITE_NAME,
+            url: SITE_URL,
+            jobTitle: 'Développeur Full-Stack',
+            image: `${SITE_URL}/og-image.jpg`,
+            email: 'benhammanemedamine@gmail.com',
+            address: { '@type': 'PostalAddress', addressLocality: 'Lille', addressCountry: 'FR' },
+            sameAs: [
+              'https://github.com/benhammane',
+              'https://www.linkedin.com/in/benhammaneamine/',
+            ],
+            worksFor: { '@type': 'Organization', name: 'WebLocal', url: 'https://adamine.vercel.app' },
+          })}
+        </script>
       </Head>
 
       {loading && <Preloader onComplete={handleIntroDone} />}

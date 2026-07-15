@@ -111,6 +111,39 @@ const translations: Record<Locale, Record<string, string>> = {
         project_railroad_title: 'Railroad Ink (numérique)',
         project_railroad_desc: "Version numérique du jeu multijoueur, gestion réseau et interface interactive.",
 
+        project_ecommerce_category: 'Site e-commerce · Full-Stack',
+        project_ecommerce_callout: 'Une boutique clé en main, du catalogue au paiement, avec un espace admin pour tout piloter.',
+        project_ecommerce_h1: 'Catalogue produits',
+        project_ecommerce_h2: 'Panier & commandes',
+        project_ecommerce_h3: 'Espace utilisateur',
+        project_ecommerce_h4: 'Back-office admin',
+
+        project_encheres_category: 'Temps réel · WebSocket',
+        project_encheres_callout: 'Des enchères qui se mettent à jour en direct pour tous les participants, en temps réel.',
+        project_encheres_h1: 'Enchères en direct',
+        project_encheres_h2: 'Backend Node.js',
+        project_encheres_h3: 'Multi-utilisateurs',
+        project_encheres_h4: 'Notifications live',
+
+        project_bubbleti_category: 'Système de commande · Full-Stack',
+        project_bubbleti_callout: 'De la commande à la préparation : un flux complet pensé pour un vrai commerce.',
+        project_bubbleti_h1: 'Commande en borne',
+        project_bubbleti_h2: 'Paiement intégré',
+        project_bubbleti_h3: "Écran d'état des commandes",
+        project_bubbleti_h4: 'Base de données MySQL',
+
+        project_recettes_category: 'Plateforme communautaire · Full-Stack',
+        project_recettes_callout: 'Une communauté autour de la cuisine : publier, chercher et partager ses recettes.',
+        project_recettes_h1: 'Publication de recettes',
+        project_recettes_h2: 'Recherche & filtres',
+        project_recettes_h3: 'Gestion des utilisateurs',
+        project_recettes_h4: 'Interface interactive',
+
+        projects_highlights_label: 'Points forts',
+        projects_others_heading: 'Autres réalisations',
+        projects_view_site: 'Voir le site',
+        projects_view_github: 'Voir sur GitHub',
+
         // Experience
         experience_title: 'Mes Experiences',
         experience_sub: 'Mon évolution professionnelle à travers différentes entreprises et projets.',
@@ -300,6 +333,39 @@ const translations: Record<Locale, Record<string, string>> = {
         project_encheres_desc: "Real-time auction application with WebSocket communication and Node.js backend.",
         project_railroad_title: 'Railroad Ink (digital)',
         project_railroad_desc: "Digital version of the multiplayer game, network management and interactive interface.",
+
+        project_ecommerce_category: 'E-commerce site · Full-Stack',
+        project_ecommerce_callout: 'A turnkey shop, from catalog to checkout, with an admin space to run it all.',
+        project_ecommerce_h1: 'Product catalog',
+        project_ecommerce_h2: 'Cart & orders',
+        project_ecommerce_h3: 'User account area',
+        project_ecommerce_h4: 'Admin back-office',
+
+        project_encheres_category: 'Real-time · WebSocket',
+        project_encheres_callout: 'Bids update live for every participant, in real time.',
+        project_encheres_h1: 'Live bidding',
+        project_encheres_h2: 'Node.js backend',
+        project_encheres_h3: 'Multi-user',
+        project_encheres_h4: 'Live notifications',
+
+        project_bubbleti_category: 'Order system · Full-Stack',
+        project_bubbleti_callout: 'From order to preparation: a complete flow designed for a real business.',
+        project_bubbleti_h1: 'Kiosk ordering',
+        project_bubbleti_h2: 'Integrated payment',
+        project_bubbleti_h3: 'Order status screen',
+        project_bubbleti_h4: 'MySQL database',
+
+        project_recettes_category: 'Community platform · Full-Stack',
+        project_recettes_callout: 'A cooking community: publish, search and share recipes.',
+        project_recettes_h1: 'Recipe publishing',
+        project_recettes_h2: 'Search & filters',
+        project_recettes_h3: 'User management',
+        project_recettes_h4: 'Interactive interface',
+
+        projects_highlights_label: 'Highlights',
+        projects_others_heading: 'Other projects',
+        projects_view_site: 'View site',
+        projects_view_github: 'View on GitHub',
 
         // Experience
         experience_title: 'My Experience',
