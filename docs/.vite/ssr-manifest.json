@@ -1,6 +1,6 @@
 {
   "\u0000C:/Users/Amine/Desktop/Dev_GitHub/portfolio/node_modules/@splinetool/runtime/build/howler.js?commonjs-exports": [
-    "/assets/howler-DHzu18J-.js"
+    "/assets/howler-Bcafgktu.js"
   ],
   "\u0000C:/Users/Amine/Desktop/Dev_GitHub/portfolio/node_modules/prop-types/index.js?commonjs-module": [
     "/assets/ABLogo-BerroeTX.jpeg",
@@ -45,7 +45,7 @@
     "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
   ],
   "\u0000C:/Users/Amine/Desktop/Dev_GitHub/portfolio/node_modules/react-dom/client.js?commonjs-exports": [
-    "/assets/client-7cmEwdkR.js"
+    "/assets/client-DR0meWTs.js"
   ],
   "\u0000C:/Users/Amine/Desktop/Dev_GitHub/portfolio/node_modules/react-dom/index.js?commonjs-module": [
     "/assets/ABLogo-BerroeTX.jpeg",
@@ -1308,10 +1308,10 @@
     "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
   ],
   "node_modules/@splinetool/react-spline/dist/ParentSize.js": [
-    "/assets/SplineRobot-ChTECx5l.js"
+    "/assets/SplineRobot-BB4w_Iwf.js"
   ],
   "node_modules/@splinetool/react-spline/dist/react-spline.js": [
-    "/assets/SplineRobot-ChTECx5l.js"
+    "/assets/SplineRobot-BB4w_Iwf.js"
   ],
   "node_modules/@splinetool/runtime/build/boolean.js": [
     "/assets/boolean-DW615i1i.js"
@@ -1320,7 +1320,7 @@
     "/assets/gaussian-splat-compression-ro4O0smp.js"
   ],
   "node_modules/@splinetool/runtime/build/howler.js": [
-    "/assets/howler-DHzu18J-.js"
+    "/assets/howler-Bcafgktu.js"
   ],
   "node_modules/@splinetool/runtime/build/navmesh.js": [
     "/assets/navmesh-BFd9Mv4x.js"
@@ -1335,7 +1335,7 @@
     "/assets/process-BIZ-YYuM.js"
   ],
   "node_modules/@splinetool/runtime/build/runtime.js": [
-    "/assets/SplineRobot-ChTECx5l.js"
+    "/assets/SplineRobot-BB4w_Iwf.js"
   ],
   "node_modules/@splinetool/runtime/build/ui.js": [
     "/assets/ui-C7lJvRaX.js"
@@ -4953,7 +4953,7 @@
     "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
   ],
   "node_modules/lodash.debounce/index.js": [
-    "/assets/SplineRobot-ChTECx5l.js"
+    "/assets/SplineRobot-BB4w_Iwf.js"
   ],
   "node_modules/lucide-react/dist/esm/Icon.js": [
     "/assets/ABLogo-BerroeTX.jpeg",
@@ -5208,6 +5208,27 @@
     "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
   ],
   "node_modules/lucide-react/dist/esm/icons/clock.js": [
+    "/assets/ABLogo-BerroeTX.jpeg",
+    "/assets/photoPORTFOLIO-DPmCKCTs.jpeg",
+    "/assets/CVBENHAMMANE-D8NxFOV0.pdf",
+    "/assets/aurora-isle-screenshot-CfXz-iwY.webp",
+    "/assets/foodix-BMtQBk38.webp",
+    "/assets/jesmoniteEcommerce-BimJgX3A.jpeg",
+    "/assets/jeuTIR-BQF3koVk.webp",
+    "/assets/Vlille-DVWe0gwx.png",
+    "/assets/Kanban-BcbRfMij.png",
+    "/assets/DefiGO-D1q092XA.jpeg",
+    "/assets/BubbletiMA-FDnnh2Ha.png",
+    "/assets/BubbleJEU--xPidpft.png",
+    "/assets/venteEnchere-vvtUiUMv.webp",
+    "/assets/railroad2-CoJ06UEO.webp",
+    "/assets/weblocal-screenshot-DV8zEqfc.webp",
+    "/assets/montagePORTFOLIO-1OU4dYRN.mp4",
+    "/assets/sportPORTFOLIO-B09R26nU.mp4",
+    "/assets/voyagePORTFOLIO4-CDaetBvu.mp4",
+    "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
+  ],
+  "node_modules/lucide-react/dist/esm/icons/code-xml.js": [
     "/assets/ABLogo-BerroeTX.jpeg",
     "/assets/photoPORTFOLIO-DPmCKCTs.jpeg",
     "/assets/CVBENHAMMANE-D8NxFOV0.pdf",
@@ -8862,7 +8883,7 @@
     "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
   ],
   "node_modules/react-dom/client.js": [
-    "/assets/client-7cmEwdkR.js"
+    "/assets/client-DR0meWTs.js"
   ],
   "node_modules/react-dom/index.js": [
     "/assets/ABLogo-BerroeTX.jpeg",
@@ -8928,7 +8949,7 @@
     "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
   ],
   "node_modules/react-merge-refs/dist/index.mjs": [
-    "/assets/SplineRobot-ChTECx5l.js"
+    "/assets/SplineRobot-BB4w_Iwf.js"
   ],
   "node_modules/react-remove-scroll-bar/dist/es2015/component.js": [
     "/assets/ABLogo-BerroeTX.jpeg",
@@ -10569,7 +10590,7 @@
     "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
   ],
   "src/components/fx/SplineRobot.tsx": [
-    "/assets/SplineRobot-ChTECx5l.js"
+    "/assets/SplineRobot-BB4w_Iwf.js"
   ],
   "src/components/ui/dialog.tsx": [
     "/assets/ABLogo-BerroeTX.jpeg",
@@ -10593,6 +10614,27 @@
     "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
   ],
   "src/components/ui/liquid-glass-button.tsx": [
+    "/assets/ABLogo-BerroeTX.jpeg",
+    "/assets/photoPORTFOLIO-DPmCKCTs.jpeg",
+    "/assets/CVBENHAMMANE-D8NxFOV0.pdf",
+    "/assets/aurora-isle-screenshot-CfXz-iwY.webp",
+    "/assets/foodix-BMtQBk38.webp",
+    "/assets/jesmoniteEcommerce-BimJgX3A.jpeg",
+    "/assets/jeuTIR-BQF3koVk.webp",
+    "/assets/Vlille-DVWe0gwx.png",
+    "/assets/Kanban-BcbRfMij.png",
+    "/assets/DefiGO-D1q092XA.jpeg",
+    "/assets/BubbletiMA-FDnnh2Ha.png",
+    "/assets/BubbleJEU--xPidpft.png",
+    "/assets/venteEnchere-vvtUiUMv.webp",
+    "/assets/railroad2-CoJ06UEO.webp",
+    "/assets/weblocal-screenshot-DV8zEqfc.webp",
+    "/assets/montagePORTFOLIO-1OU4dYRN.mp4",
+    "/assets/sportPORTFOLIO-B09R26nU.mp4",
+    "/assets/voyagePORTFOLIO4-CDaetBvu.mp4",
+    "/assets/streamingPORTFOLIO-ChqmKbvk.mp4"
+  ],
+  "src/components/ui/shine-border.tsx": [
     "/assets/ABLogo-BerroeTX.jpeg",
     "/assets/photoPORTFOLIO-DPmCKCTs.jpeg",
     "/assets/CVBENHAMMANE-D8NxFOV0.pdf",
