@@ -120,6 +120,15 @@ const translations: Record<Locale, Record<string, string>> = {
         project_encheres_desc: "Application d'enchères en temps réel avec communication via WebSocket et backend Node.js.",
         project_railroad_title: 'Railroad Ink (numérique)',
         project_railroad_desc: "Version numérique du jeu multijoueur, gestion réseau et interface interactive.",
+        project_bankinsight_title: 'BankInsight',
+        project_bankinsight_desc: "Assistant conversationnel RAG pour relevés bancaires : upload de PDF/CSV/Excel, chat avec sources citées et détection d'anomalies. Déployé en mode démo 100 % gratuit, sans clé API.",
+
+        project_bankinsight_category: 'Assistant IA · RAG',
+        project_bankinsight_callout: 'De vos relevés bancaires à des réponses fiables et sourcées, sans jamais rien inventer.',
+        project_bankinsight_h1: 'Ingestion PDF / CSV / Excel',
+        project_bankinsight_h2: 'Chat avec sources citées',
+        project_bankinsight_h3: "Détection d'anomalies",
+        project_bankinsight_h4: 'Embeddings locaux (ChromaDB)',
 
         project_ecommerce_category: 'Site e-commerce · Full-Stack',
         project_ecommerce_callout: 'Une boutique clé en main, du catalogue au paiement, avec un espace admin pour tout piloter.',
@@ -353,6 +362,15 @@ const translations: Record<Locale, Record<string, string>> = {
         project_encheres_desc: "Real-time auction application with WebSocket communication and Node.js backend.",
         project_railroad_title: 'Railroad Ink (digital)',
         project_railroad_desc: "Digital version of the multiplayer game, network management and interactive interface.",
+        project_bankinsight_title: 'BankInsight',
+        project_bankinsight_desc: "Conversational RAG assistant for bank statements: upload PDF/CSV/Excel, chat with cited sources, and anomaly detection. Deployed as a fully free demo, no API key required.",
+
+        project_bankinsight_category: 'AI Assistant · RAG',
+        project_bankinsight_callout: 'From your bank statements to reliable, sourced answers — never invented.',
+        project_bankinsight_h1: 'PDF / CSV / Excel ingestion',
+        project_bankinsight_h2: 'Chat with cited sources',
+        project_bankinsight_h3: 'Anomaly detection',
+        project_bankinsight_h4: 'Local embeddings (ChromaDB)',
 
         project_ecommerce_category: 'E-commerce site · Full-Stack',
         project_ecommerce_callout: 'A turnkey shop, from catalog to checkout, with an admin space to run it all.',

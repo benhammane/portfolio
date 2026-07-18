@@ -17,6 +17,7 @@ import bubbletiImg from '@/assert/BubbletiMA.png';
 import bubbleJeuImg from '@/assert/BubbleJEU.png';
 import venteEnchereImg from '@/assert/venteEnchere.webp';
 import railroadImg from '@/assert/railroad2.webp';
+import bankInsightImg from '@/assert/BankInsight.png';
 
 const GITHUB = 'https://github.com/benhammane';
 
@@ -33,8 +34,20 @@ interface Featured {
   domain: string; // affiché dans la barre du mockup
 }
 
-// ⭐ 4 projets vedettes
+// ⭐ 5 projets vedettes
 const featured: Featured[] = [
+  {
+    titleKey: 'project_bankinsight_title',
+    categoryKey: 'project_bankinsight_category',
+    year: '2026',
+    descKey: 'project_bankinsight_desc',
+    calloutKey: 'project_bankinsight_callout',
+    highlightKeys: ['project_bankinsight_h1', 'project_bankinsight_h2', 'project_bankinsight_h3', 'project_bankinsight_h4'],
+    techs: ['Python', 'Streamlit', 'LangChain', 'ChromaDB'],
+    image: bankInsightImg,
+    domain: 'bankinsight.streamlit.app',
+    url: 'https://bankinsight.streamlit.app',
+  },
   {
     titleKey: 'project_ecommerce_title',
     categoryKey: 'project_ecommerce_category',
