@@ -120,6 +120,15 @@ const translations: Record<Locale, Record<string, string>> = {
         project_encheres_desc: "Application d'enchères en temps réel avec communication via WebSocket et backend Node.js.",
         project_railroad_title: 'Railroad Ink (numérique)',
         project_railroad_desc: "Version numérique du jeu multijoueur, gestion réseau et interface interactive.",
+        project_etoo_title: 'ETOO — Arcade Blaster',
+        project_etoo_desc: "FPS arcade multijoueur jouable directement dans le navigateur, sans rien installer : tu crées une partie, tu partages un code, tes amis rejoignent en 10 secondes. Rendu 3D temps réel, réseau pair-à-pair (WebRTC), bots à IA tactique, 7 armes, plusieurs modes de jeu et cartes.",
+        project_etoo_category: 'Jeu FPS multijoueur · 3D temps réel',
+        project_etoo_callout: 'Un vrai jeu de tir 3D multijoueur, dans le navigateur — invite tes amis avec un code et joue immédiatement.',
+        project_etoo_h1: 'Rendu 3D temps réel (Three.js)',
+        project_etoo_h2: 'Multijoueur pair-à-pair (WebRTC)',
+        project_etoo_h3: 'Bots à IA tactique',
+        project_etoo_h4: 'Modes de jeu, cartes & 7 armes',
+
         project_bankinsight_title: 'BankInsight',
         project_bankinsight_desc: "Assistant conversationnel RAG pour relevés bancaires : upload de PDF/CSV/Excel, chat avec sources citées et détection d'anomalies. Déployé en mode démo 100 % gratuit, sans clé API.",
 
@@ -162,6 +171,7 @@ const translations: Record<Locale, Record<string, string>> = {
         projects_others_heading: 'Autres réalisations',
         projects_view_site: 'Voir le site',
         projects_view_github: 'Voir sur GitHub',
+        projects_play: 'Jouer maintenant',
 
         // Experience
         experience_title: 'Mes Experiences',
@@ -362,6 +372,15 @@ const translations: Record<Locale, Record<string, string>> = {
         project_encheres_desc: "Real-time auction application with WebSocket communication and Node.js backend.",
         project_railroad_title: 'Railroad Ink (digital)',
         project_railroad_desc: "Digital version of the multiplayer game, network management and interactive interface.",
+        project_etoo_title: 'ETOO — Arcade Blaster',
+        project_etoo_desc: "A multiplayer arcade FPS playable straight in the browser, nothing to install: create a match, share a code, and friends join in 10 seconds. Real-time 3D rendering, peer-to-peer networking (WebRTC), tactical AI bots, 7 weapons, multiple game modes and maps.",
+        project_etoo_category: 'Multiplayer FPS game · Real-time 3D',
+        project_etoo_callout: 'A real 3D multiplayer shooter, right in the browser — invite friends with a code and play instantly.',
+        project_etoo_h1: 'Real-time 3D rendering (Three.js)',
+        project_etoo_h2: 'Peer-to-peer multiplayer (WebRTC)',
+        project_etoo_h3: 'Tactical AI bots',
+        project_etoo_h4: 'Game modes, maps & 7 weapons',
+
         project_bankinsight_title: 'BankInsight',
         project_bankinsight_desc: "Conversational RAG assistant for bank statements: upload PDF/CSV/Excel, chat with cited sources, and anomaly detection. Deployed as a fully free demo, no API key required.",
 
@@ -404,6 +423,7 @@ const translations: Record<Locale, Record<string, string>> = {
         projects_others_heading: 'Other projects',
         projects_view_site: 'View site',
         projects_view_github: 'View on GitHub',
+        projects_play: 'Play now',
 
         // Experience
         experience_title: 'My Experience',

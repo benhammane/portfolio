@@ -18,6 +18,7 @@ import bubbleJeuImg from '@/assert/BubbleJEU.png';
 import venteEnchereImg from '@/assert/venteEnchere.webp';
 import railroadImg from '@/assert/railroad2.webp';
 import bankInsightImg from '@/assert/BankInsight.png';
+import etooImg from '@/assert/etoo-blast-off.png';
 
 const GITHUB = 'https://github.com/benhammane';
 
@@ -32,10 +33,24 @@ interface Featured {
   image: string;
   url?: string; // lien démo réel ou repo GitHub spécifique (sinon → profil GitHub)
   domain: string; // affiché dans la barre du mockup
+  playable?: boolean; // true → CTA « Jouer maintenant » au lieu de « Voir le site »
 }
 
-// ⭐ 5 projets vedettes
+// ⭐ projets vedettes
 const featured: Featured[] = [
+  {
+    titleKey: 'project_etoo_title',
+    categoryKey: 'project_etoo_category',
+    year: '2026',
+    descKey: 'project_etoo_desc',
+    calloutKey: 'project_etoo_callout',
+    highlightKeys: ['project_etoo_h1', 'project_etoo_h2', 'project_etoo_h3', 'project_etoo_h4'],
+    techs: ['React', 'Three.js', 'TypeScript', 'WebRTC'],
+    image: etooImg,
+    domain: 'etoo-blast-off.vercel.app',
+    url: 'https://etoo-blast-off.vercel.app',
+    playable: true,
+  },
   {
     titleKey: 'project_bankinsight_title',
     categoryKey: 'project_bankinsight_category',
@@ -187,7 +202,7 @@ const FeaturedProject = ({ project, index }: { project: Featured; index: number 
           rel="noopener noreferrer"
           onClick={playClick}
         >
-          {project.url ? t('projects_view_site') : t('projects_view_github')}
+          {project.playable ? t('projects_play') : project.url ? t('projects_view_site') : t('projects_view_github')}
           <ArrowUpRight size={17} />
         </LiquidButton>
       </div>
