@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight, Clock, Calendar } from 'lucide-react';
 import { useLocale } from '@/lib/LocaleProvider';
 import BlogHeader from '@/components/BlogHeader';
-import { posts, formatDate } from '@/data/posts';
+import { publishedPosts as posts, formatDate } from '@/data/posts';
 import { SITE_URL } from '@/config';
 
 const BlogList = () => {

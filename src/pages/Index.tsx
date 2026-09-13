@@ -41,14 +41,14 @@ const Index = () => {
     <div className="relative min-h-screen">
       <Head>
         <html lang={locale} />
-        <title>Amine Benhammane — Développeur Full-Stack & Fondateur de WebLocal</title>
+        <title>Amine Benhammane — Développeur Full-Stack</title>
         <meta
           name="description"
-          content="Portfolio d'Amine Benhammane, développeur full-stack (M2 MIAGE) et fondateur de l'agence WebLocal. Création de sites web et d'applications sur-mesure. Disponible pour une alternance."
+          content="Portfolio d'Amine Benhammane, étudiant en M2 MIAGE et développeur full-stack. Projets web et applications sur-mesure. Disponible pour une alternance."
         />
-        <meta name="keywords" content="développeur full-stack, React, TypeScript, freelance, création site web, WebLocal, alternance, Lille" />
-        <meta property="og:title" content="Amine Benhammane — Développeur Full-Stack & Freelance" />
-        <meta property="og:description" content="Développeur full-stack et fondateur de WebLocal. Sites web & applications sur-mesure." />
+        <meta name="keywords" content="développeur full-stack, React, TypeScript, création site web, alternance, Lille" />
+        <meta property="og:title" content="Amine Benhammane — Développeur Full-Stack" />
+        <meta property="og:description" content="Étudiant en M2 MIAGE et développeur full-stack. Projets web & applications sur-mesure." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`${SITE_URL}/`} />
         <meta property="og:image" content={`${SITE_URL}/og-image.jpg`} />
@@ -70,7 +70,6 @@ const Index = () => {
               'https://github.com/benhammane',
               'https://www.linkedin.com/in/benhammaneamine/',
             ],
-            worksFor: { '@type': 'Organization', name: 'WebLocal', url: 'https://adamine.vercel.app' },
           })}
         </script>
       </Head>

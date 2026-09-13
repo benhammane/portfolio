@@ -13,6 +13,8 @@ export interface Post {
   tags: string[];
   gradient: string; // classes tailwind pour la couverture
   content: Block[];
+  /** true = brouillon : article retiré de la liste, des routes SSG et du sitemap (dépublié). */
+  draft?: boolean;
 }
 
 export const posts: Post[] = [
@@ -47,13 +49,13 @@ export const posts: Post[] = [
     slug: 'react-tailwind-projets-clients',
     title: 'React + Tailwind : le combo pour livrer vite et bien',
     description:
-      "Pourquoi j'utilise React et Tailwind CSS pour construire les sites et applications de mes clients chez WebLocal : rapidité, cohérence visuelle et maintenabilité.",
+      "Pourquoi j'utilise React et Tailwind CSS pour construire mes sites et applications : rapidité, cohérence visuelle et maintenabilité.",
     date: '2026-06-24',
     readMinutes: 5,
-    tags: ['React', 'Tailwind CSS', 'Freelance'],
+    tags: ['React', 'Tailwind CSS', 'Front-end'],
     gradient: 'from-brand-2/30 via-brand/20 to-brand-3/30',
     content: [
-      { type: 'p', text: "Quand je conçois un site ou une application pour un client via WebLocal, mon objectif est simple : livrer un produit rapide, moderne et facile à faire évoluer. Pour ça, React + Tailwind CSS est devenu mon combo par défaut. Voici pourquoi." },
+      { type: 'p', text: "Quand je conçois un site ou une application, mon objectif est simple : livrer un produit rapide, moderne et facile à faire évoluer. Pour ça, React + Tailwind CSS est devenu mon combo par défaut. Voici pourquoi." },
       { type: 'h', text: 'React : penser en composants' },
       { type: 'p', text: "Découper une interface en composants réutilisables accélère énormément le développement. Une carte, un bouton, un formulaire : je les construis une fois, je les réutilise partout, et le client obtient une interface cohérente sur tout le site." },
       { type: 'h', text: 'Tailwind : styliser sans quitter le HTML' },
@@ -148,13 +150,14 @@ export const posts: Post[] = [
         "Typer les réponses d'API avec des interfaces dédiées, jamais implicitement",
       ]},
       { type: 'quote', text: "TypeScript ne ralentit pas, il révèle les endroits où tu allais trop vite." },
-      { type: 'p', text: "Aujourd'hui, tous mes projets — ce portfolio, les sites WebLocal, les apps full-stack — démarrent avec TypeScript. C'est devenu une seconde nature, et je ne comprends plus comment je faisais sans." },
+      { type: 'p', text: "Aujourd'hui, tous mes projets — ce portfolio, mes sites, les apps full-stack — démarrent avec TypeScript. C'est devenu une seconde nature, et je ne comprends plus comment je faisais sans." },
     ],
   },
 
   // ─── Article 6 ───────────────────────────────────────────────────────────────
   {
     slug: 'lancer-micro-agence-web-20-ans',
+    draft: true, // Dépublié le 2026-09-09 en attendant décision (repositionnement étudiant-dev)
     title: "Lancer sa micro-agence web à 20 ans : les vraies leçons",
     description:
       "Comment j'ai créé WebLocal en parallèle de mes études en MIAGE : trouver ses premiers clients, fixer ses prix, gérer son temps et ce que j'aurais fait différemment.",
@@ -222,6 +225,7 @@ export const posts: Post[] = [
   // ─── Article 8 ───────────────────────────────────────────────────────────────
   {
     slug: 'combien-coute-site-web-2025',
+    draft: true, // Dépublié le 2026-09-09 (ton commercial ; à retravailler en retour d'expérience technique)
     title: 'Combien coûte un site web professionnel en 2025 ?',
     description:
       "Site vitrine, e-commerce, application web : fourchettes de prix réelles, ce qui justifie le tarif et comment ne pas se faire arnaquer lors de la création de votre site.",
@@ -287,6 +291,7 @@ export const posts: Post[] = [
   // ─── Article 10 ───────────────────────────────────────────────────────────────
   {
     slug: 'pourquoi-site-web-perd-clients',
+    draft: true, // Dépublié le 2026-09-09 (ton commercial ; à retravailler en retour d'expérience technique)
     title: 'Pourquoi votre site web vous fait perdre des clients sans que vous le sachiez',
     description:
       "Chargement lent, design vieillissant, pas de version mobile : les 6 erreurs qui font fuir vos visiteurs avant même qu'ils lisent votre offre.",
@@ -540,6 +545,7 @@ export const posts: Post[] = [
 
   {
     slug: 'creer-site-web-restaurant',
+    draft: true, // Dépublié le 2026-09-09 (ton commercial ; à retravailler en retour d'expérience technique)
     title: "Comment créer un site web pour un restaurant en 2025",
     description:
       "Menu en ligne, réservations, avis, référencement local : le guide complet pour un site de restaurant qui remplit vraiment la salle.",
@@ -1056,7 +1062,7 @@ export const posts: Post[] = [
         "Relancez poliment après une semaine sans réponse",
       ]},
       { type: 'h', text: "Se démarquer par les projets" },
-      { type: 'p', text: "Créer WebLocal, mon agence de sites web, m'a donné des projets clients réels à présenter. Rien ne parle plus fort qu'une preuve de travail concret livré à de vrais utilisateurs." },
+      { type: 'p', text: "Mener des projets web concrets, avec de vrais utilisateurs, m'a donné de quoi montrer mon travail. Rien ne parle plus fort qu'une preuve de travail concret." },
       { type: 'quote', text: "En recherche d'alternance, votre meilleur argument n'est pas ce que vous dites savoir faire, mais ce que vous avez déjà fait." },
     ],
   },
@@ -1196,7 +1202,11 @@ export const posts: Post[] = [
 
 ];
 
-export const getPost = (slug?: string) => posts.find((p) => p.slug === slug);
+/** Articles publiés (hors brouillons) — à utiliser pour la liste, les routes SSG et le sitemap. */
+export const publishedPosts = posts.filter((p) => !p.draft);
+
+/** Ne résout que les articles publiés : un brouillon renvoie undefined (→ redirection /blog). */
+export const getPost = (slug?: string) => publishedPosts.find((p) => p.slug === slug);
 
 export const formatDate = (iso: string, locale = 'fr') =>
   new Date(iso).toLocaleDateString(locale === 'fr' ? 'fr-FR' : 'en-US', {

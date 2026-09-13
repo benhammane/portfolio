@@ -62,7 +62,7 @@ const ContactSection = () => {
 
   const infos = [
     { icon: Mail, label: t('contact_email_label'), value: 'benhammanemedamine@gmail.com', href: 'mailto:benhammanemedamine@gmail.com' },
-    { icon: Phone, label: t('contact_phone_label'), value: '+33 6 59 67 88 46', href: 'tel:+33659678846' },
+    { icon: Phone, label: t('contact_phone_label'), value: '+33 6 58 67 88 46', href: 'tel:+33658678846' },
     { icon: MapPin, label: t('contact_location_label'), value: 'Lille, France' },
   ];
 

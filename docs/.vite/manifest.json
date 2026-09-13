@@ -1,14 +1,14 @@
 {
-  "_client-lyvz80gy.js": {
-    "file": "assets/client-lyvz80gy.js",
+  "_client-C5CU5Qaj.js": {
+    "file": "assets/client-C5CU5Qaj.js",
     "name": "client",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
     ]
   },
-  "_howler-Ccx9B7w9.js": {
-    "file": "assets/howler-Ccx9B7w9.js",
+  "_howler-DEZHMcKT.js": {
+    "file": "assets/howler-DEZHMcKT.js",
     "name": "howler",
     "isDynamicEntry": true,
     "imports": [
@@ -16,17 +16,17 @@
     ]
   },
   "index.html": {
-    "file": "assets/app-wpnjbrzI.js",
+    "file": "assets/app-Cg1a22Iu.js",
     "name": "app",
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
-      "_client-lyvz80gy.js",
-      "_client-lyvz80gy.js",
+      "_client-C5CU5Qaj.js",
+      "_client-C5CU5Qaj.js",
       "src/components/fx/SplineRobot.tsx"
     ],
     "css": [
-      "assets/app-BrWzJWUC.css"
+      "assets/app-Dz-FN32D.css"
     ],
     "assets": [
       "assets/ABLogo-BerroeTX.jpeg",
@@ -44,7 +44,21 @@
       "assets/venteEnchere-vvtUiUMv.webp",
       "assets/railroad2-CoJ06UEO.webp",
       "assets/BankInsight-i19e7iJZ.png",
-      "assets/weblocal-screenshot-DV8zEqfc.webp",
+      "assets/etoo-blast-off-C6XPPtFp.png",
+      "assets/wl-timessquare-0v6oloa8.webp",
+      "assets/wl-conduite-plus-D72r7Jm6.webp",
+      "assets/wl-spendly-CeVDd2_o.webp",
+      "assets/wl-insightai-Cws9QbVD.webp",
+      "assets/wl-luxestate-DnRV3VbM.webp",
+      "assets/wl-drivenow-BqV6hhpM.webp",
+      "assets/wl-invoiceflow-BZaZKd8n.webp",
+      "assets/wl-crepescorner-86RARbCD.webp",
+      "assets/wl-delicesdenana-CIW_L6j5.webp",
+      "assets/wl-miagelille-im_DzdjR.webp",
+      "assets/wl-residencebenedictines-Cqe7B8n-.webp",
+      "assets/freelanceos-B25NNmp6.webp",
+      "assets/kadji-accueil-Ct-ErKJn.webp",
+      "assets/kadji-commandes-sdgJS8ju.webp",
       "assets/montagePORTFOLIO-1OU4dYRN.mp4",
       "assets/sportPORTFOLIO-B09R26nU.mp4",
       "assets/voyagePORTFOLIO4-CDaetBvu.mp4",
@@ -129,9 +143,17 @@
     "file": "assets/aurora-isle-screenshot-CfXz-iwY.webp",
     "src": "src/assert/aurora-isle-screenshot.webp"
   },
+  "src/assert/etoo-blast-off.png": {
+    "file": "assets/etoo-blast-off-C6XPPtFp.png",
+    "src": "src/assert/etoo-blast-off.png"
+  },
   "src/assert/foodix.webp": {
     "file": "assets/foodix-BMtQBk38.webp",
     "src": "src/assert/foodix.webp"
+  },
+  "src/assert/freelanceos.webp": {
+    "file": "assets/freelanceos-B25NNmp6.webp",
+    "src": "src/assert/freelanceos.webp"
   },
   "src/assert/jesmoniteEcommerce.jpeg": {
     "file": "assets/jesmoniteEcommerce-BimJgX3A.jpeg",
@@ -140,6 +162,14 @@
   "src/assert/jeuTIR.webp": {
     "file": "assets/jeuTIR-BQF3koVk.webp",
     "src": "src/assert/jeuTIR.webp"
+  },
+  "src/assert/kadji-accueil.webp": {
+    "file": "assets/kadji-accueil-Ct-ErKJn.webp",
+    "src": "src/assert/kadji-accueil.webp"
+  },
+  "src/assert/kadji-commandes.webp": {
+    "file": "assets/kadji-commandes-sdgJS8ju.webp",
+    "src": "src/assert/kadji-commandes.webp"
   },
   "src/assert/montagePORTFOLIO.mp4": {
     "file": "assets/montagePORTFOLIO-1OU4dYRN.mp4",
@@ -177,8 +207,52 @@
     "file": "assets/weblocal-screenshot-DV8zEqfc.webp",
     "src": "src/assert/weblocal-screenshot.webp"
   },
+  "src/assert/wl-conduite-plus.webp": {
+    "file": "assets/wl-conduite-plus-D72r7Jm6.webp",
+    "src": "src/assert/wl-conduite-plus.webp"
+  },
+  "src/assert/wl-crepescorner.webp": {
+    "file": "assets/wl-crepescorner-86RARbCD.webp",
+    "src": "src/assert/wl-crepescorner.webp"
+  },
+  "src/assert/wl-delicesdenana.webp": {
+    "file": "assets/wl-delicesdenana-CIW_L6j5.webp",
+    "src": "src/assert/wl-delicesdenana.webp"
+  },
+  "src/assert/wl-drivenow.webp": {
+    "file": "assets/wl-drivenow-BqV6hhpM.webp",
+    "src": "src/assert/wl-drivenow.webp"
+  },
+  "src/assert/wl-insightai.webp": {
+    "file": "assets/wl-insightai-Cws9QbVD.webp",
+    "src": "src/assert/wl-insightai.webp"
+  },
+  "src/assert/wl-invoiceflow.webp": {
+    "file": "assets/wl-invoiceflow-BZaZKd8n.webp",
+    "src": "src/assert/wl-invoiceflow.webp"
+  },
+  "src/assert/wl-luxestate.webp": {
+    "file": "assets/wl-luxestate-DnRV3VbM.webp",
+    "src": "src/assert/wl-luxestate.webp"
+  },
+  "src/assert/wl-miagelille.webp": {
+    "file": "assets/wl-miagelille-im_DzdjR.webp",
+    "src": "src/assert/wl-miagelille.webp"
+  },
+  "src/assert/wl-residencebenedictines.webp": {
+    "file": "assets/wl-residencebenedictines-Cqe7B8n-.webp",
+    "src": "src/assert/wl-residencebenedictines.webp"
+  },
+  "src/assert/wl-spendly.webp": {
+    "file": "assets/wl-spendly-CeVDd2_o.webp",
+    "src": "src/assert/wl-spendly.webp"
+  },
+  "src/assert/wl-timessquare.webp": {
+    "file": "assets/wl-timessquare-0v6oloa8.webp",
+    "src": "src/assert/wl-timessquare.webp"
+  },
   "src/components/fx/SplineRobot.tsx": {
-    "file": "assets/SplineRobot-BpJjoGpr.js",
+    "file": "assets/SplineRobot-JEW-4pw7.js",
     "name": "SplineRobot",
     "src": "src/components/fx/SplineRobot.tsx",
     "isDynamicEntry": true,
@@ -190,7 +264,7 @@
       "node_modules/@splinetool/runtime/build/physics.js",
       "node_modules/@splinetool/runtime/build/process.js",
       "node_modules/@splinetool/runtime/build/boolean.js",
-      "_howler-Ccx9B7w9.js",
+      "_howler-DEZHMcKT.js",
       "node_modules/@splinetool/runtime/build/opentype.js",
       "node_modules/@splinetool/runtime/build/ui.js",
       "node_modules/@splinetool/runtime/build/gaussian-splat-compression.js"

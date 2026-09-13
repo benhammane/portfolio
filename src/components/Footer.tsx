@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ArrowUp, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 import { useLocale } from '@/lib/LocaleProvider';
 import { useClickSound } from '@/hooks/useClickSound';
 
@@ -59,9 +59,6 @@ const Footer = () => {
         <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t border-border/40 pt-6 text-sm text-muted-foreground md:flex-row">
           <p className="flex items-center gap-1.5">
             © {new Date().getFullYear()} Amine Benhammane. {t('footer_rights')}
-          </p>
-          <p className="flex items-center gap-1.5">
-            Made with <Heart size={13} className="fill-brand text-brand" /> · React · Framer Motion
           </p>
         </div>
       </div>

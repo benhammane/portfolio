@@ -12,7 +12,7 @@ const navItemsBase = [
   { key: 'nav_about', href: '#about', id: 'about' },
   { key: 'nav_skills', href: '#skills', id: 'skills' },
   { key: 'nav_projects', href: '#projects', id: 'projects' },
-  { key: 'nav_freelance', href: '#freelance', id: 'freelance' },
+  { key: 'nav_freelance', href: '#methode', id: 'methode' },
   { key: 'nav_experience', href: '#experience', id: 'experience' },
   { key: 'nav_parcours', href: '#parcours', id: 'parcours' },
   { key: 'nav_interests', href: '#interests', id: 'interests' },

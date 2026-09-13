@@ -18,13 +18,10 @@
   <url><loc>https://benhammaneamine.vercel.app/blog/portfolio-anime-framer-motion</loc><priority>0.7</priority></url>
   <url><loc>https://benhammaneamine.vercel.app/blog/websocket-encheres-temps-reel</loc><priority>0.7</priority></url>
   <url><loc>https://benhammaneamine.vercel.app/blog/typescript-pourquoi-adopter</loc><priority>0.7</priority></url>
-  <url><loc>https://benhammaneamine.vercel.app/blog/lancer-micro-agence-web-20-ans</loc><priority>0.7</priority></url>
   <url><loc>https://benhammaneamine.vercel.app/blog/optimiser-performance-react</loc><priority>0.7</priority></url>
 
   <!-- Nouveaux articles — orientés clients -->
-  <url><loc>https://benhammaneamine.vercel.app/blog/combien-coute-site-web-2025</loc><priority>0.8</priority></url>
   <url><loc>https://benhammaneamine.vercel.app/blog/site-vitrine-vs-ecommerce</loc><priority>0.8</priority></url>
-  <url><loc>https://benhammaneamine.vercel.app/blog/pourquoi-site-web-perd-clients</loc><priority>0.8</priority></url>
   <url><loc>https://benhammaneamine.vercel.app/blog/refonte-site-web-5-signes</loc><priority>0.7</priority></url>
 
   <!-- Nouveaux articles — techniques / recruteurs -->
@@ -36,7 +33,6 @@
   <url><loc>https://benhammaneamine.vercel.app/blog/accessibilite-web-guide-developpeur</loc><priority>0.7</priority></url>
 
   <!-- Vague SEO — orientés clients / commerces locaux -->
-  <url><loc>https://benhammaneamine.vercel.app/blog/creer-site-web-restaurant</loc><priority>0.8</priority></url>
   <url><loc>https://benhammaneamine.vercel.app/blog/site-web-artisan-guide</loc><priority>0.8</priority></url>
   <url><loc>https://benhammaneamine.vercel.app/blog/referencement-local-google-business</loc><priority>0.8</priority></url>
   <url><loc>https://benhammaneamine.vercel.app/blog/obtenir-avis-google-clients</loc><priority>0.7</priority></url>
