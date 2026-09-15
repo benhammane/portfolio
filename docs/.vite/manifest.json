@@ -1,14 +1,14 @@
 {
-  "_client-C5CU5Qaj.js": {
-    "file": "assets/client-C5CU5Qaj.js",
+  "_client-DAV6pGOT.js": {
+    "file": "assets/client-DAV6pGOT.js",
     "name": "client",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
     ]
   },
-  "_howler-DEZHMcKT.js": {
-    "file": "assets/howler-DEZHMcKT.js",
+  "_howler-BjD3tO5g.js": {
+    "file": "assets/howler-BjD3tO5g.js",
     "name": "howler",
     "isDynamicEntry": true,
     "imports": [
@@ -16,13 +16,13 @@
     ]
   },
   "index.html": {
-    "file": "assets/app-Cg1a22Iu.js",
+    "file": "assets/app-DDxBHkON.js",
     "name": "app",
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
-      "_client-C5CU5Qaj.js",
-      "_client-C5CU5Qaj.js",
+      "_client-DAV6pGOT.js",
+      "_client-DAV6pGOT.js",
       "src/components/fx/SplineRobot.tsx"
     ],
     "css": [
@@ -252,7 +252,7 @@
     "src": "src/assert/wl-timessquare.webp"
   },
   "src/components/fx/SplineRobot.tsx": {
-    "file": "assets/SplineRobot-JEW-4pw7.js",
+    "file": "assets/SplineRobot-eM3n91rk.js",
     "name": "SplineRobot",
     "src": "src/components/fx/SplineRobot.tsx",
     "isDynamicEntry": true,
@@ -264,7 +264,7 @@
       "node_modules/@splinetool/runtime/build/physics.js",
       "node_modules/@splinetool/runtime/build/process.js",
       "node_modules/@splinetool/runtime/build/boolean.js",
-      "_howler-DEZHMcKT.js",
+      "_howler-BjD3tO5g.js",
       "node_modules/@splinetool/runtime/build/opentype.js",
       "node_modules/@splinetool/runtime/build/ui.js",
       "node_modules/@splinetool/runtime/build/gaussian-splat-compression.js"

@@ -11,6 +11,11 @@ import { useLocale } from '@/lib/LocaleProvider';
 import Magnetic from '@/components/fx/Magnetic';
 import Counter from '@/components/fx/Counter';
 
+// Archivé le 2026-09-15 : le bouton "Mes projets web · WebLocal" est redondant
+// depuis que les réalisations WebLocal sont importées dans la section Projets.
+// Code conservé — repasser à true pour le réafficher.
+const SHOW_WEBLOCAL_BUTTON = false;
+
 const HeroSection = () => {
   const { playClick } = useClickSound();
   const { t } = useLocale();
@@ -181,17 +186,19 @@ const HeroSection = () => {
                 </LiquidButton>
               </Magnetic>
 
-              <LiquidButton
-                variant="amber"
-                size="md"
-                href="https://adamine.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => { handleClick(); trackAgencyClick(); }}
-              >
-                <Briefcase size={18} />
-                {t('hero_freelance')}
-              </LiquidButton>
+              {SHOW_WEBLOCAL_BUTTON && (
+                <LiquidButton
+                  variant="amber"
+                  size="md"
+                  href="https://adamine.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => { handleClick(); trackAgencyClick(); }}
+                >
+                  <Briefcase size={18} />
+                  {t('hero_freelance')}
+                </LiquidButton>
+              )}
             </motion.div>
 
             {/* Réseaux */}
