@@ -36,6 +36,7 @@ import wlBenedictinesImg from '@/assert/wl-residencebenedictines.webp';
 import freelanceosImg from '@/assert/freelanceos.webp';
 import kadjiAccueilImg from '@/assert/kadji-accueil.webp';
 import kadjiCommandesImg from '@/assert/kadji-commandes.webp';
+import m2appImg from '@/assert/m2app.webp';
 
 const GITHUB = 'https://github.com/benhammane';
 
@@ -107,6 +108,7 @@ const vedetteWeb: WebCard[] = [
   // Nouveaux projets — sans capture pour le moment (placeholder), pas de lien public
   { titleKey: 'freelanceos_title', descKey: 'freelanceos_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'], image: freelanceosImg, badge: 'projects_badge_demo' },
   { titleKey: 'kadji_title', descKey: 'kadji_desc', techs: ['Expo', 'React Native'], mobileImages: [kadjiAccueilImg, kadjiCommandesImg], badge: 'projects_badge_test' },
+  { titleKey: 'm2app_title', descKey: 'm2app_desc', techs: ['Next.js 16', 'React 19', 'TypeScript', 'Supabase'], image: m2appImg, url: 'https://m2-app-eta.vercel.app' },
 ];
 
 // Reste des réalisations — révélées via « Voir plus de projets »

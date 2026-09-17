@@ -206,6 +206,8 @@ const translations: Record<Locale, Record<string, string>> = {
         freelanceos_desc: "Projet personnel : outil interne de gestion avec espace client — devis à consulter et signer en ligne, suivi de projet en temps réel et messagerie intégrée pour rester impliqué à chaque étape.",
         kadji_title: 'Kadji',
         kadji_desc: "Projet personnel : application mobile de vente et livraison de marchandises pour commerçants, actuellement en phase de test sur Google Play et l'App Store.",
+        m2app_title: 'M2App',
+        m2app_desc: "Application de gestion académique personnelle (cours, notes de séance, tâches, calendrier) avec PWA installable et notifications push.",
 
         // Experience
         experience_title: 'Mes Experiences',
@@ -492,6 +494,8 @@ const translations: Record<Locale, Record<string, string>> = {
         freelanceos_desc: "Personal project: internal management tool with a client portal — quotes to review and sign online, real-time project tracking and built-in messaging to stay involved at every step.",
         kadji_title: 'Kadji',
         kadji_desc: "Personal project: mobile app for selling and delivering goods for merchants, currently in testing on Google Play and the App Store.",
+        m2app_title: 'M2App',
+        m2app_desc: "A personal academic management app (courses, session notes, tasks, calendar) with an installable PWA and push notifications.",
 
         // Experience
         experience_title: 'My Experience',
