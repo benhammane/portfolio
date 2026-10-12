@@ -206,17 +206,15 @@ const FreelanceSection = () => {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="relative">
-            {/* Halo animé conservé (même dégradé teal → cyan → indigo, en rotation continue) */}
-            <div className="pointer-events-none absolute -inset-3 rounded-[46px] bg-[conic-gradient(from_0deg,hsl(var(--brand)),hsl(var(--brand-2)),hsl(var(--brand-3)),hsl(var(--brand)))] opacity-40 blur-2xl motion-safe:animate-spin-slow" />
-            <ShineBorder color={SHINE_COLORS} borderWidth={2.5} duration={9} borderRadius={40}>
-              <div className="relative overflow-hidden rounded-[2.5rem] glass p-8 md:p-14">
-                <div className="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-brand/15 blur-[110px]" />
-
+            {/* Bordure lumineuse conservée, mais sans le halo flouté en rotation continue
+                (effet "glow" trop appuyé + repaint permanent d'un grand calque flouté). */}
+            <ShineBorder color={SHINE_COLORS} borderWidth={1.5} duration={12} borderRadius={40}>
+              <div className="relative overflow-hidden rounded-[2.5rem] surface p-6 sm:p-8 md:p-14">
                 <div className="relative mb-12 text-center">
-                  <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-3 py-1 font-mono text-xs uppercase tracking-[0.2em] text-brand">
+                  <div className="mb-4 font-mono text-xs uppercase tracking-[0.22em] text-brand">
                     {t('freelance_process_eyebrow')}
                   </div>
-                  <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
+                  <h2 className="font-display text-3xl font-semibold tracking-tight text-balance md:text-4xl">
                     {t('freelance_process_title')}
                   </h2>
                   <p className="mx-auto mt-4 max-w-xl leading-relaxed text-muted-foreground">

@@ -231,14 +231,14 @@ const FeaturedProject = ({
     >
       {/* Texte */}
       <div className={reversed ? 'lg:order-2' : 'lg:order-1'}>
-        <div className="mb-4 flex flex-wrap items-center gap-3">
-          <span className="rounded-full border border-brand/30 bg-brand/10 px-3 py-1 font-mono text-xs text-brand">
-            {t(project.categoryKey)}
-          </span>
-          <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
+        <div className="mb-5 flex flex-wrap items-center gap-3 font-mono text-xs">
+          <span className="text-brand">{String(index + 1).padStart(2, '0')}</span>
+          <span className="h-px w-8 bg-border" aria-hidden="true" />
+          <span className="uppercase tracking-[0.18em] text-muted-foreground">{t(project.categoryKey)}</span>
+          <span className="text-muted-foreground/70">· {project.year}</span>
         </div>
 
-        <h3 className="font-display text-3xl font-bold tracking-tight md:text-4xl">{title}</h3>
+        <h3 className="font-display text-3xl font-semibold tracking-tight md:text-[2.5rem] md:leading-tight">{title}</h3>
 
         <p className="mt-4 leading-relaxed text-muted-foreground">{t(project.descKey)}</p>
 
@@ -302,7 +302,7 @@ const FeaturedProject = ({
             // Halo néon façon page de jeu, dans la palette du portfolio.
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-fuchsia-500/30 via-brand-2/15 to-brand-3/30 opacity-60 blur-3xl transition-opacity duration-700 group-hover:opacity-100"
+              className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-fuchsia-500/30 via-brand-2/15 to-brand-3/30 opacity-30 blur-3xl transition-opacity duration-700 group-hover:opacity-60"
             />
           )}
           <ProjectFrame domain={project.domain}>
@@ -349,7 +349,7 @@ const CardBadge = ({ label }: { label: string }) => (
 
 const cardMotion = {
   variants: staggerItem,
-  whileHover: { y: -8 },
+  whileHover: { y: -4 },
   transition: { type: 'spring' as const, stiffness: 300, damping: 24 },
 };
 
@@ -361,7 +361,8 @@ const CompactCard = ({ project, onOpenVideo }: { project: WebCard; onOpenVideo: 
   const link = project.url ? project.url : project.github ? GITHUB : undefined;
   const CornerIcon = project.github ? Github : ExternalLink;
   const PlaceholderIcon = project.placeholderIcon ?? Sparkles;
-  const cls = 'group flex h-full flex-col overflow-hidden rounded-3xl glass';
+  const cls =
+    'group flex h-full flex-col overflow-hidden rounded-3xl surface transition-[border-color,box-shadow] duration-300 hover:border-brand/35 hover:shadow-[0_24px_50px_-28px_hsl(var(--brand)/0.35)]';
 
   // ── Carte avec vidéo : la vidéo ouvre la modale, le lien « Voir le site » mène au projet.
   // Pas de lien englobant : les deux actions restent distinctes (et le HTML valide).
@@ -527,6 +528,8 @@ const ProjectsSection = () => {
               variant="ghost"
               size="md"
               onClick={() => { playClick(); setShowMore((v) => !v); }}
+              aria-expanded={showMore}
+              aria-controls="more-projects"
             >
               {showMore ? t('projects_show_less') : t('projects_show_more')}
               {showMore ? <ChevronUp size={17} /> : <ChevronDown size={17} />}
@@ -535,7 +538,7 @@ const ProjectsSection = () => {
 
           {/* Reste des réalisations — révélé au clic */}
           {showMore && (
-            <div className="mt-14">
+            <div id="more-projects" className="mt-14">
               <div className="mb-10 flex items-center gap-4">
                 <h3 className="font-display text-xl font-semibold">{t('projects_others_heading')}</h3>
                 <span className="h-px flex-1 bg-border/60" />

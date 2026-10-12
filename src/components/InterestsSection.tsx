@@ -40,15 +40,17 @@ const InterestsSection = () => {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {interests.map((interest, index) => (
-            <motion.div
+            <motion.button
+              type="button"
               key={interest.titleKey}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.55, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -8 }}
+              whileHover={{ y: -4 }}
               onClick={() => handleCardClick(interest)}
-              className="group cursor-pointer overflow-hidden rounded-3xl glass"
+              aria-haspopup="dialog"
+              className="group block w-full overflow-hidden rounded-3xl surface text-left transition-colors duration-300 hover:border-brand/30"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <LazyVideo
@@ -60,24 +62,21 @@ const InterestsSection = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <motion.div
-                    whileHover={{ scale: 1.15 }}
-                    className="flex h-14 w-14 items-center justify-center rounded-full bg-brand/90 shadow-lg backdrop-blur-sm transition-transform"
-                  >
-                    <Play className="ml-1 h-6 w-6 text-primary-foreground" fill="currentColor" />
-                  </motion.div>
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-black/30 text-white backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+                    <Play className="ml-0.5 h-5 w-5" fill="currentColor" aria-hidden />
+                  </span>
                 </div>
                 <div className="absolute left-3 top-3 flex h-9 w-9 items-center justify-center rounded-xl bg-background/70 text-brand backdrop-blur-md">
-                  <interest.icon size={16} />
+                  <interest.icon size={16} aria-hidden />
                 </div>
               </div>
-              <div className="p-5 text-center">
+              <div className="p-5">
                 <h3 className="font-display font-semibold transition-colors group-hover:text-brand">
                   {t(interest.titleKey)}
                 </h3>
                 <p className="mt-1 text-sm text-muted-foreground">{t(interest.descKey)}</p>
               </div>
-            </motion.div>
+            </motion.button>
           ))}
         </div>
       </div>

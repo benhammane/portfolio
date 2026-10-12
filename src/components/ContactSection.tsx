@@ -100,9 +100,11 @@ const ContactSection = () => {
               {infos.map((item) => {
                 const content = (
                   <motion.div
-                    whileHover={{ x: 6 }}
-                    onClick={playClick}
-                    className="flex items-center gap-4 rounded-2xl glass p-4"
+                    whileHover={item.href ? { x: 4 } : undefined}
+                    onClick={item.href ? playClick : undefined}
+                    className={`flex items-center gap-4 rounded-2xl surface p-4 transition-colors duration-300 ${
+                      item.href ? 'hover:border-brand/30' : ''
+                    }`}
                   >
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand ring-1 ring-brand/20">
                       <item.icon size={18} />
@@ -130,7 +132,7 @@ const ContactSection = () => {
                   rel="noreferrer"
                   aria-label={label}
                   onClick={() => { playClick(); trackSocialClick(label); }}
-                  className="rounded-xl glass p-3 text-muted-foreground transition-all hover:-translate-y-1 hover:text-brand"
+                  className="rounded-xl surface p-3 text-muted-foreground transition-colors hover:border-brand/40 hover:text-brand"
                 >
                   <Icon size={20} />
                 </a>
@@ -145,7 +147,7 @@ const ContactSection = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             onSubmit={handleSubmit}
-            className="rounded-3xl glass border-gradient p-8 lg:col-span-3"
+            className="relative rounded-3xl surface p-6 sm:p-8 lg:col-span-3"
           >
             <div className="space-y-5">
               {/* Honeypot anti-spam : caché visuellement et aux lecteurs d'écran, piège à bots */}
@@ -191,9 +193,8 @@ const ContactSection = () => {
                 disabled={isSubmitting}
                 whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                 whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-brand-gradient py-3.5 font-medium text-primary-foreground transition-opacity glow-sm disabled:cursor-not-allowed disabled:opacity-50"
+                className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-foreground py-3.5 font-semibold text-background transition-opacity disabled:cursor-not-allowed disabled:opacity-50"
               >
-                <span className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-500 group-hover:translate-x-full" />
                 {isSubmitting ? t('form_sending') : t('form_submit')}
                 <Send size={18} className={isSubmitting ? 'animate-pulse' : 'transition-transform group-hover:translate-x-1'} />
               </motion.button>

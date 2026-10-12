@@ -59,12 +59,10 @@ const AboutSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
-                whileHover={{ y: -6 }}
                 onMouseMove={handleSpotlight}
-                onClick={playClick}
-                className="card-spotlight group cursor-pointer rounded-2xl glass p-6"
+                className="card-spotlight group rounded-2xl surface p-6"
               >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10 text-brand ring-1 ring-brand/20 transition-transform group-hover:scale-110">
+                <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand ring-1 ring-brand/20">
                   <skill.icon size={22} />
                 </div>
                 <h3 className="font-display text-base font-semibold">{skill.label}</h3>
@@ -130,16 +128,12 @@ const AboutSection = () => {
           >
             <motion.div
               whileHover={{ scale: 1.01 }}
-              className="relative mx-auto max-w-3xl cursor-pointer overflow-hidden rounded-3xl glass border-gradient glow-sm"
+              className="relative mx-auto max-w-3xl cursor-pointer overflow-hidden rounded-3xl border border-border/80 shadow-[0_30px_70px_-35px_rgba(0,0,0,0.8)]"
             >
-              <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-gradient-to-t from-black/70 via-black/40 to-transparent">
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                  className="mb-4 rounded-full border border-brand/40 bg-brand/20 p-4 backdrop-blur-sm"
-                >
-                  <Play className="h-10 w-10 fill-brand/30 text-brand md:h-12 md:w-12" />
-                </motion.div>
+              <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-gradient-to-t from-black/75 via-black/35 to-transparent">
+                <div className="mb-4 rounded-full border border-white/25 bg-white/10 p-4 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+                  <Play className="h-9 w-9 fill-white/80 text-white md:h-10 md:w-10" aria-hidden />
+                </div>
                 <h3 className="flex items-center gap-2 px-4 text-center font-display text-xl font-bold text-white drop-shadow-lg md:text-2xl">
                   {t('video_cta')}
                   <ArrowUpRight className="hidden transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 md:inline" />

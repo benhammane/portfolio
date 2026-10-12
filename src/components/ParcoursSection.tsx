@@ -32,15 +32,14 @@ const ParcoursSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -5 }}
-              className="group relative flex items-center gap-5 overflow-hidden rounded-2xl glass p-6"
+              className="group relative flex items-center gap-5 overflow-hidden rounded-2xl surface p-6 transition-colors duration-300 hover:border-brand/30"
             >
               {/* Numéro en filigrane */}
               <span className="pointer-events-none absolute -right-2 -top-4 font-display text-6xl font-bold text-brand/5 transition-colors group-hover:text-brand/10">
                 {p.step}
               </span>
 
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand ring-1 ring-brand/20 transition-transform group-hover:scale-110">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand ring-1 ring-brand/20">
                 <GraduationCap size={24} />
               </div>
               <div className="relative">

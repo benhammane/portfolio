@@ -75,7 +75,7 @@ const SkillsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: ci * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="card-spotlight rounded-3xl glass p-7 hover-lift"
+              className="card-spotlight rounded-3xl surface p-7 transition-colors duration-300 hover:border-brand/30"
               onMouseMove={(e) => {
                 const el = e.currentTarget;
                 const r = el.getBoundingClientRect();

@@ -1,6 +1,5 @@
 import { Briefcase, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useClickSound } from '@/hooks/useClickSound';
 import { useLocale } from '@/lib/LocaleProvider';
 import SectionHeading from '@/components/fx/SectionHeading';
 
@@ -16,7 +15,6 @@ const experiences = [
 ];
 
 const ExperienceSection = () => {
-  const { playClick } = useClickSound();
   const { t } = useLocale();
 
   return (
@@ -54,10 +52,8 @@ const ExperienceSection = () => {
                   <Briefcase size={14} className="text-brand" />
                 </motion.div>
 
-                <motion.div
-                  whileHover={{ x: 6 }}
-                  onClick={playClick}
-                  className="card-spotlight cursor-pointer rounded-2xl glass p-6"
+                <div
+                  className="card-spotlight rounded-2xl surface p-6 transition-colors duration-300 hover:border-brand/30"
                   onMouseMove={(e) => {
                     const el = e.currentTarget;
                     const r = el.getBoundingClientRect();
@@ -84,7 +80,7 @@ const ExperienceSection = () => {
                       </span>
                     ))}
                   </div>
-                </motion.div>
+                </div>
               </motion.div>
             ))}
           </div>
