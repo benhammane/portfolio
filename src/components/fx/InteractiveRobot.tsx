@@ -5,12 +5,12 @@ import { useReducedMotion } from 'framer-motion';
 // Visuel 3D actif : robot Spline.
 const Scene = lazy(() => import('./SplineRobot'));
 
-/** Visuel statique de repli (mobile, reduced-motion, ou si la 3D échoue). */
+/** Visuel statique de repli (mobile, reduced-motion, pas de WebGL, ou si la 3D échoue). */
 const RobotFallback = () => (
   <div className="relative flex h-full w-full items-center justify-center">
-    <div className="absolute h-56 w-56 rounded-full bg-brand/20 blur-[80px]" />
-    <div className="relative flex h-40 w-40 items-center justify-center rounded-[2rem] glass border-gradient">
-      <Bot className="h-20 w-20 text-brand" strokeWidth={1.2} />
+    <div className="absolute h-48 w-48 rounded-full bg-brand/15 blur-[80px]" />
+    <div className="relative flex h-36 w-36 items-center justify-center rounded-[2rem] surface">
+      <Bot className="h-16 w-16 text-brand" strokeWidth={1.2} aria-hidden />
     </div>
   </div>
 );
@@ -26,18 +26,34 @@ class RobotErrorBoundary extends Component<{ children: ReactNode }, { failed: bo
   }
 }
 
+/** Détection WebGL (contexte jetable, libéré immédiatement). */
+const hasWebGL = () => {
+  try {
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+    gl?.getExtension('WEBGL_lose_context')?.loseContext();
+    return !!gl;
+  } catch {
+    return false;
+  }
+};
+
 const InteractiveRobot = ({ className = '' }: { className?: string }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const prefersReduced = useReducedMotion();
   const [shouldLoad, setShouldLoad] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  // null = pas encore évalué (rendu serveur / avant montage) → fallback statique
+  const [canRender3D, setCanRender3D] = useState<boolean | null>(null);
 
   useEffect(() => {
-    setIsMobile(window.matchMedia('(max-width: 767px)').matches);
+    // Version mobile allégée : pas de scène WebGL (~2 Mo) sous 768 px ni sur écran tactile seul
+    const isSmall = window.matchMedia('(max-width: 767px)').matches;
+    const coarseOnly = !window.matchMedia('(any-pointer: fine)').matches;
+    setCanRender3D(!isSmall && !coarseOnly && hasWebGL());
   }, []);
 
   useEffect(() => {
-    if (!ref.current || prefersReduced || isMobile) return;
+    if (!ref.current || prefersReduced || !canRender3D) return;
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -45,13 +61,13 @@ const InteractiveRobot = ({ className = '' }: { className?: string }) => {
           obs.disconnect();
         }
       },
-      { rootMargin: '200px' }
+      { rootMargin: '300px' }
     );
     obs.observe(ref.current);
     return () => obs.disconnect();
-  }, [prefersReduced, isMobile]);
+  }, [prefersReduced, canRender3D]);
 
-  const showStatic = prefersReduced || isMobile;
+  const showStatic = prefersReduced || !canRender3D;
 
   return (
     <div ref={ref} className={`relative ${className}`}>

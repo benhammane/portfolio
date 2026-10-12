@@ -24,15 +24,18 @@ const RobotSection = () => {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="mb-4 flex items-center gap-3">
-              <span className="h-px w-8 bg-brand/60" />
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-brand">
-                {t('robot_eyebrow')}
+              <span className="font-mono text-xs uppercase tracking-[0.22em] text-brand">
+                {t('robot_eyebrow').split(' — ')[0]}
+              </span>
+              <span className="h-px w-10 bg-border" aria-hidden />
+              <span className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">
+                {t('robot_eyebrow').split(' — ')[1]}
               </span>
             </div>
 
-            <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl md:text-[3.25rem] md:leading-[1.1]">
               {t('robot_title')}{' '}
-              <span className="text-gradient-animated">{t('robot_highlight')}</span>
+              <span className="text-accent-brand">{t('robot_highlight')}</span>
             </h2>
 
             <p className="mt-5 max-w-lg leading-relaxed text-muted-foreground">
@@ -44,7 +47,7 @@ const RobotSection = () => {
               {badges.map(({ icon: Icon, key }) => (
                 <span
                   key={key}
-                  className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-sm"
+                  className="inline-flex items-center gap-2 rounded-full surface px-4 py-2 text-sm"
                 >
                   <Icon size={15} className="text-brand" />
                   {t(key)}
@@ -53,14 +56,11 @@ const RobotSection = () => {
             </div>
 
             {/* Indice d'interaction */}
-            <motion.div
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-              className="mt-8 inline-flex items-center gap-2 text-sm text-muted-foreground"
-            >
-              <MousePointer2 size={15} className="text-brand" />
+            {/* Indice d'interaction : utile seulement là où la scène 3D est chargée (pointeur fin, >= md) */}
+            <p className="mt-8 hidden items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground md:inline-flex">
+              <MousePointer2 size={14} className="text-brand" aria-hidden />
               {t('robot_hint')}
-            </motion.div>
+            </p>
           </motion.div>
 
           {/* Robot interactif */}
@@ -71,6 +71,8 @@ const RobotSection = () => {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative h-[380px] w-full sm:h-[460px] lg:h-[560px]"
           >
+            {/* Sol : ellipse d'ombre qui ancre le robot dans la page */}
+            <div aria-hidden className="absolute inset-x-[18%] bottom-[6%] h-10 rounded-[100%] bg-brand/10 blur-2xl" />
             <InteractiveRobot className="h-full w-full" />
           </motion.div>
         </div>
