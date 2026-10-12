@@ -110,6 +110,10 @@ export const trackContactSubmit = () =>
 export const trackProjectClick = (projectName: string) =>
   trackEvent('project_click', 'portfolio', projectName);
 
+/** Ouverture de la vidéo de présentation d'un projet (modale). */
+export const trackVideoPreview = (projectName: string) =>
+  trackEvent('project_video_open', 'portfolio', projectName);
+
 /** Clic sur le CTA "Mon agence · WebLocal". */
 export const trackAgencyClick = () =>
   trackEvent('agency_click', 'navigation', 'weblocal');

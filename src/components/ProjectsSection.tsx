@@ -1,11 +1,13 @@
-import { useState } from 'react';
-import { ArrowUpRight, Github, Check, ExternalLink, ChevronDown, ChevronUp, Sparkles, type LucideIcon } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useRef, useState, type ReactNode } from 'react';
+import { ArrowUpRight, Github, Check, ExternalLink, ChevronDown, ChevronUp, Play, Sparkles, type LucideIcon } from 'lucide-react';
+import { MotionConfig, motion } from 'framer-motion';
 import { LiquidButton } from '@/components/ui/liquid-glass-button';
 import { useClickSound } from '@/hooks/useClickSound';
 import { useLocale } from '@/lib/LocaleProvider';
+import { trackVideoPreview } from '@/lib/analytics';
 import SectionHeading from '@/components/fx/SectionHeading';
 import { staggerContainer, staggerItem } from '@/components/fx/Reveal';
+import { ProjectVideoMedia, ProjectVideoModal, type ProjectVideoData } from '@/components/fx/ProjectVideo';
 
 // Project images
 import foodixImg from '@/assert/foodix.webp';
@@ -38,7 +40,44 @@ import kadjiAccueilImg from '@/assert/kadji-accueil.webp';
 import kadjiCommandesImg from '@/assert/kadji-commandes.webp';
 import m2appImg from '@/assert/m2app.webp';
 
+// Vidéos de présentation (encodées depuis les rushs 1080p : extrait muet de 8 s pour le survol,
+// version 720p pour la modale, poster WebP). Les rushs originaux ne sont pas versionnés.
+import etooPreview from '@/assert/etoo-preview.mp4';
+import etooFull from '@/assert/etoo-full.mp4';
+import etooPoster from '@/assert/etoo-poster.webp';
+import luxestatePreview from '@/assert/luxestate-preview.mp4';
+import luxestateFull from '@/assert/luxestate-full.mp4';
+import luxestatePoster from '@/assert/luxestate-poster.webp';
+import conduitePreview from '@/assert/conduite-preview.mp4';
+import conduiteFull from '@/assert/conduite-full.mp4';
+import conduitePoster from '@/assert/conduite-poster.webp';
+import m2appPreview from '@/assert/m2app-preview.mp4';
+import m2appFull from '@/assert/m2app-full.mp4';
+import m2appPoster from '@/assert/m2app-poster.webp';
+import freelanceosPreview from '@/assert/freelanceos-preview.mp4';
+import freelanceosFull from '@/assert/freelanceos-full.mp4';
+import freelanceosPoster from '@/assert/freelanceos-poster.webp';
+
 const GITHUB = 'https://github.com/benhammane';
+
+const VIDEOS = {
+  etoo: { preview: etooPreview, full: etooFull, poster: etooPoster, duration: '1:03', hasAudio: true, kind: 'trailer' },
+  luxestate: { preview: luxestatePreview, full: luxestateFull, poster: luxestatePoster, duration: '0:43', hasAudio: true },
+  conduite: { preview: conduitePreview, full: conduiteFull, poster: conduitePoster, duration: '0:47' },
+  m2app: { preview: m2appPreview, full: m2appFull, poster: m2appPoster, duration: '0:52' },
+  freelanceos: { preview: freelanceosPreview, full: freelanceosFull, poster: freelanceosPoster, duration: '1:24', hasAudio: true },
+} satisfies Record<string, ProjectVideoData>;
+
+/** Données transmises à la modale vidéo (une seule modale pour toute la section). */
+interface OpenVideo {
+  video: ProjectVideoData;
+  title: string;
+  description: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+  note?: string;
+}
+type OpenVideoHandler = (data: OpenVideo, trigger: HTMLElement) => void;
 
 interface Featured {
   titleKey: string;
@@ -52,6 +91,7 @@ interface Featured {
   url?: string; // lien démo réel ou repo GitHub spécifique (sinon → profil GitHub)
   domain: string; // affiché dans la barre du mockup
   playable?: boolean; // true → CTA « Jouer maintenant » au lieu de « Voir le site »
+  video?: ProjectVideoData;
 }
 
 // ⭐ projets vedettes en grand format (les deux flagships les plus riches)
@@ -68,6 +108,7 @@ const featured: Featured[] = [
     domain: 'etoo-blast-off.vercel.app',
     url: 'https://etoo-blast-off.vercel.app',
     playable: true,
+    video: VIDEOS.etoo,
   },
   {
     titleKey: 'project_bankinsight_title',
@@ -94,21 +135,22 @@ interface WebCard {
   url?: string; // lien direct (site live ou repo)
   github?: boolean; // true → icône GitHub + lien url || profil GitHub
   badge?: string; // clé i18n d'un statut (ex : « Démo sur demande », « En test »)
+  video?: ProjectVideoData; // présentation vidéo → aperçu au survol + modale
 }
 
 // ⭐ Vedette — applications & sites mis en avant (visibles par défaut)
 const vedetteWeb: WebCard[] = [
   { titleKey: 'wl_timessquare_title', descKey: 'wl_timessquare_desc', techs: ['React', 'TypeScript', 'Tailwind CSS', 'Stripe'], image: wlTimesSquareImg, url: 'https://times-square-roubaix.vercel.app' },
-  { titleKey: 'wl_conduite_title', descKey: 'wl_conduite_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'], image: wlConduiteImg, url: 'https://conduite-plus.vercel.app' },
-  { titleKey: 'wl_luxestate_title', descKey: 'wl_luxestate_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'MapLibre'], image: wlLuxestateImg, url: 'https://lux-estate-livid.vercel.app' },
+  { titleKey: 'wl_conduite_title', descKey: 'wl_conduite_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'], image: wlConduiteImg, url: 'https://conduite-plus.vercel.app', video: VIDEOS.conduite },
+  { titleKey: 'wl_luxestate_title', descKey: 'wl_luxestate_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'MapLibre'], image: wlLuxestateImg, url: 'https://lux-estate-livid.vercel.app', video: VIDEOS.luxestate },
   { titleKey: 'wl_drivenow_title', descKey: 'wl_drivenow_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'Stripe'], image: wlDrivenowImg, url: 'https://drive-now-phi.vercel.app' },
   { titleKey: 'wl_invoiceflow_title', descKey: 'wl_invoiceflow_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'NextAuth'], image: wlInvoiceflowImg, url: 'https://invoice-flow-sand.vercel.app' },
   { titleKey: 'wl_insightai_title', descKey: 'wl_insightai_desc', techs: ['Next.js', 'TypeScript', 'Tailwind CSS', 'OpenAI API'], image: wlInsightaiImg, url: 'https://insight-ai-lilac.vercel.app' },
   { titleKey: 'wl_spendly_title', descKey: 'wl_spendly_desc', techs: ['React', 'TypeScript', 'Tailwind CSS'], image: wlSpendlyImg, url: 'https://spendly-lake-eight.vercel.app' },
-  // Nouveaux projets — sans capture pour le moment (placeholder), pas de lien public
-  { titleKey: 'freelanceos_title', descKey: 'freelanceos_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'], image: freelanceosImg, badge: 'projects_badge_demo' },
+  // Stack FreelanceOS alignée sur la slide « architecture » de la vidéo de présentation.
+  { titleKey: 'freelanceos_title', descKey: 'freelanceos_desc', techs: ['React 19', 'Java 21', 'Spring Boot 3', 'PostgreSQL'], image: freelanceosImg, badge: 'projects_badge_demo', video: VIDEOS.freelanceos },
   { titleKey: 'kadji_title', descKey: 'kadji_desc', techs: ['Expo', 'React Native'], mobileImages: [kadjiAccueilImg, kadjiCommandesImg], badge: 'projects_badge_test' },
-  { titleKey: 'm2app_title', descKey: 'm2app_desc', techs: ['Next.js 16', 'React 19', 'TypeScript', 'Supabase'], image: m2appImg, url: 'https://m2-app-eta.vercel.app' },
+  { titleKey: 'm2app_title', descKey: 'm2app_desc', techs: ['Next.js 16', 'React 19', 'TypeScript', 'Supabase'], image: m2appImg, url: 'https://m2-app-eta.vercel.app', video: VIDEOS.m2app },
 ];
 
 // Reste des réalisations — révélées via « Voir plus de projets »
@@ -129,9 +171,9 @@ const moreProjects: WebCard[] = [
   { titleKey: 'project_bubbele_title', descKey: 'project_bubbele_desc', techs: ['Game Design', 'JavaScript'], image: bubbleJeuImg, url: 'https://github.com/benhammane/Bubulle', github: true },
 ];
 
-/** Cadre navigateur contenant la capture du projet. */
-const ProjectFrame = ({ image, domain, alt }: { image: string; domain: string; alt: string }) => (
-  <div className="overflow-hidden rounded-2xl border border-border/70 bg-card/60 shadow-2xl">
+/** Cadre navigateur ; le contenu (capture ou vidéo) est fourni par l'appelant. */
+const ProjectFrame = ({ domain, children }: { domain: string; children: ReactNode }) => (
+  <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-card/60 shadow-2xl">
     <div className="flex items-center gap-2 border-b border-border/60 bg-background/60 px-4 py-3">
       <span className="h-3 w-3 rounded-full bg-red-400/70" />
       <span className="h-3 w-3 rounded-full bg-amber-400/70" />
@@ -140,18 +182,40 @@ const ProjectFrame = ({ image, domain, alt }: { image: string; domain: string; a
         {domain}
       </div>
     </div>
-    <div className="relative aspect-[16/10] w-full overflow-hidden">
-      <img src={image} alt={alt} loading="lazy" className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
-    </div>
+    {children}
   </div>
 );
 
-const FeaturedProject = ({ project, index }: { project: Featured; index: number }) => {
+const FeaturedProject = ({
+  project,
+  index,
+  onOpenVideo,
+}: {
+  project: Featured;
+  index: number;
+  onOpenVideo: OpenVideoHandler;
+}) => {
   const { playClick } = useClickSound();
   const { t } = useLocale();
   const link = project.url || GITHUB;
   const reversed = index % 2 === 1;
   const title = t(project.titleKey);
+  const ctaLabel = project.playable ? t('projects_play') : project.url ? t('projects_view_site') : t('projects_view_github');
+  const isTrailer = project.video?.kind === 'trailer';
+
+  const openVideo = (trigger: HTMLElement) => {
+    if (!project.video) return;
+    onOpenVideo(
+      {
+        video: project.video,
+        title,
+        description: t(project.descKey),
+        ctaHref: link,
+        ctaLabel,
+      },
+      trigger,
+    );
+  };
 
   return (
     <motion.div
@@ -201,50 +265,148 @@ const FeaturedProject = ({ project, index }: { project: Featured; index: number 
           ))}
         </div>
 
-        {/* CTA */}
-        <LiquidButton
-          variant="brand"
-          size="md"
-          className="mt-8"
+        {/* CTA : découvrir le projet (lien) et, s'il existe, regarder la vidéo (modale) — deux actions distinctes */}
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <LiquidButton
+            variant="brand"
+            size="md"
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={playClick}
+          >
+            {ctaLabel}
+            <ArrowUpRight size={17} />
+          </LiquidButton>
+          {project.video && (
+            <LiquidButton variant="ghost" size="md" type="button" onClick={(e) => openVideo(e.currentTarget)}>
+              <Play size={16} fill="currentColor" aria-hidden="true" />
+              {t(isTrailer ? 'video_watch_trailer' : 'video_watch')}
+            </LiquidButton>
+          )}
+        </div>
+      </div>
+
+      {/* Mockup : vidéo (aperçu au survol, modale au clic) ou capture cliquable vers le projet */}
+      {project.video ? (
+        <motion.div
+          whileHover={{ y: -6 }}
+          transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+          className={`relative ${reversed ? 'lg:order-1' : 'lg:order-2'}`}
+        >
+          {isTrailer && (
+            // Halo néon façon page de jeu, dans la palette du portfolio.
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-fuchsia-500/30 via-brand-2/15 to-brand-3/30 opacity-60 blur-3xl transition-opacity duration-700 group-hover:opacity-100"
+            />
+          )}
+          <ProjectFrame domain={project.domain}>
+            <ProjectVideoMedia video={project.video} title={title} onOpen={openVideo} className="aspect-video" featured />
+          </ProjectFrame>
+        </motion.div>
+      ) : (
+        <a
           href={link}
           target="_blank"
           rel="noopener noreferrer"
           onClick={playClick}
+          className={`block ${reversed ? 'lg:order-1' : 'lg:order-2'}`}
+          aria-label={title}
         >
-          {project.playable ? t('projects_play') : project.url ? t('projects_view_site') : t('projects_view_github')}
-          <ArrowUpRight size={17} />
-        </LiquidButton>
-      </div>
-
-      {/* Mockup */}
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={playClick}
-        className={`block ${reversed ? 'lg:order-1' : 'lg:order-2'}`}
-        aria-label={title}
-      >
-        <motion.div whileHover={{ y: -6 }} transition={{ type: 'spring', stiffness: 260, damping: 20 }}>
-          <ProjectFrame image={project.image} domain={project.domain} alt={title} />
-        </motion.div>
-      </a>
+          <motion.div whileHover={{ y: -6 }} transition={{ type: 'spring', stiffness: 260, damping: 20 }}>
+            <ProjectFrame domain={project.domain}>
+              <div className="relative aspect-[16/10] w-full overflow-hidden">
+                <img src={project.image} alt={title} loading="lazy" className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+              </div>
+            </ProjectFrame>
+          </motion.div>
+        </a>
+      )}
     </motion.div>
   );
 };
 
-/** Carte compacte : site live, repo GitHub, ou projet sans lien public (placeholder + badge). */
-const CompactCard = ({ project }: { project: WebCard }) => {
+const CardTechs = ({ techs }: { techs: string[] }) => (
+  <div className="mt-4 flex flex-wrap gap-2">
+    {techs.map((tech) => (
+      <span key={tech} className="rounded-full border border-border/60 bg-secondary/40 px-2.5 py-1 text-xs text-muted-foreground">
+        {tech}
+      </span>
+    ))}
+  </div>
+);
+
+const CardBadge = ({ label }: { label: string }) => (
+  <span className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full border border-brand/30 bg-brand/10 px-2.5 py-1 text-xs font-medium text-brand">
+    {label}
+  </span>
+);
+
+const cardMotion = {
+  variants: staggerItem,
+  whileHover: { y: -8 },
+  transition: { type: 'spring' as const, stiffness: 300, damping: 24 },
+};
+
+/** Carte compacte : site live, repo GitHub, projet sans lien public, ou présentation vidéo. */
+const CompactCard = ({ project, onOpenVideo }: { project: WebCard; onOpenVideo: OpenVideoHandler }) => {
   const { playClick } = useClickSound();
   const { t } = useLocale();
   const title = t(project.titleKey);
   const link = project.url ? project.url : project.github ? GITHUB : undefined;
   const CornerIcon = project.github ? Github : ExternalLink;
   const PlaceholderIcon = project.placeholderIcon ?? Sparkles;
+  const cls = 'group flex h-full flex-col overflow-hidden rounded-3xl glass';
+
+  // ── Carte avec vidéo : la vidéo ouvre la modale, le lien « Voir le site » mène au projet.
+  // Pas de lien englobant : les deux actions restent distinctes (et le HTML valide).
+  if (project.video) {
+    const video = project.video;
+    const openVideo = (trigger: HTMLElement) =>
+      onOpenVideo(
+        {
+          video,
+          title,
+          description: t(project.descKey),
+          ctaHref: project.url,
+          ctaLabel: t('projects_view_site'),
+          note: project.badge ? t(project.badge) : undefined,
+        },
+        trigger,
+      );
+
+    return (
+      <motion.div {...cardMotion} className={cls}>
+        <ProjectVideoMedia video={video} title={title} onOpen={openVideo} className="aspect-video" />
+        <div className="flex flex-grow flex-col p-6">
+          <h4 className="font-display font-semibold">{title}</h4>
+          <p className="mt-2 flex-grow text-sm leading-relaxed text-muted-foreground">{t(project.descKey)}</p>
+          {project.badge && <CardBadge label={t(project.badge)} />}
+          <CardTechs techs={project.techs} />
+          {project.url && (
+            <div className="mt-5 border-t border-border/50 pt-4">
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={playClick}
+                className="inline-flex min-h-[32px] items-center gap-1.5 rounded-md text-sm font-medium text-brand transition-colors hover:text-brand-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                {t('projects_view_site')}
+                <ArrowUpRight size={15} aria-hidden="true" />
+                <span className="sr-only">— {title}</span>
+              </a>
+            </div>
+          )}
+        </div>
+      </motion.div>
+    );
+  }
 
   const inner = (
     <>
-      <div className={`relative overflow-hidden ${project.mobileImages ? 'h-56' : 'h-44'}`}>
+      <div className="relative aspect-video overflow-hidden">
         {project.mobileImages ? (
           // Deux captures mobiles verticales côte à côte, non recadrées (object-contain).
           <div className="flex h-full w-full items-center justify-center gap-2 bg-gradient-to-br from-brand/15 via-brand-2/10 to-brand-3/20 px-4 py-3">
@@ -277,45 +439,26 @@ const CompactCard = ({ project }: { project: WebCard }) => {
       <div className="flex flex-grow flex-col p-6">
         <h4 className="font-display font-semibold transition-colors group-hover:text-brand">{title}</h4>
         <p className="mt-2 flex-grow text-sm leading-relaxed text-muted-foreground">{t(project.descKey)}</p>
-        {project.badge && (
-          <span className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full border border-brand/30 bg-brand/10 px-2.5 py-1 text-xs font-medium text-brand">
-            {t(project.badge)}
-          </span>
-        )}
-        <div className="mt-4 flex flex-wrap gap-2">
-          {project.techs.map((tech) => (
-            <span key={tech} className="rounded-full border border-border/60 bg-secondary/40 px-2.5 py-1 text-xs text-muted-foreground">
-              {tech}
-            </span>
-          ))}
-        </div>
+        {project.badge && <CardBadge label={t(project.badge)} />}
+        <CardTechs techs={project.techs} />
       </div>
     </>
   );
 
-  const cls = 'group flex h-full flex-col overflow-hidden rounded-3xl glass';
-
   return link ? (
     <motion.a
-      variants={staggerItem}
+      {...cardMotion}
       href={link}
       target="_blank"
       rel="noopener noreferrer"
       onClick={playClick}
-      whileHover={{ y: -8 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 24 }}
       className={cls}
       aria-label={title}
     >
       {inner}
     </motion.a>
   ) : (
-    <motion.div
-      variants={staggerItem}
-      whileHover={{ y: -8 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-      className={cls}
-    >
+    <motion.div {...cardMotion} className={cls}>
       {inner}
     </motion.div>
   );
@@ -326,72 +469,103 @@ const ProjectsSection = () => {
   const { t } = useLocale();
   const [showMore, setShowMore] = useState(false);
 
+  // Une seule modale pour toute la section. Les données restent en place à la fermeture
+  // pour que l'animation de sortie s'affiche avec le bon contenu.
+  const [videoData, setVideoData] = useState<OpenVideo | null>(null);
+  const [videoOpen, setVideoOpen] = useState(false);
+  const videoTriggerRef = useRef<HTMLElement | null>(null);
+
+  const openVideo: OpenVideoHandler = (data, trigger) => {
+    playClick();
+    trackVideoPreview(data.title);
+    videoTriggerRef.current = trigger;
+    setVideoData(data);
+    setVideoOpen(true);
+  };
+
   return (
-    <section id="projects" className="section-padding relative overflow-hidden">
-      <div className="container relative z-10 mx-auto px-6">
-        <SectionHeading eyebrow="04 — Portfolio" title="Mes" highlight="Projets" subtitle={t('projects_sub')} />
+    // reducedMotion="user" : Framer Motion coupe les translations si le visiteur l'a demandé.
+    <MotionConfig reducedMotion="user">
+      <section id="projects" className="section-padding relative overflow-hidden">
+        <div className="container relative z-10 mx-auto px-6">
+          <SectionHeading eyebrow="04 — Portfolio" title="Mes" highlight="Projets" subtitle={t('projects_sub')} />
 
-        {/* Projets vedettes — grand format */}
-        <div className="space-y-20 md:space-y-28">
-          {featured.map((p, i) => (
-            <FeaturedProject key={p.titleKey} project={p} index={i} />
-          ))}
-        </div>
-
-        {/* Vedette — applications & sites (grille) */}
-        <div className="mt-24">
-          <div className="mb-10 flex items-center gap-4">
-            <h3 className="font-display text-xl font-semibold">{t('projects_web_heading')}</h3>
-            <span className="h-px flex-1 bg-border/60" />
+          {/* Projets vedettes — grand format */}
+          <div className="space-y-20 md:space-y-28">
+            {featured.map((p, i) => (
+              <FeaturedProject key={p.titleKey} project={p} index={i} onOpenVideo={openVideo} />
+            ))}
           </div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-          >
-            {vedetteWeb.map((p) => (
-              <CompactCard key={p.titleKey} project={p} />
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Bouton Voir plus / Voir moins */}
-        <div className="mt-12 flex justify-center">
-          <LiquidButton
-            variant="ghost"
-            size="md"
-            onClick={() => { playClick(); setShowMore((v) => !v); }}
-          >
-            {showMore ? t('projects_show_less') : t('projects_show_more')}
-            {showMore ? <ChevronUp size={17} /> : <ChevronDown size={17} />}
-          </LiquidButton>
-        </div>
-
-        {/* Reste des réalisations — révélé au clic */}
-        {showMore && (
-          <div className="mt-14">
+          {/* Vedette — applications & sites (grille) */}
+          <div className="mt-24">
             <div className="mb-10 flex items-center gap-4">
-              <h3 className="font-display text-xl font-semibold">{t('projects_others_heading')}</h3>
+              <h3 className="font-display text-xl font-semibold">{t('projects_web_heading')}</h3>
               <span className="h-px flex-1 bg-border/60" />
             </div>
 
             <motion.div
               variants={staggerContainer}
               initial="hidden"
-              animate="visible"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
               className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
             >
-              {moreProjects.map((p) => (
-                <CompactCard key={p.titleKey} project={p} />
+              {vedetteWeb.map((p) => (
+                <CompactCard key={p.titleKey} project={p} onOpenVideo={openVideo} />
               ))}
             </motion.div>
           </div>
+
+          {/* Bouton Voir plus / Voir moins */}
+          <div className="mt-12 flex justify-center">
+            <LiquidButton
+              variant="ghost"
+              size="md"
+              onClick={() => { playClick(); setShowMore((v) => !v); }}
+            >
+              {showMore ? t('projects_show_less') : t('projects_show_more')}
+              {showMore ? <ChevronUp size={17} /> : <ChevronDown size={17} />}
+            </LiquidButton>
+          </div>
+
+          {/* Reste des réalisations — révélé au clic */}
+          {showMore && (
+            <div className="mt-14">
+              <div className="mb-10 flex items-center gap-4">
+                <h3 className="font-display text-xl font-semibold">{t('projects_others_heading')}</h3>
+                <span className="h-px flex-1 bg-border/60" />
+              </div>
+
+              <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+                className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+              >
+                {moreProjects.map((p) => (
+                  <CompactCard key={p.titleKey} project={p} onOpenVideo={openVideo} />
+                ))}
+              </motion.div>
+            </div>
+          )}
+        </div>
+
+        {videoData && (
+          <ProjectVideoModal
+            open={videoOpen}
+            onOpenChange={setVideoOpen}
+            video={videoData.video}
+            title={videoData.title}
+            description={videoData.description}
+            ctaHref={videoData.ctaHref}
+            ctaLabel={videoData.ctaLabel}
+            note={videoData.note}
+            returnFocusTo={videoTriggerRef.current}
+          />
         )}
-      </div>
-    </section>
+      </section>
+    </MotionConfig>
   );
 };
 

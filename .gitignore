@@ -24,3 +24,11 @@ dist-ssr
 *.sw?
 .vercel
 .env*.local
+
+# Rushs vidéo 1080p des projets (36-61 Mo chacun) : seules les versions encodées
+# (*-preview.mp4, *-full.mp4, *-poster.webp) sont utilisées par le site et versionnées.
+src/assert/etoogame.mp4
+src/assert/realestatesaas.mp4
+src/assert/conduite.mp4
+src/assert/m2app.mp4
+src/assert/FreelanceOS-presentation-HD.mp4

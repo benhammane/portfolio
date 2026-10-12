@@ -1,14 +1,14 @@
 {
-  "_client-C-E2SWBZ.js": {
-    "file": "assets/client-C-E2SWBZ.js",
+  "_client-OcpJ6ZMv.js": {
+    "file": "assets/client-OcpJ6ZMv.js",
     "name": "client",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
     ]
   },
-  "_howler-BWkFYRt3.js": {
-    "file": "assets/howler-BWkFYRt3.js",
+  "_howler-BdRAE6hX.js": {
+    "file": "assets/howler-BdRAE6hX.js",
     "name": "howler",
     "isDynamicEntry": true,
     "imports": [
@@ -16,17 +16,17 @@
     ]
   },
   "index.html": {
-    "file": "assets/app-Dc-Nq1_p.js",
+    "file": "assets/app-DVQcxKX0.js",
     "name": "app",
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
-      "_client-C-E2SWBZ.js",
-      "_client-C-E2SWBZ.js",
+      "_client-OcpJ6ZMv.js",
+      "_client-OcpJ6ZMv.js",
       "src/components/fx/SplineRobot.tsx"
     ],
     "css": [
-      "assets/app-Dz-FN32D.css"
+      "assets/app-CtnRoMLg.css"
     ],
     "assets": [
       "assets/ABLogo-BerroeTX.jpeg",
@@ -60,6 +60,21 @@
       "assets/kadji-accueil-Ct-ErKJn.webp",
       "assets/kadji-commandes-sdgJS8ju.webp",
       "assets/m2app-CuN3JK_A.webp",
+      "assets/etoo-preview-D7qIe-b_.mp4",
+      "assets/etoo-full-C3Ruydzf.mp4",
+      "assets/etoo-poster--wKXldPJ.webp",
+      "assets/luxestate-preview-5FNGDuEk.mp4",
+      "assets/luxestate-full-CiChSYHY.mp4",
+      "assets/luxestate-poster-Pg6UFRb5.webp",
+      "assets/conduite-preview-BBf5e6wi.mp4",
+      "assets/conduite-full-DBokYPhM.mp4",
+      "assets/conduite-poster-DZrDKO5c.webp",
+      "assets/m2app-preview-wlWtf6W8.mp4",
+      "assets/m2app-full-REYD5ohs.mp4",
+      "assets/m2app-poster-Ba3Kn68U.webp",
+      "assets/freelanceos-preview-CBtXVuTf.mp4",
+      "assets/freelanceos-full-C1GujPd1.mp4",
+      "assets/freelanceos-poster-BFTQrcQX.webp",
       "assets/montagePORTFOLIO-1OU4dYRN.mp4",
       "assets/sportPORTFOLIO-B09R26nU.mp4",
       "assets/voyagePORTFOLIO4-CDaetBvu.mp4",
@@ -144,13 +159,49 @@
     "file": "assets/aurora-isle-screenshot-CfXz-iwY.webp",
     "src": "src/assert/aurora-isle-screenshot.webp"
   },
+  "src/assert/conduite-full.mp4": {
+    "file": "assets/conduite-full-DBokYPhM.mp4",
+    "src": "src/assert/conduite-full.mp4"
+  },
+  "src/assert/conduite-poster.webp": {
+    "file": "assets/conduite-poster-DZrDKO5c.webp",
+    "src": "src/assert/conduite-poster.webp"
+  },
+  "src/assert/conduite-preview.mp4": {
+    "file": "assets/conduite-preview-BBf5e6wi.mp4",
+    "src": "src/assert/conduite-preview.mp4"
+  },
   "src/assert/etoo-blast-off.png": {
     "file": "assets/etoo-blast-off-C6XPPtFp.png",
     "src": "src/assert/etoo-blast-off.png"
   },
+  "src/assert/etoo-full.mp4": {
+    "file": "assets/etoo-full-C3Ruydzf.mp4",
+    "src": "src/assert/etoo-full.mp4"
+  },
+  "src/assert/etoo-poster.webp": {
+    "file": "assets/etoo-poster--wKXldPJ.webp",
+    "src": "src/assert/etoo-poster.webp"
+  },
+  "src/assert/etoo-preview.mp4": {
+    "file": "assets/etoo-preview-D7qIe-b_.mp4",
+    "src": "src/assert/etoo-preview.mp4"
+  },
   "src/assert/foodix.webp": {
     "file": "assets/foodix-BMtQBk38.webp",
     "src": "src/assert/foodix.webp"
+  },
+  "src/assert/freelanceos-full.mp4": {
+    "file": "assets/freelanceos-full-C1GujPd1.mp4",
+    "src": "src/assert/freelanceos-full.mp4"
+  },
+  "src/assert/freelanceos-poster.webp": {
+    "file": "assets/freelanceos-poster-BFTQrcQX.webp",
+    "src": "src/assert/freelanceos-poster.webp"
+  },
+  "src/assert/freelanceos-preview.mp4": {
+    "file": "assets/freelanceos-preview-CBtXVuTf.mp4",
+    "src": "src/assert/freelanceos-preview.mp4"
   },
   "src/assert/freelanceos.webp": {
     "file": "assets/freelanceos-B25NNmp6.webp",
@@ -171,6 +222,30 @@
   "src/assert/kadji-commandes.webp": {
     "file": "assets/kadji-commandes-sdgJS8ju.webp",
     "src": "src/assert/kadji-commandes.webp"
+  },
+  "src/assert/luxestate-full.mp4": {
+    "file": "assets/luxestate-full-CiChSYHY.mp4",
+    "src": "src/assert/luxestate-full.mp4"
+  },
+  "src/assert/luxestate-poster.webp": {
+    "file": "assets/luxestate-poster-Pg6UFRb5.webp",
+    "src": "src/assert/luxestate-poster.webp"
+  },
+  "src/assert/luxestate-preview.mp4": {
+    "file": "assets/luxestate-preview-5FNGDuEk.mp4",
+    "src": "src/assert/luxestate-preview.mp4"
+  },
+  "src/assert/m2app-full.mp4": {
+    "file": "assets/m2app-full-REYD5ohs.mp4",
+    "src": "src/assert/m2app-full.mp4"
+  },
+  "src/assert/m2app-poster.webp": {
+    "file": "assets/m2app-poster-Ba3Kn68U.webp",
+    "src": "src/assert/m2app-poster.webp"
+  },
+  "src/assert/m2app-preview.mp4": {
+    "file": "assets/m2app-preview-wlWtf6W8.mp4",
+    "src": "src/assert/m2app-preview.mp4"
   },
   "src/assert/m2app.webp": {
     "file": "assets/m2app-CuN3JK_A.webp",
@@ -257,7 +332,7 @@
     "src": "src/assert/wl-timessquare.webp"
   },
   "src/components/fx/SplineRobot.tsx": {
-    "file": "assets/SplineRobot-pNokq8nO.js",
+    "file": "assets/SplineRobot-D3fgZ9SV.js",
     "name": "SplineRobot",
     "src": "src/components/fx/SplineRobot.tsx",
     "isDynamicEntry": true,
@@ -269,7 +344,7 @@
       "node_modules/@splinetool/runtime/build/physics.js",
       "node_modules/@splinetool/runtime/build/process.js",
       "node_modules/@splinetool/runtime/build/boolean.js",
-      "_howler-BWkFYRt3.js",
+      "_howler-BdRAE6hX.js",
       "node_modules/@splinetool/runtime/build/opentype.js",
       "node_modules/@splinetool/runtime/build/ui.js",
       "node_modules/@splinetool/runtime/build/gaussian-splat-compression.js"
