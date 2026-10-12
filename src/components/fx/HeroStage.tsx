@@ -46,7 +46,8 @@ const ProjectCard = ({ src, title, label, className, offset, rotate }: ProjectCa
     <img
       src={src}
       alt=""
-      loading="lazy"
+      // Au-dessus de la ligne de flottaison (~60 Ko à eux deux) : pas de lazy-load, qui
+      // laissait les cartes vides au premier affichage dans le contexte 3D.
       decoding="async"
       className="aspect-[16/10] w-full object-cover opacity-90 transition-opacity duration-300 group-hover:opacity-100"
     />

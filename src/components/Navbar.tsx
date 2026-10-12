@@ -151,7 +151,7 @@ const Navbar = () => {
           <button
             onClick={() => { playClick(); setLocale(locale === 'fr' ? 'en' : 'fr'); }}
             className="flex items-center gap-1 rounded-full p-2 text-muted-foreground transition-colors hover:bg-brand/10 hover:text-brand"
-            aria-label="Toggle language"
+            aria-label={locale === 'fr' ? 'FR — passer en anglais' : 'EN — switch to French'}
           >
             <Globe size={18} />
             <span className="text-xs font-semibold uppercase">{locale}</span>

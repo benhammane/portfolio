@@ -48,7 +48,7 @@ const ProcessStep = ({
     </div>
     <div className={isLast ? 'pb-1' : 'pb-10'}>
       <p className="font-mono text-xs text-brand">0{index + 1}</p>
-      <h4 className="font-display text-lg font-semibold">{title}</h4>
+      <h3 className="font-display text-lg font-semibold">{title}</h3>
       <p className="mt-1.5 leading-relaxed text-muted-foreground">{description}</p>
     </div>
   </motion.div>
