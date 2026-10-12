@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from '@/components/ui/toaster';
 import { Toaster as Sonner } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -13,7 +12,7 @@ import Footer from '@/components/Footer';
 import { initGA } from '@/lib/analytics';
 import { usePageTracking } from '@/hooks/usePageTracking';
 
-const queryClient = new QueryClient();
+// (QueryClientProvider retiré : aucune requête react-query dans le site, ~13 Ko gzip en moins)
 
 /** Enveloppe commune à toutes les routes (accueil + blog). */
 const Layout = () => {
@@ -24,8 +23,7 @@ const Layout = () => {
   usePageTracking();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <LocaleProvider>
+    <LocaleProvider>
         <ThemeProvider>
           <TooltipProvider>
             <Toaster />
@@ -39,8 +37,7 @@ const Layout = () => {
             <Footer />
           </TooltipProvider>
         </ThemeProvider>
-      </LocaleProvider>
-    </QueryClientProvider>
+    </LocaleProvider>
   );
 };
 

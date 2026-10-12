@@ -4,7 +4,8 @@ import { LiquidButton } from '@/components/ui/liquid-glass-button';
 import { trackCvDownload, trackSocialClick, trackAgencyClick } from '@/lib/analytics';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useClickSound } from '@/hooks/useClickSound';
-import photo from '@/assert/photoPORTFOLIO.jpeg';
+// Version 640 px (affichée à 320 px, nette en Retina) : 34 Ko au lieu de 140 Ko
+import photo from '@/assert/photoPORTFOLIO-640.webp';
 import cvFile from '@/assert/CVBENHAMMANE.pdf';
 import { toast } from '@/hooks/use-toast';
 import { useLocale } from '@/lib/LocaleProvider';
@@ -269,22 +270,15 @@ const HeroSection = () => {
             </div>
 
             {/* Étiquette flottante */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute -bottom-2 -left-4 flex items-center gap-2 rounded-2xl glass px-4 py-2.5 shadow-lg"
-            >
+            {/* Flottement en keyframes CSS (compositor) plutôt qu'en boucle Framer (main thread) */}
+            <div className="absolute -bottom-2 -left-4 flex items-center gap-2 rounded-2xl glass px-4 py-2.5 shadow-lg animate-hero-float-up">
               <Sparkles size={16} className="text-brand" />
               <span className="text-sm font-medium">Full-Stack</span>
-            </motion.div>
+            </div>
 
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-              className="absolute -right-4 top-6 rounded-2xl glass px-4 py-2.5 shadow-lg"
-            >
+            <div className="absolute -right-4 top-6 rounded-2xl glass px-4 py-2.5 shadow-lg animate-hero-float-down">
               <span className="font-mono text-sm text-brand">{'</>'}</span>
-            </motion.div>
+            </div>
           </motion.div>
           </div>
         </motion.div>
@@ -301,11 +295,7 @@ const HeroSection = () => {
       >
         <span className="font-mono text-[10px] uppercase tracking-[0.3em]">{t('hero_scroll')}</span>
         <span className="flex h-9 w-5 justify-center rounded-full border border-border p-1">
-          <motion.span
-            animate={{ y: [0, 12, 0], opacity: [1, 0.2, 1] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-            className="h-1.5 w-1 rounded-full bg-brand"
-          />
+          <span className="h-1.5 w-1 rounded-full bg-brand animate-hero-scroll-dot" />
         </span>
       </motion.a>
     </section>

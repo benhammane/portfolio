@@ -111,3 +111,6 @@ const BlogList = () => {
 };
 
 export default BlogList;
+
+// Route chargée à la demande (lazy) : hors du bundle de la page d'accueil
+export const Component = BlogList;

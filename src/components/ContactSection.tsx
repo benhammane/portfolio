@@ -6,7 +6,6 @@ import { useClickSound } from '@/hooks/useClickSound';
 import { toast } from 'sonner';
 import { useLocale } from '@/lib/LocaleProvider';
 import SectionHeading from '@/components/fx/SectionHeading';
-import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
   const { playClick } = useClickSound();
@@ -48,6 +47,8 @@ const ContactSection = () => {
     };
 
     try {
+      // Chargé à la demande : la lib n'alourdit plus le bundle initial
+      const { default: emailjs } = await import('@emailjs/browser');
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
       trackContactSubmit();
       toast.success(t('toast_message_sent'));

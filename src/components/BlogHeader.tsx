@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '@/lib/ThemeProvider';
 import { useLocale } from '@/lib/LocaleProvider';
 import { useClickSound } from '@/hooks/useClickSound';
-import ABLogo from '@/assert/ABLogo.jpeg';
+import ABLogo from '@/assert/ABLogo-96.webp';
 
 const BlogHeader = () => {
   const { toggleTheme, theme } = useTheme();
