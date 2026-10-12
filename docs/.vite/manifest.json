@@ -1,14 +1,14 @@
 {
-  "_client-OcpJ6ZMv.js": {
-    "file": "assets/client-OcpJ6ZMv.js",
+  "_client-D1mf47hT.js": {
+    "file": "assets/client-D1mf47hT.js",
     "name": "client",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
     ]
   },
-  "_howler-BdRAE6hX.js": {
-    "file": "assets/howler-BdRAE6hX.js",
+  "_howler-CL21NZCK.js": {
+    "file": "assets/howler-CL21NZCK.js",
     "name": "howler",
     "isDynamicEntry": true,
     "imports": [
@@ -16,22 +16,24 @@
     ]
   },
   "index.html": {
-    "file": "assets/app-DVQcxKX0.js",
+    "file": "assets/app-pumkZVFp.js",
     "name": "app",
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
-      "_client-OcpJ6ZMv.js",
-      "_client-OcpJ6ZMv.js",
+      "_client-D1mf47hT.js",
+      "_client-D1mf47hT.js",
       "src/components/fx/SplineRobot.tsx"
     ],
     "css": [
-      "assets/app-CtnRoMLg.css"
+      "assets/app-PaITPaeh.css"
     ],
     "assets": [
       "assets/ABLogo-BerroeTX.jpeg",
-      "assets/photoPORTFOLIO-DPmCKCTs.jpeg",
       "assets/CVBENHAMMANE-D8NxFOV0.pdf",
+      "assets/photoPORTFOLIO-DPmCKCTs.jpeg",
+      "assets/etoo-poster--wKXldPJ.webp",
+      "assets/luxestate-poster-Pg6UFRb5.webp",
       "assets/aurora-isle-screenshot-CfXz-iwY.webp",
       "assets/foodix-BMtQBk38.webp",
       "assets/jesmoniteEcommerce-BimJgX3A.jpeg",
@@ -62,10 +64,8 @@
       "assets/m2app-CuN3JK_A.webp",
       "assets/etoo-preview-D7qIe-b_.mp4",
       "assets/etoo-full-C3Ruydzf.mp4",
-      "assets/etoo-poster--wKXldPJ.webp",
       "assets/luxestate-preview-5FNGDuEk.mp4",
       "assets/luxestate-full-CiChSYHY.mp4",
-      "assets/luxestate-poster-Pg6UFRb5.webp",
       "assets/conduite-preview-BBf5e6wi.mp4",
       "assets/conduite-full-DBokYPhM.mp4",
       "assets/conduite-poster-DZrDKO5c.webp",
@@ -75,6 +75,9 @@
       "assets/freelanceos-preview-CBtXVuTf.mp4",
       "assets/freelanceos-full-C1GujPd1.mp4",
       "assets/freelanceos-poster-BFTQrcQX.webp",
+      "assets/kadji-preview-_vZRjHKF.mp4",
+      "assets/kadji-full-DJMAqW4z.mp4",
+      "assets/kadji-poster-tePFMkmb.webp",
       "assets/montagePORTFOLIO-1OU4dYRN.mp4",
       "assets/sportPORTFOLIO-B09R26nU.mp4",
       "assets/voyagePORTFOLIO4-CDaetBvu.mp4",
@@ -223,6 +226,18 @@
     "file": "assets/kadji-commandes-sdgJS8ju.webp",
     "src": "src/assert/kadji-commandes.webp"
   },
+  "src/assert/kadji-full.mp4": {
+    "file": "assets/kadji-full-DJMAqW4z.mp4",
+    "src": "src/assert/kadji-full.mp4"
+  },
+  "src/assert/kadji-poster.webp": {
+    "file": "assets/kadji-poster-tePFMkmb.webp",
+    "src": "src/assert/kadji-poster.webp"
+  },
+  "src/assert/kadji-preview.mp4": {
+    "file": "assets/kadji-preview-_vZRjHKF.mp4",
+    "src": "src/assert/kadji-preview.mp4"
+  },
   "src/assert/luxestate-full.mp4": {
     "file": "assets/luxestate-full-CiChSYHY.mp4",
     "src": "src/assert/luxestate-full.mp4"
@@ -332,7 +347,7 @@
     "src": "src/assert/wl-timessquare.webp"
   },
   "src/components/fx/SplineRobot.tsx": {
-    "file": "assets/SplineRobot-D3fgZ9SV.js",
+    "file": "assets/SplineRobot-DFzVWgxX.js",
     "name": "SplineRobot",
     "src": "src/components/fx/SplineRobot.tsx",
     "isDynamicEntry": true,
@@ -344,7 +359,7 @@
       "node_modules/@splinetool/runtime/build/physics.js",
       "node_modules/@splinetool/runtime/build/process.js",
       "node_modules/@splinetool/runtime/build/boolean.js",
-      "_howler-BdRAE6hX.js",
+      "_howler-CL21NZCK.js",
       "node_modules/@splinetool/runtime/build/opentype.js",
       "node_modules/@splinetool/runtime/build/ui.js",
       "node_modules/@splinetool/runtime/build/gaussian-splat-compression.js"
