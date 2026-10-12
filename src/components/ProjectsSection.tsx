@@ -57,6 +57,9 @@ import m2appPoster from '@/assert/m2app-poster.webp';
 import freelanceosPreview from '@/assert/freelanceos-preview.mp4';
 import freelanceosFull from '@/assert/freelanceos-full.mp4';
 import freelanceosPoster from '@/assert/freelanceos-poster.webp';
+import kadjiPreview from '@/assert/kadji-preview.mp4';
+import kadjiFull from '@/assert/kadji-full.mp4';
+import kadjiPoster from '@/assert/kadji-poster.webp';
 
 const GITHUB = 'https://github.com/benhammane';
 
@@ -66,6 +69,7 @@ const VIDEOS = {
   conduite: { preview: conduitePreview, full: conduiteFull, poster: conduitePoster, duration: '0:47' },
   m2app: { preview: m2appPreview, full: m2appFull, poster: m2appPoster, duration: '0:52' },
   freelanceos: { preview: freelanceosPreview, full: freelanceosFull, poster: freelanceosPoster, duration: '1:24', hasAudio: true },
+  kadji: { preview: kadjiPreview, full: kadjiFull, poster: kadjiPoster, duration: '2:36', hasAudio: true },
 } satisfies Record<string, ProjectVideoData>;
 
 /** Données transmises à la modale vidéo (une seule modale pour toute la section). */
@@ -149,7 +153,7 @@ const vedetteWeb: WebCard[] = [
   { titleKey: 'wl_spendly_title', descKey: 'wl_spendly_desc', techs: ['React', 'TypeScript', 'Tailwind CSS'], image: wlSpendlyImg, url: 'https://spendly-lake-eight.vercel.app' },
   // Stack FreelanceOS alignée sur la slide « architecture » de la vidéo de présentation.
   { titleKey: 'freelanceos_title', descKey: 'freelanceos_desc', techs: ['React 19', 'Java 21', 'Spring Boot 3', 'PostgreSQL'], image: freelanceosImg, badge: 'projects_badge_demo', video: VIDEOS.freelanceos },
-  { titleKey: 'kadji_title', descKey: 'kadji_desc', techs: ['Expo', 'React Native'], mobileImages: [kadjiAccueilImg, kadjiCommandesImg], badge: 'projects_badge_test' },
+  { titleKey: 'kadji_title', descKey: 'kadji_desc', techs: ['Expo', 'React Native', 'NestJS', 'PostgreSQL'], mobileImages: [kadjiAccueilImg, kadjiCommandesImg], badge: 'projects_badge_test', video: VIDEOS.kadji },
   { titleKey: 'm2app_title', descKey: 'm2app_desc', techs: ['Next.js 16', 'React 19', 'TypeScript', 'Supabase'], image: m2appImg, url: 'https://m2-app-eta.vercel.app', video: VIDEOS.m2app },
 ];
 
