@@ -329,26 +329,6 @@
   }
 }
 
-/* ---------- Entrée de la Hero en CSS pur ----------
-   Joue dès le HTML pré-rendu, sans attendre l'hydratation React (FCP/LCP mobile).
-   Délai par élément via style={{ animationDelay }}. Neutralisée par le bloc reduced-motion. */
-.hero-rise { animation: hero-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
-.hero-mask-up { animation: hero-mask-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
-.hero-stage-in { animation: hero-stage-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both; }
-
-@keyframes hero-rise {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; }
-}
-@keyframes hero-mask-up {
-  from { transform: translateY(105%); }
-  to { transform: none; }
-}
-@keyframes hero-stage-in {
-  from { opacity: 0; transform: translateY(20px) scale(0.94); }
-  to { opacity: 1; transform: none; }
-}
-
 /* ---------- Keyframes ---------- */
 @keyframes text-shine {
   to { background-position: 200% center; }
