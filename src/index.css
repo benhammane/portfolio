@@ -136,6 +136,9 @@
   }
 
   html {
+    /* clip (et non hidden) : coupe tout débordement horizontal (calques 3D compris)
+       sans créer de conteneur de scroll — position: sticky reste fonctionnel. */
+    overflow-x: clip;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;

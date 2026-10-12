@@ -116,7 +116,7 @@ const HeroStage = ({ projectLabel, etooTitle, luxTitle }: { projectLabel: string
           label={projectLabel}
           offset={back}
           rotate={5}
-          className="-right-[26%] -top-[4%] w-[64%]"
+          className="-right-[8%] -top-[4%] w-[60%] sm:-right-[26%] sm:w-[64%]"
         />
         <ProjectCard
           src={luxestatePoster}
@@ -124,7 +124,7 @@ const HeroStage = ({ projectLabel, etooTitle, luxTitle }: { projectLabel: string
           label={projectLabel}
           offset={mid}
           rotate={-4}
-          className="-left-[16%] bottom-[6%] z-20 w-[62%]"
+          className="-left-[8%] bottom-[6%] z-20 w-[58%] sm:-left-[16%] sm:w-[62%]"
         />
 
         {/* Portrait */}
@@ -143,7 +143,8 @@ const HeroStage = ({ projectLabel, etooTitle, luxTitle }: { projectLabel: string
             className="aspect-[4/5] w-full object-cover"
             style={{ objectPosition: '50% 18%' }}
           />
-          <figcaption className="absolute inset-x-0 bottom-0 flex items-center gap-2 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-4 pb-3.5 pt-10 font-mono text-[11px] uppercase tracking-[0.18em] text-white/85">
+          {/* Légende en haut : le bas du portrait est recouvert par la carte projet */}
+          <figcaption className="absolute inset-x-0 top-0 flex items-center justify-end gap-2 bg-gradient-to-b from-black/60 to-transparent px-4 pb-8 pt-3.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/85">
             <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden />
             Lille, France
           </figcaption>
