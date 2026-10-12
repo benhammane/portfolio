@@ -19,6 +19,9 @@ const navItemsBase = [
   { key: 'nav_contact', href: '#contact', id: 'contact' },
 ];
 
+/** Sections sans entrée de menu -> onglet à activer */
+const SECTION_ALIASES: Record<string, string> = { innovation: 'about' };
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -33,15 +36,24 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Scroll-spy : section visible -> onglet actif
+  // Fermeture du menu mobile au clavier (Échap)
   useEffect(() => {
-    const sections = navItemsBase
-      .map((i) => document.getElementById(i.id))
+    if (!isMobileMenuOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setIsMobileMenuOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isMobileMenuOpen]);
+
+  // Scroll-spy : section visible -> onglet actif.
+  // Les sections sans entrée de menu sont rattachées à l'onglet le plus proche.
+  useEffect(() => {
+    const sections = [...navItemsBase.map((i) => i.id), ...Object.keys(SECTION_ALIASES)]
+      .map((id) => document.getElementById(id))
       .filter(Boolean) as HTMLElement[];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
+          if (entry.isIntersecting) setActive(SECTION_ALIASES[entry.target.id] ?? entry.target.id);
         });
       },
       { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
@@ -82,20 +94,22 @@ const Navbar = () => {
         </motion.a>
 
         {/* Nav desktop */}
-        <ul className="hidden items-center gap-1 lg:flex">
+        {/* Menu complet à partir de xl : à lg (1024 px) les 10 entrées débordaient */}
+        <ul className="hidden items-center gap-0.5 xl:flex">
           {navItemsBase.map((item) => (
             <li key={item.href} className="relative">
               <a
                 href={item.href}
                 onClick={handleNavClick}
-                className={`relative block rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
+                aria-current={active === item.id ? 'true' : undefined}
+                className={`relative block rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
                   active === item.id ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 {active === item.id && (
                   <motion.span
                     layoutId="nav-active"
-                    className="absolute inset-0 -z-10 rounded-full bg-brand/15 ring-1 ring-brand/30"
+                    className="absolute inset-0 -z-10 rounded-full bg-foreground/[0.07] ring-1 ring-border"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -146,8 +160,10 @@ const Navbar = () => {
           {/* Burger mobile */}
           <button
             onClick={() => { playClick(); setIsMobileMenuOpen(!isMobileMenuOpen); }}
-            className="ml-1 rounded-full p-2 text-foreground lg:hidden"
+            className="ml-1 rounded-full p-2 text-foreground xl:hidden"
             aria-label="Menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -162,7 +178,8 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25 }}
-            className="container mx-auto mt-2 overflow-hidden rounded-3xl glass-strong p-4 lg:hidden"
+            id="mobile-menu"
+            className="container mx-auto mt-2 max-h-[calc(100svh-6rem)] overflow-y-auto rounded-3xl glass-strong p-4 xl:hidden"
           >
             <ul className="flex flex-col gap-1">
               {navItemsBase.map((item, index) => (
