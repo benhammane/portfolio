@@ -89,7 +89,7 @@ const Navbar = () => {
         >
           <img src={ABLogo} alt="AB" className="h-9 w-9 rounded-full object-cover ring-1 ring-brand/40" />
           <span className="font-display text-lg font-bold tracking-tight">
-            Amine<span className="text-gradient">.</span>
+            Amine<span className="text-accent-brand">.</span>
           </span>
         </motion.a>
 

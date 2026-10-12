@@ -627,6 +627,11 @@ export const LocaleProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         } catch { /* stockage indisponible */ }
     }, []);
 
+    // Attribut lang du document aligné sur la langue affichée (lecteurs d'écran, traduction auto)
+    useEffect(() => {
+        document.documentElement.lang = locale;
+    }, [locale]);
+
     const setLocale = (l: Locale) => {
         setLocaleState(l);
         try {
