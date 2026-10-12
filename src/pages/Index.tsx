@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { Head } from 'vite-react-ssg';
-import { motion } from 'framer-motion';
 import { SITE_URL, SITE_NAME } from '@/config';
 import { useLocale } from '@/lib/LocaleProvider';
 import Navbar from '@/components/Navbar';
@@ -14,28 +12,9 @@ import ExperienceSection from '@/components/ExperienceSection';
 import ParcoursSection from '@/components/ParcoursSection';
 import InterestsSection from '@/components/InterestsSection';
 import ContactSection from '@/components/ContactSection';
-import Preloader from '@/components/fx/Preloader';
 
 const Index = () => {
   const { locale } = useLocale();
-
-  // Intro affichée une seule fois par session
-  const [loading, setLoading] = useState(() => {
-    try {
-      return sessionStorage.getItem('intro-seen') !== '1';
-    } catch {
-      return true;
-    }
-  });
-
-  const handleIntroDone = () => {
-    try {
-      sessionStorage.setItem('intro-seen', '1');
-    } catch {
-      /* noop */
-    }
-    setLoading(false);
-  };
 
   return (
     <div className="relative min-h-screen">
@@ -74,15 +53,18 @@ const Index = () => {
         </script>
       </Head>
 
-      {loading && <Preloader onComplete={handleIntroDone} />}
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:ring-2 focus:ring-brand"
+      >
+        {locale === 'fr' ? 'Aller au contenu' : 'Skip to content'}
+      </a>
 
       <Navbar />
 
-      <motion.main
-        initial={{ opacity: 0 }}
-        animate={{ opacity: loading ? 0 : 1 }}
-        transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
-      >
+      {/* Plus de préchargeur plein écran : le contenu est visible dès le HTML pré-rendu
+          (LCP, SEO) et la Hero joue sa propre entrée courte. */}
+      <main id="main">
         <HeroSection />
         <AboutSection />
         <RobotSection />
@@ -93,7 +75,7 @@ const Index = () => {
         <ParcoursSection />
         <InterestsSection />
         <ContactSection />
-      </motion.main>
+      </main>
     </div>
   );
 };

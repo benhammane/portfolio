@@ -93,7 +93,7 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "aurora-drift": "aurora-drift 18s ease-in-out infinite",
+        "aurora-drift": "aurora-drift 32s ease-in-out infinite",
         "spin-slow": "spin-slow 14s linear infinite",
       },
       backgroundImage: {

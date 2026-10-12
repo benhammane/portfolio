@@ -152,6 +152,15 @@
     letter-spacing: -0.02em;
   }
 
+  /* Focus clavier visible et cohérent partout (les composants Radix gardent leur propre ring) */
+  :focus-visible {
+    outline: 2px solid hsl(var(--brand));
+    outline-offset: 3px;
+  }
+
+  /* Les ancres de section ne passent plus sous la navbar fixe */
+  section[id] { scroll-margin-top: 5rem; }
+
   /* Sélection */
   ::selection {
     background: hsl(var(--brand) / 0.3);
@@ -196,6 +205,17 @@
     /* steps() : ~20 repaints/s au lieu de 60 (background-position n'est pas
        compositable — on réduit la fréquence de paint, invisible à l'œil sur un dégradé lent) */
     animation: text-shine 6s steps(120) infinite;
+  }
+
+  /* Accent sobre : une seule couleur de marque, sans dégradé animé.
+     Réservé au mot clé d'un titre — c'est ce qui donne le ton premium (moins = plus). */
+  .text-accent-brand { color: hsl(var(--brand)); }
+
+  /* Surface "carte" mate : alternative calme au glass pour les listes denses */
+  .surface {
+    background: hsl(var(--card) / 0.6);
+    border: 1px solid hsl(var(--border) / 0.8);
+    box-shadow: inset 0 1px 0 0 hsl(0 0% 100% / 0.04);
   }
 
   /* ---------- Glow ---------- */
@@ -291,7 +311,7 @@
     -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
   }
 
-  .section-padding { @apply py-24 md:py-32; }
+  .section-padding { @apply py-20 md:py-28; }
 
   /* ---------- Animations utilitaires ---------- */
   .animate-float { animation: float 7s ease-in-out infinite; }

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 type Locale = 'fr' | 'en';
 
@@ -24,6 +24,8 @@ const translations: Record<Locale, Record<string, string>> = {
         hero_badge_extra: 'Réponse sous 24 h',
         hero_freelance: 'Mes projets web · WebLocal',
         hero_scroll: 'Défiler',
+        hero_cta_projects: 'Voir mes projets',
+        hero_stage_label: 'Voir le projet',
         hero_role_1: 'Développeur Full-Stack',
         hero_role_2: 'Étudiant M2 MIAGE',
         hero_role_3: "Créateur d'expériences web",
@@ -324,6 +326,8 @@ const translations: Record<Locale, Record<string, string>> = {
         hero_badge_extra: 'Replies within 24h',
         hero_freelance: 'My web projects · WebLocal',
         hero_scroll: 'Scroll',
+        hero_cta_projects: 'View my work',
+        hero_stage_label: 'View project',
         hero_role_1: 'Full-Stack Developer',
         hero_role_2: 'M2 MIAGE Student',
         hero_role_3: 'Web experience creator',
@@ -612,14 +616,23 @@ const LocaleContext = createContext<{
 } | null>(null);
 
 export const LocaleProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [locale, setLocale] = useState<Locale>(() => {
+    // Premier rendu en 'fr' comme le HTML pré-rendu (SSG) : lire localStorage ici provoquait
+    // les erreurs d'hydratation React #418/#423. La langue mémorisée est appliquée après montage.
+    const [locale, setLocaleState] = useState<Locale>('fr');
+
+    useEffect(() => {
         try {
             const stored = localStorage.getItem('locale');
-            return (stored as Locale) || 'fr';
-        } catch {
-            return 'fr';
-        }
-    });
+            if (stored === 'fr' || stored === 'en') setLocaleState(stored);
+        } catch { /* stockage indisponible */ }
+    }, []);
+
+    const setLocale = (l: Locale) => {
+        setLocaleState(l);
+        try {
+            localStorage.setItem('locale', l);
+        } catch { /* stockage indisponible */ }
+    };
 
     const t = (key: string) => translations[locale][key] || key;
 
