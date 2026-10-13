@@ -60,6 +60,15 @@ import freelanceosPoster from '@/assert/freelanceos-poster.webp';
 import kadjiPreview from '@/assert/kadji-preview.mp4';
 import kadjiFull from '@/assert/kadji-full.mp4';
 import kadjiPoster from '@/assert/kadji-poster.webp';
+import kanbanPreview from '@/assert/kanban-preview.mp4';
+import kanbanFull from '@/assert/kanban-full.mp4';
+import kanbanPoster from '@/assert/kanban-poster.webp';
+import bubbletiPreview from '@/assert/bubbleti-preview.mp4';
+import bubbletiFull from '@/assert/bubbleti-full.mp4';
+import bubbletiPoster from '@/assert/bubbleti-poster.webp';
+import timessquarePreview from '@/assert/timessquare-preview.mp4';
+import timessquareFull from '@/assert/timessquare-full.mp4';
+import timessquarePoster from '@/assert/timessquare-poster.webp';
 
 const GITHUB = 'https://github.com/benhammane';
 
@@ -70,6 +79,9 @@ const VIDEOS = {
   m2app: { preview: m2appPreview, full: m2appFull, poster: m2appPoster, duration: '0:52' },
   freelanceos: { preview: freelanceosPreview, full: freelanceosFull, poster: freelanceosPoster, duration: '1:24', hasAudio: true },
   kadji: { preview: kadjiPreview, full: kadjiFull, poster: kadjiPoster, duration: '2:36', hasAudio: true },
+  kanban: { preview: kanbanPreview, full: kanbanFull, poster: kanbanPoster, duration: '0:52', hasAudio: true },
+  bubbleti: { preview: bubbletiPreview, full: bubbletiFull, poster: bubbletiPoster, duration: '1:12', hasAudio: true },
+  timessquare: { preview: timessquarePreview, full: timessquareFull, poster: timessquarePoster, duration: '0:58', hasAudio: true },
 } satisfies Record<string, ProjectVideoData>;
 
 /** Données transmises à la modale vidéo (une seule modale pour toute la section). */
@@ -144,7 +156,7 @@ interface WebCard {
 
 // ⭐ Vedette — applications & sites mis en avant (visibles par défaut)
 const vedetteWeb: WebCard[] = [
-  { titleKey: 'wl_timessquare_title', descKey: 'wl_timessquare_desc', techs: ['React', 'TypeScript', 'Tailwind CSS', 'Stripe'], image: wlTimesSquareImg, url: 'https://times-square-roubaix.vercel.app' },
+  { titleKey: 'wl_timessquare_title', descKey: 'wl_timessquare_desc', techs: ['React', 'TypeScript', 'Tailwind CSS', 'Stripe'], image: wlTimesSquareImg, url: 'https://times-square-roubaix.vercel.app', video: VIDEOS.timessquare },
   { titleKey: 'wl_conduite_title', descKey: 'wl_conduite_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'], image: wlConduiteImg, url: 'https://conduite-plus.vercel.app', video: VIDEOS.conduite },
   { titleKey: 'wl_luxestate_title', descKey: 'wl_luxestate_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'MapLibre'], image: wlLuxestateImg, url: 'https://lux-estate-livid.vercel.app', video: VIDEOS.luxestate },
   { titleKey: 'wl_drivenow_title', descKey: 'wl_drivenow_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'Stripe'], image: wlDrivenowImg, url: 'https://drive-now-phi.vercel.app' },
@@ -165,12 +177,12 @@ const moreProjects: WebCard[] = [
   { titleKey: 'wl_benedictines_title', descKey: 'wl_benedictines_desc', techs: ['React', 'TypeScript', 'Tailwind CSS'], image: wlBenedictinesImg, url: 'https://lesbenedictines.lovable.app' },
   { titleKey: 'project_ecommerce_title', descKey: 'project_ecommerce_desc', techs: ['Laravel', 'PHP', 'JavaScript', 'MySQL'], image: jesmoniteImg, github: true },
   { titleKey: 'project_encheres_title', descKey: 'project_encheres_desc', techs: ['JavaScript', 'Node.js', 'socket.io'], image: venteEnchereImg, github: true },
-  { titleKey: 'project_bubbleti_title', descKey: 'project_bubbleti_desc', techs: ['JavaScript', 'Node.js', 'MySQL'], image: bubbletiImg, url: 'https://github.com/benhammane/Bubbleti', github: true },
+  { titleKey: 'project_bubbleti_title', descKey: 'project_bubbleti_desc', techs: ['JavaScript', 'Node.js', 'MySQL'], image: bubbletiImg, url: 'https://github.com/benhammane/Bubbleti', github: true, video: VIDEOS.bubbleti },
   { titleKey: 'project_recettes_title', descKey: 'project_recettes_desc', techs: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'], image: foodixImg, github: true },
   { titleKey: 'project_shmup_title', descKey: 'project_shmup_desc', techs: ['Java', 'LibGDX'], image: jeuTirImg, github: true },
   { titleKey: 'project_velo_title', descKey: 'project_velo_desc', techs: ['Java', 'MySQL', 'UML'], image: vlilleImg, github: true },
   { titleKey: 'project_railroad_title', descKey: 'project_railroad_desc', techs: ['Java', 'Python', 'WebSocket'], image: railroadImg, github: true },
-  { titleKey: 'project_kanban_title', descKey: 'project_kanban_desc', techs: ['JavaScript', 'HTML', 'CSS'], image: kanbanImg, github: true },
+  { titleKey: 'project_kanban_title', descKey: 'project_kanban_desc', techs: ['JavaScript', 'HTML', 'CSS'], image: kanbanImg, github: true, video: VIDEOS.kanban },
   { titleKey: 'project_delidefi_title', descKey: 'project_delidefi_desc', techs: ['App Inventor 2', 'Android'], image: defiGoImg, github: true },
   { titleKey: 'project_bubbele_title', descKey: 'project_bubbele_desc', techs: ['Game Design', 'JavaScript'], image: bubbleJeuImg, url: 'https://github.com/benhammane/Bubulle', github: true },
 ];
@@ -368,14 +380,16 @@ const CompactCard = ({ project, onOpenVideo }: { project: WebCard; onOpenVideo: 
   // Pas de lien englobant : les deux actions restent distinctes (et le HTML valide).
   if (project.video) {
     const video = project.video;
+    // Dépôt GitHub (projets sans site en ligne) : le libellé suit la nature du lien
+    const linkLabel = t(project.github ? 'projects_view_github' : 'projects_view_site');
     const openVideo = (trigger: HTMLElement) =>
       onOpenVideo(
         {
           video,
           title,
           description: t(project.descKey),
-          ctaHref: project.url,
-          ctaLabel: t('projects_view_site'),
+          ctaHref: link,
+          ctaLabel: linkLabel,
           note: project.badge ? t(project.badge) : undefined,
         },
         trigger,
@@ -389,16 +403,16 @@ const CompactCard = ({ project, onOpenVideo }: { project: WebCard; onOpenVideo: 
           <p className="mt-2 flex-grow text-sm leading-relaxed text-muted-foreground">{t(project.descKey)}</p>
           {project.badge && <CardBadge label={t(project.badge)} />}
           <CardTechs techs={project.techs} />
-          {project.url && (
+          {link && (
             <div className="mt-5 border-t border-border/50 pt-4">
               <a
-                href={project.url}
+                href={link}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={playClick}
                 className="inline-flex min-h-[32px] items-center gap-1.5 rounded-md text-sm font-medium text-brand transition-colors hover:text-brand-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                {t('projects_view_site')}
+                {linkLabel}
                 <ArrowUpRight size={15} aria-hidden="true" />
                 <span className="sr-only">— {title}</span>
               </a>
