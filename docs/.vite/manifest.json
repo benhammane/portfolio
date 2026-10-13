@@ -1,21 +1,21 @@
 {
-  "_BlogHeader-B1IGTokz.js": {
-    "file": "assets/BlogHeader-B1IGTokz.js",
+  "_BlogHeader-D1BGPmsZ.js": {
+    "file": "assets/BlogHeader-D1BGPmsZ.js",
     "name": "BlogHeader",
     "imports": [
       "index.html"
     ]
   },
-  "_client-ItPvRP1-.js": {
-    "file": "assets/client-ItPvRP1-.js",
+  "_client-DJkPnxiY.js": {
+    "file": "assets/client-DJkPnxiY.js",
     "name": "client",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
     ]
   },
-  "_howler-DIJZaVOA.js": {
-    "file": "assets/howler-DIJZaVOA.js",
+  "_howler-CBHAojrw.js": {
+    "file": "assets/howler-CBHAojrw.js",
     "name": "howler",
     "isDynamicEntry": true,
     "imports": [
@@ -23,13 +23,13 @@
     ]
   },
   "index.html": {
-    "file": "assets/app-BGNhicfX.js",
+    "file": "assets/app-BMF2n63-.js",
     "name": "app",
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
-      "_client-ItPvRP1-.js",
-      "_client-ItPvRP1-.js",
+      "_client-DJkPnxiY.js",
+      "_client-DJkPnxiY.js",
       "src/components/fx/SplineRobot.tsx",
       "node_modules/@emailjs/browser/es/index.js",
       "src/pages/BlogList.tsx",
@@ -88,6 +88,15 @@
       "assets/kadji-preview-_vZRjHKF.mp4",
       "assets/kadji-full-DJMAqW4z.mp4",
       "assets/kadji-poster-tePFMkmb.webp",
+      "assets/kanban-preview-DvIyXnoW.mp4",
+      "assets/kanban-full-BfqNwDEu.mp4",
+      "assets/kanban-poster-VBoYZaW7.webp",
+      "assets/bubbleti-preview-yRHT92gu.mp4",
+      "assets/bubbleti-full-CpCApcas.mp4",
+      "assets/bubbleti-poster-DiXe5tN4.webp",
+      "assets/timessquare-preview-B7seX5Cv.mp4",
+      "assets/timessquare-full-nrrY9IzD.mp4",
+      "assets/timessquare-poster-rtqy_ls3.webp",
       "assets/montagePORTFOLIO-1OU4dYRN.mp4",
       "assets/sportPORTFOLIO-B09R26nU.mp4",
       "assets/voyagePORTFOLIO4-CDaetBvu.mp4",
@@ -174,6 +183,18 @@
     "file": "assets/aurora-isle-screenshot-CfXz-iwY.webp",
     "src": "src/assert/aurora-isle-screenshot.webp"
   },
+  "src/assert/bubbleti-full.mp4": {
+    "file": "assets/bubbleti-full-CpCApcas.mp4",
+    "src": "src/assert/bubbleti-full.mp4"
+  },
+  "src/assert/bubbleti-poster.webp": {
+    "file": "assets/bubbleti-poster-DiXe5tN4.webp",
+    "src": "src/assert/bubbleti-poster.webp"
+  },
+  "src/assert/bubbleti-preview.mp4": {
+    "file": "assets/bubbleti-preview-yRHT92gu.mp4",
+    "src": "src/assert/bubbleti-preview.mp4"
+  },
   "src/assert/conduite-full.mp4": {
     "file": "assets/conduite-full-DBokYPhM.mp4",
     "src": "src/assert/conduite-full.mp4"
@@ -250,6 +271,18 @@
     "file": "assets/kadji-preview-_vZRjHKF.mp4",
     "src": "src/assert/kadji-preview.mp4"
   },
+  "src/assert/kanban-full.mp4": {
+    "file": "assets/kanban-full-BfqNwDEu.mp4",
+    "src": "src/assert/kanban-full.mp4"
+  },
+  "src/assert/kanban-poster.webp": {
+    "file": "assets/kanban-poster-VBoYZaW7.webp",
+    "src": "src/assert/kanban-poster.webp"
+  },
+  "src/assert/kanban-preview.mp4": {
+    "file": "assets/kanban-preview-DvIyXnoW.mp4",
+    "src": "src/assert/kanban-preview.mp4"
+  },
   "src/assert/luxestate-full.mp4": {
     "file": "assets/luxestate-full-CiChSYHY.mp4",
     "src": "src/assert/luxestate-full.mp4"
@@ -297,6 +330,18 @@
   "src/assert/streamingPORTFOLIO.mp4": {
     "file": "assets/streamingPORTFOLIO-ChqmKbvk.mp4",
     "src": "src/assert/streamingPORTFOLIO.mp4"
+  },
+  "src/assert/timessquare-full.mp4": {
+    "file": "assets/timessquare-full-nrrY9IzD.mp4",
+    "src": "src/assert/timessquare-full.mp4"
+  },
+  "src/assert/timessquare-poster.webp": {
+    "file": "assets/timessquare-poster-rtqy_ls3.webp",
+    "src": "src/assert/timessquare-poster.webp"
+  },
+  "src/assert/timessquare-preview.mp4": {
+    "file": "assets/timessquare-preview-B7seX5Cv.mp4",
+    "src": "src/assert/timessquare-preview.mp4"
   },
   "src/assert/venteEnchere.webp": {
     "file": "assets/venteEnchere-vvtUiUMv.webp",
@@ -359,7 +404,7 @@
     "src": "src/assert/wl-timessquare.webp"
   },
   "src/components/fx/SplineRobot.tsx": {
-    "file": "assets/SplineRobot-CE7jgHmh.js",
+    "file": "assets/SplineRobot-Cnyzojcw.js",
     "name": "SplineRobot",
     "src": "src/components/fx/SplineRobot.tsx",
     "isDynamicEntry": true,
@@ -371,7 +416,7 @@
       "node_modules/@splinetool/runtime/build/physics.js",
       "node_modules/@splinetool/runtime/build/process.js",
       "node_modules/@splinetool/runtime/build/boolean.js",
-      "_howler-DIJZaVOA.js",
+      "_howler-CBHAojrw.js",
       "node_modules/@splinetool/runtime/build/opentype.js",
       "node_modules/@splinetool/runtime/build/ui.js",
       "node_modules/@splinetool/runtime/build/gaussian-splat-compression.js"
@@ -384,24 +429,24 @@
     "isDynamicEntry": true
   },
   "src/pages/BlogList.tsx": {
-    "file": "assets/BlogList-B7JTO9dV.js",
+    "file": "assets/BlogList-Dm8E9uXf.js",
     "name": "BlogList",
     "src": "src/pages/BlogList.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_BlogHeader-B1IGTokz.js",
+      "_BlogHeader-D1BGPmsZ.js",
       "src/data/posts.ts"
     ]
   },
   "src/pages/BlogPost.tsx": {
-    "file": "assets/BlogPost-Ds03MZUT.js",
+    "file": "assets/BlogPost-D9L71d04.js",
     "name": "BlogPost",
     "src": "src/pages/BlogPost.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_BlogHeader-B1IGTokz.js",
+      "_BlogHeader-D1BGPmsZ.js",
       "src/data/posts.ts"
     ]
   }
