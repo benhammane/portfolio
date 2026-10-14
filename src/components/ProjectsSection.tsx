@@ -60,6 +60,9 @@ import freelanceosPoster from '@/assert/freelanceos-poster.webp';
 import kadjiPreview from '@/assert/kadji-preview.mp4';
 import kadjiFull from '@/assert/kadji-full.mp4';
 import kadjiPoster from '@/assert/kadji-poster.webp';
+import spendlyPreview from '@/assert/spendly-preview.mp4';
+import spendlyFull from '@/assert/spendly-full.mp4';
+import spendlyPoster from '@/assert/spendly-poster.webp';
 import kanbanPreview from '@/assert/kanban-preview.mp4';
 import kanbanFull from '@/assert/kanban-full.mp4';
 import kanbanPoster from '@/assert/kanban-poster.webp';
@@ -79,6 +82,7 @@ const VIDEOS = {
   m2app: { preview: m2appPreview, full: m2appFull, poster: m2appPoster, duration: '0:52' },
   freelanceos: { preview: freelanceosPreview, full: freelanceosFull, poster: freelanceosPoster, duration: '1:24', hasAudio: true },
   kadji: { preview: kadjiPreview, full: kadjiFull, poster: kadjiPoster, duration: '2:36', hasAudio: true },
+  spendly: { preview: spendlyPreview, full: spendlyFull, poster: spendlyPoster, duration: '0:40' },
   kanban: { preview: kanbanPreview, full: kanbanFull, poster: kanbanPoster, duration: '0:52', hasAudio: true },
   bubbleti: { preview: bubbletiPreview, full: bubbletiFull, poster: bubbletiPoster, duration: '1:12', hasAudio: true },
   timessquare: { preview: timessquarePreview, full: timessquareFull, poster: timessquarePoster, duration: '0:58', hasAudio: true },
@@ -162,7 +166,7 @@ const vedetteWeb: WebCard[] = [
   { titleKey: 'wl_drivenow_title', descKey: 'wl_drivenow_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'Stripe'], image: wlDrivenowImg, url: 'https://drive-now-phi.vercel.app' },
   { titleKey: 'wl_invoiceflow_title', descKey: 'wl_invoiceflow_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'NextAuth'], image: wlInvoiceflowImg, url: 'https://invoice-flow-sand.vercel.app' },
   { titleKey: 'wl_insightai_title', descKey: 'wl_insightai_desc', techs: ['Next.js', 'TypeScript', 'Tailwind CSS', 'OpenAI API'], image: wlInsightaiImg, url: 'https://insight-ai-lilac.vercel.app' },
-  { titleKey: 'wl_spendly_title', descKey: 'wl_spendly_desc', techs: ['React', 'TypeScript', 'Tailwind CSS'], image: wlSpendlyImg, url: 'https://spendly-lake-eight.vercel.app' },
+  { titleKey: 'wl_spendly_title', descKey: 'wl_spendly_desc', techs: ['React', 'TypeScript', 'Tailwind CSS'], image: wlSpendlyImg, url: 'https://spendly-lake-eight.vercel.app', video: VIDEOS.spendly },
   // Stack FreelanceOS alignée sur la slide « architecture » de la vidéo de présentation.
   { titleKey: 'freelanceos_title', descKey: 'freelanceos_desc', techs: ['React 19', 'Java 21', 'Spring Boot 3', 'PostgreSQL'], image: freelanceosImg, badge: 'projects_badge_demo', video: VIDEOS.freelanceos },
   { titleKey: 'kadji_title', descKey: 'kadji_desc', techs: ['Expo', 'React Native', 'NestJS', 'PostgreSQL'], mobileImages: [kadjiAccueilImg, kadjiCommandesImg], badge: 'projects_badge_test', video: VIDEOS.kadji },
