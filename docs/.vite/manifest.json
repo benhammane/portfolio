@@ -1,21 +1,21 @@
 {
-  "_BlogHeader-Du5ooBLG.js": {
-    "file": "assets/BlogHeader-Du5ooBLG.js",
+  "_BlogHeader-Dg05hbbI.js": {
+    "file": "assets/BlogHeader-Dg05hbbI.js",
     "name": "BlogHeader",
     "imports": [
       "index.html"
     ]
   },
-  "_client-Cs3Uho-7.js": {
-    "file": "assets/client-Cs3Uho-7.js",
+  "_client-CzfsPHdz.js": {
+    "file": "assets/client-CzfsPHdz.js",
     "name": "client",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
     ]
   },
-  "_howler-DDfRp4Yd.js": {
-    "file": "assets/howler-DDfRp4Yd.js",
+  "_howler-II_9QluB.js": {
+    "file": "assets/howler-II_9QluB.js",
     "name": "howler",
     "isDynamicEntry": true,
     "imports": [
@@ -23,13 +23,13 @@
     ]
   },
   "index.html": {
-    "file": "assets/app-BliWYlb2.js",
+    "file": "assets/app-Dvzr0t3X.js",
     "name": "app",
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
-      "_client-Cs3Uho-7.js",
-      "_client-Cs3Uho-7.js",
+      "_client-CzfsPHdz.js",
+      "_client-CzfsPHdz.js",
       "src/components/fx/SplineRobot.tsx",
       "node_modules/@emailjs/browser/es/index.js",
       "src/pages/BlogList.tsx",
@@ -88,6 +88,9 @@
       "assets/kadji-preview-_vZRjHKF.mp4",
       "assets/kadji-full-DJMAqW4z.mp4",
       "assets/kadji-poster-tePFMkmb.webp",
+      "assets/spendly-preview-D40Q8yUZ.mp4",
+      "assets/spendly-full-B6rjcsBf.mp4",
+      "assets/spendly-poster-qtdOIvHL.webp",
       "assets/kanban-preview-DvIyXnoW.mp4",
       "assets/kanban-full-BfqNwDEu.mp4",
       "assets/kanban-poster-VBoYZaW7.webp",
@@ -323,6 +326,18 @@
     "file": "assets/railroad2-CoJ06UEO.webp",
     "src": "src/assert/railroad2.webp"
   },
+  "src/assert/spendly-full.mp4": {
+    "file": "assets/spendly-full-B6rjcsBf.mp4",
+    "src": "src/assert/spendly-full.mp4"
+  },
+  "src/assert/spendly-poster.webp": {
+    "file": "assets/spendly-poster-qtdOIvHL.webp",
+    "src": "src/assert/spendly-poster.webp"
+  },
+  "src/assert/spendly-preview.mp4": {
+    "file": "assets/spendly-preview-D40Q8yUZ.mp4",
+    "src": "src/assert/spendly-preview.mp4"
+  },
   "src/assert/sportPORTFOLIO.mp4": {
     "file": "assets/sportPORTFOLIO-B09R26nU.mp4",
     "src": "src/assert/sportPORTFOLIO.mp4"
@@ -404,7 +419,7 @@
     "src": "src/assert/wl-timessquare.webp"
   },
   "src/components/fx/SplineRobot.tsx": {
-    "file": "assets/SplineRobot-Bi4JZmlb.js",
+    "file": "assets/SplineRobot-BtrzXQ7K.js",
     "name": "SplineRobot",
     "src": "src/components/fx/SplineRobot.tsx",
     "isDynamicEntry": true,
@@ -416,7 +431,7 @@
       "node_modules/@splinetool/runtime/build/physics.js",
       "node_modules/@splinetool/runtime/build/process.js",
       "node_modules/@splinetool/runtime/build/boolean.js",
-      "_howler-DDfRp4Yd.js",
+      "_howler-II_9QluB.js",
       "node_modules/@splinetool/runtime/build/opentype.js",
       "node_modules/@splinetool/runtime/build/ui.js",
       "node_modules/@splinetool/runtime/build/gaussian-splat-compression.js"
@@ -429,24 +444,24 @@
     "isDynamicEntry": true
   },
   "src/pages/BlogList.tsx": {
-    "file": "assets/BlogList-3GVYr_xp.js",
+    "file": "assets/BlogList-DH68Evu-.js",
     "name": "BlogList",
     "src": "src/pages/BlogList.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_BlogHeader-Du5ooBLG.js",
+      "_BlogHeader-Dg05hbbI.js",
       "src/data/posts.ts"
     ]
   },
   "src/pages/BlogPost.tsx": {
-    "file": "assets/BlogPost-DQK0V0k7.js",
+    "file": "assets/BlogPost-BGqIUt0Q.js",
     "name": "BlogPost",
     "src": "src/pages/BlogPost.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_BlogHeader-Du5ooBLG.js",
+      "_BlogHeader-Dg05hbbI.js",
       "src/data/posts.ts"
     ]
   }
