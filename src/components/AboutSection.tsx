@@ -11,7 +11,7 @@ import portfolioVideo from '@/assert/videoportfolioAB9.mp4';
 
 const skills = [
   { icon: Code, label: 'Frontend', techs: 'React, TypeScript, Tailwind' },
-  { icon: Zap, label: 'Backend', techs: 'Node.js, Laravel, Python' },
+  { icon: Zap, label: 'Backend', techs: 'Java, Spring Boot, Node.js, Laravel, Python' },
   { icon: Palette, label: 'Design', techs: 'Figma, UI/UX' },
   { icon: Globe, label: 'Outils', techs: 'Git, MySQL, REST' },
 ];

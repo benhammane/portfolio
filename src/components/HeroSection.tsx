@@ -91,11 +91,7 @@ const HeroSection = () => {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
               </span>
-              <span className="text-muted-foreground">
-                {t('hero_badge_available')}
-                <span className="mx-1.5 text-border">·</span>
-                <span className="text-foreground/80">{t('hero_badge_extra')}</span>
-              </span>
+              <span className="text-foreground/90">{t('hero_badge_available')}</span>
             </motion.div>
 
             {/* Salutation */}
