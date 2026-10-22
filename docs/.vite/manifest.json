@@ -1,21 +1,21 @@
 {
-  "_BlogHeader-DumUx0lA.js": {
-    "file": "assets/BlogHeader-DumUx0lA.js",
+  "_BlogHeader-BixErZel.js": {
+    "file": "assets/BlogHeader-BixErZel.js",
     "name": "BlogHeader",
     "imports": [
       "index.html"
     ]
   },
-  "_client-B9TnWsAR.js": {
-    "file": "assets/client-B9TnWsAR.js",
+  "_client-CcjSZiGZ.js": {
+    "file": "assets/client-CcjSZiGZ.js",
     "name": "client",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
     ]
   },
-  "_howler-DocR4HOz.js": {
-    "file": "assets/howler-DocR4HOz.js",
+  "_howler-B1OTTKCh.js": {
+    "file": "assets/howler-B1OTTKCh.js",
     "name": "howler",
     "isDynamicEntry": true,
     "imports": [
@@ -23,13 +23,13 @@
     ]
   },
   "index.html": {
-    "file": "assets/app-N5kGOGlx.js",
+    "file": "assets/app-B3cX5XO9.js",
     "name": "app",
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
-      "_client-B9TnWsAR.js",
-      "_client-B9TnWsAR.js",
+      "_client-CcjSZiGZ.js",
+      "_client-CcjSZiGZ.js",
       "src/components/fx/SplineRobot.tsx",
       "node_modules/@emailjs/browser/es/index.js",
       "src/pages/BlogList.tsx",
@@ -100,6 +100,12 @@
       "assets/timessquare-preview-B7seX5Cv.mp4",
       "assets/timessquare-full-nrrY9IzD.mp4",
       "assets/timessquare-poster-rtqy_ls3.webp",
+      "assets/drivenow-preview-x91UKwzP.mp4",
+      "assets/drivenow-full-BYbCR8NS.mp4",
+      "assets/drivenow-poster-CtaAsWXJ.webp",
+      "assets/insightai-preview-CUjNa9-4.mp4",
+      "assets/insightai-full-CSWyyd16.mp4",
+      "assets/insightai-poster-DUTk4gGB.webp",
       "assets/invoiceflow-preview-Dto8syA0.mp4",
       "assets/invoiceflow-full-DE4D2iuW.mp4",
       "assets/invoiceflow-poster-cVwxSMPF.webp",
@@ -213,6 +219,18 @@
     "file": "assets/conduite-preview-BBf5e6wi.mp4",
     "src": "src/assert/conduite-preview.mp4"
   },
+  "src/assert/drivenow-full.mp4": {
+    "file": "assets/drivenow-full-BYbCR8NS.mp4",
+    "src": "src/assert/drivenow-full.mp4"
+  },
+  "src/assert/drivenow-poster.webp": {
+    "file": "assets/drivenow-poster-CtaAsWXJ.webp",
+    "src": "src/assert/drivenow-poster.webp"
+  },
+  "src/assert/drivenow-preview.mp4": {
+    "file": "assets/drivenow-preview-x91UKwzP.mp4",
+    "src": "src/assert/drivenow-preview.mp4"
+  },
   "src/assert/etoo-blast-off.png": {
     "file": "assets/etoo-blast-off-C6XPPtFp.png",
     "src": "src/assert/etoo-blast-off.png"
@@ -248,6 +266,18 @@
   "src/assert/freelanceos.webp": {
     "file": "assets/freelanceos-B25NNmp6.webp",
     "src": "src/assert/freelanceos.webp"
+  },
+  "src/assert/insightai-full.mp4": {
+    "file": "assets/insightai-full-CSWyyd16.mp4",
+    "src": "src/assert/insightai-full.mp4"
+  },
+  "src/assert/insightai-poster.webp": {
+    "file": "assets/insightai-poster-DUTk4gGB.webp",
+    "src": "src/assert/insightai-poster.webp"
+  },
+  "src/assert/insightai-preview.mp4": {
+    "file": "assets/insightai-preview-CUjNa9-4.mp4",
+    "src": "src/assert/insightai-preview.mp4"
   },
   "src/assert/invoiceflow-full.mp4": {
     "file": "assets/invoiceflow-full-DE4D2iuW.mp4",
@@ -434,7 +464,7 @@
     "src": "src/assert/wl-timessquare.webp"
   },
   "src/components/fx/SplineRobot.tsx": {
-    "file": "assets/SplineRobot-EUp9r1Eo.js",
+    "file": "assets/SplineRobot-C5QbEmoL.js",
     "name": "SplineRobot",
     "src": "src/components/fx/SplineRobot.tsx",
     "isDynamicEntry": true,
@@ -446,7 +476,7 @@
       "node_modules/@splinetool/runtime/build/physics.js",
       "node_modules/@splinetool/runtime/build/process.js",
       "node_modules/@splinetool/runtime/build/boolean.js",
-      "_howler-DocR4HOz.js",
+      "_howler-B1OTTKCh.js",
       "node_modules/@splinetool/runtime/build/opentype.js",
       "node_modules/@splinetool/runtime/build/ui.js",
       "node_modules/@splinetool/runtime/build/gaussian-splat-compression.js"
@@ -459,24 +489,24 @@
     "isDynamicEntry": true
   },
   "src/pages/BlogList.tsx": {
-    "file": "assets/BlogList-SqWLUmii.js",
+    "file": "assets/BlogList-C84Bge-T.js",
     "name": "BlogList",
     "src": "src/pages/BlogList.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_BlogHeader-DumUx0lA.js",
+      "_BlogHeader-BixErZel.js",
       "src/data/posts.ts"
     ]
   },
   "src/pages/BlogPost.tsx": {
-    "file": "assets/BlogPost-CqFkA6jy.js",
+    "file": "assets/BlogPost-Dh5YWHoN.js",
     "name": "BlogPost",
     "src": "src/pages/BlogPost.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_BlogHeader-DumUx0lA.js",
+      "_BlogHeader-BixErZel.js",
       "src/data/posts.ts"
     ]
   }
