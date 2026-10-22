@@ -72,6 +72,9 @@ import bubbletiPoster from '@/assert/bubbleti-poster.webp';
 import timessquarePreview from '@/assert/timessquare-preview.mp4';
 import timessquareFull from '@/assert/timessquare-full.mp4';
 import timessquarePoster from '@/assert/timessquare-poster.webp';
+import invoiceflowPreview from '@/assert/invoiceflow-preview.mp4';
+import invoiceflowFull from '@/assert/invoiceflow-full.mp4';
+import invoiceflowPoster from '@/assert/invoiceflow-poster.webp';
 
 const GITHUB = 'https://github.com/benhammane';
 
@@ -86,6 +89,7 @@ const VIDEOS = {
   kanban: { preview: kanbanPreview, full: kanbanFull, poster: kanbanPoster, duration: '0:52', hasAudio: true },
   bubbleti: { preview: bubbletiPreview, full: bubbletiFull, poster: bubbletiPoster, duration: '1:12', hasAudio: true },
   timessquare: { preview: timessquarePreview, full: timessquareFull, poster: timessquarePoster, duration: '0:58', hasAudio: true },
+  invoiceflow: { preview: invoiceflowPreview, full: invoiceflowFull, poster: invoiceflowPoster, duration: '0:31', hasAudio: true },
 } satisfies Record<string, ProjectVideoData>;
 
 /** Données transmises à la modale vidéo (une seule modale pour toute la section). */
@@ -164,7 +168,7 @@ const vedetteWeb: WebCard[] = [
   { titleKey: 'wl_conduite_title', descKey: 'wl_conduite_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'], image: wlConduiteImg, url: 'https://conduite-plus.vercel.app', video: VIDEOS.conduite },
   { titleKey: 'wl_luxestate_title', descKey: 'wl_luxestate_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'MapLibre'], image: wlLuxestateImg, url: 'https://lux-estate-livid.vercel.app', video: VIDEOS.luxestate },
   { titleKey: 'wl_drivenow_title', descKey: 'wl_drivenow_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'Stripe'], image: wlDrivenowImg, url: 'https://drive-now-phi.vercel.app' },
-  { titleKey: 'wl_invoiceflow_title', descKey: 'wl_invoiceflow_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'NextAuth'], image: wlInvoiceflowImg, url: 'https://invoice-flow-sand.vercel.app' },
+  { titleKey: 'wl_invoiceflow_title', descKey: 'wl_invoiceflow_desc', techs: ['Next.js', 'TypeScript', 'Prisma', 'NextAuth'], image: wlInvoiceflowImg, url: 'https://invoice-flow-sand.vercel.app', video: VIDEOS.invoiceflow },
   { titleKey: 'wl_insightai_title', descKey: 'wl_insightai_desc', techs: ['Next.js', 'TypeScript', 'Tailwind CSS', 'OpenAI API'], image: wlInsightaiImg, url: 'https://insight-ai-lilac.vercel.app' },
   { titleKey: 'wl_spendly_title', descKey: 'wl_spendly_desc', techs: ['React', 'TypeScript', 'Tailwind CSS'], image: wlSpendlyImg, url: 'https://spendly-lake-eight.vercel.app', video: VIDEOS.spendly },
   // Stack FreelanceOS alignée sur la slide « architecture » de la vidéo de présentation.
